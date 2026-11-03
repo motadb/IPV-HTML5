@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cap. 04 — Imagens e Caminhos</title>
+    <link rel="stylesheet" href="../css/manual.css">
+</head>
+<body>
+
+<header class="manual-header">
+    <p class="breadcrumb"><a href="../index.html">Índice</a> › Capítulo 04</p>
+    <h1>Imagens e Caminhos</h1>
+    <p>Inserir e organizar imagens numa página web</p>
+</header>
+
+<nav class="manual-nav">
+    <a href="../index.html">Índice</a>
+    <a href="../01-introducao/teoria.html">01 · Introdução</a>
+    <a href="../02-semantica/teoria.html">02 · Semântica</a>
+    <a href="../03-texto-ligacoes/teoria.html">03 · Texto</a>
+    <a href="teoria.html" class="ativo">04 · Imagens</a>
+    <a href="../05-css-fundamentos/teoria.html">05 · CSS</a>
+    <a href="../06-css-box-model/teoria.html">06 · Box Model</a>
+    <a href="../07-css-flexbox/teoria.html">07 · Flexbox</a>
+    <a href="../08-css-grid/teoria.html">08 · Grid</a>
+    <a href="../09-formularios/teoria.html">09 · Formulários</a>
+</nav>
+
+<main class="conteudo">
+
+    <div class="indice-lateral">
+        <h3>Neste capítulo</h3>
+        <ol>
+            <li><a href="#img">O elemento img</a></li>
+            <li><a href="#atributo-alt">O atributo alt</a></li>
+            <li><a href="#dimensoes">Dimensões</a></li>
+            <li><a href="#formatos">Formatos de imagem</a></li>
+            <li><a href="#organizacao">Organização de ficheiros</a></li>
+            <li><a href="#figure">figure e figcaption</a></li>
+            <li><a href="#responsiva">Imagem responsiva</a></li>
+        </ol>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="img">
+        <h2>4.1 O elemento &lt;img&gt;</h2>
+        <p>
+            O elemento <code>&lt;img&gt;</code> é um elemento <strong>vazio</strong> (sem tag de fecho)
+            que insere uma imagem na página. Os dois atributos obrigatórios são <code>src</code> e <code>alt</code>.
+        </p>
+
+        <pre class="codigo"><span class="hl-coment">&lt;!-- Sintaxe básica --&gt;</span>
+<span class="hl-tag">&lt;img</span> <span class="hl-attr">src</span>=<span class="hl-val">"imagens/foto.jpg"</span> <span class="hl-attr">alt</span>=<span class="hl-val">"Descrição da imagem"</span><span class="hl-tag">&gt;</span>
+
+<span class="hl-coment">&lt;!-- Com dimensões definidas --&gt;</span>
+<span class="hl-tag">&lt;img</span> <span class="hl-attr">src</span>=<span class="hl-val">"imagens/logo.png"</span>
+     <span class="hl-attr">alt</span>=<span class="hl-val">"Logótipo da empresa"</span>
+     <span class="hl-attr">width</span>=<span class="hl-val">"200"</span>
+     <span class="hl-attr">height</span>=<span class="hl-val">"80"</span><span class="hl-tag">&gt;</span>
+
+<span class="hl-coment">&lt;!-- Imagem com link --&gt;</span>
+<span class="hl-tag">&lt;a</span> <span class="hl-attr">href</span>=<span class="hl-val">"index.html"</span><span class="hl-tag">&gt;</span>
+  <span class="hl-tag">&lt;img</span> <span class="hl-attr">src</span>=<span class="hl-val">"imagens/logo.png"</span> <span class="hl-attr">alt</span>=<span class="hl-val">"Início"</span><span class="hl-tag">&gt;</span>
+<span class="hl-tag">&lt;/a&gt;</span></pre>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="atributo-alt">
+        <h2>4.2 O atributo alt</h2>
+        <p>
+            O atributo <code>alt</code> (<em>alternative text</em>) é <strong>obrigatório</strong>
+            em todas as imagens. Serve para:
+        </p>
+        <ul>
+            <li><strong>Acessibilidade:</strong> é lido pelos leitores de ecrã para pessoas invisuais.</li>
+            <li><strong>SEO:</strong> motores de busca usam-no para indexar a imagem.</li>
+            <li><strong>Fallback:</strong> é exibido se a imagem não carregar.</li>
+        </ul>
+
+        <pre class="codigo"><span class="hl-coment">&lt;!-- BOAS práticas de alt --&gt;</span>
+
+<span class="hl-coment">&lt;!-- Imagem informativa: descreve o conteúdo --&gt;</span>
+<span class="hl-tag">&lt;img</span> <span class="hl-attr">src</span>=<span class="hl-val">"grafico-vendas.png"</span> <span class="hl-attr">alt</span>=<span class="hl-val">"Gráfico de barras mostrando aumento de 30% nas vendas em 2024"</span><span class="hl-tag">&gt;</span>
+
+<span class="hl-coment">&lt;!-- Imagem decorativa: alt vazio (sem espaço!) --&gt;</span>
+<span class="hl-tag">&lt;img</span> <span class="hl-attr">src</span>=<span class="hl-val">"separador-decorativo.png"</span> <span class="hl-attr">alt</span>=<span class="hl-val">""</span><span class="hl-tag">&gt;</span>
+
+<span class="hl-coment">&lt;!-- Ícone funcional: descreve a função --&gt;</span>
+<span class="hl-tag">&lt;img</span> <span class="hl-attr">src</span>=<span class="hl-val">"icone-pesquisa.svg"</span> <span class="hl-attr">alt</span>=<span class="hl-val">"Pesquisar"</span><span class="hl-tag">&gt;</span></pre>
+
+        <div class="caixa-aviso">
+            <strong>Nunca escrevas "imagem de..." no alt</strong>
+            O leitor de ecrã já anuncia que é uma imagem. Escreve a descrição diretamente:
+            ✗ <code>alt="Imagem de um gato"</code> → ✓ <code>alt="Gato laranja a dormir numa cadeira"</code>
+        </div>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="dimensoes">
+        <h2>4.3 Dimensões e CSS</h2>
+        <p>
+            Os atributos <code>width</code> e <code>height</code> em HTML definem as dimensões
+            em píxeis. Recomenda-se sempre defini-los para evitar <em>layout shift</em>
+            (a página a "saltar" enquanto as imagens carregam).
+        </p>
+        <p>
+            Para controlo total do tamanho, usa CSS — é mais flexível:
+        </p>
+        <pre class="codigo"><span class="hl-coment">&lt;!-- HTML: define as proporções originais --&gt;</span>
+<span class="hl-tag">&lt;img</span> <span class="hl-attr">src</span>=<span class="hl-val">"foto.jpg"</span> <span class="hl-attr">alt</span>=<span class="hl-val">"..."</span> <span class="hl-attr">width</span>=<span class="hl-val">"800"</span> <span class="hl-attr">height</span>=<span class="hl-val">"600"</span><span class="hl-tag">&gt;</span></pre>
+
+        <pre class="codigo"><span class="hl-coment">/* CSS: controla o tamanho real na página */</span>
+<span class="hl-seletor">img</span> {
+  <span class="hl-prop">max-width</span>: <span class="hl-valor">100%</span>;   <span class="hl-coment">/* nunca ultrapassa o contentor */</span>
+  <span class="hl-prop">height</span>: <span class="hl-valor">auto</span>;       <span class="hl-coment">/* mantém proporções */</span>
+}</pre>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="formatos">
+        <h2>4.4 Formatos de imagem para a web</h2>
+
+        <table>
+            <thead>
+                <tr><th>Formato</th><th>Extensão</th><th>Transparência</th><th>Quando usar</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>JPEG</strong></td>
+                    <td>.jpg / .jpeg</td>
+                    <td>Não</td>
+                    <td>Fotografias e imagens com muitas cores. Compressão com perdas.</td>
+                </tr>
+                <tr>
+                    <td><strong>PNG</strong></td>
+                    <td>.png</td>
+                    <td>Sim</td>
+                    <td>Logos, ícones, gráficos com poucas cores. Sem perdas.</td>
+                </tr>
+                <tr>
+                    <td><strong>GIF</strong></td>
+                    <td>.gif</td>
+                    <td>Sim (1-bit)</td>
+                    <td>Animações simples. Máx. 256 cores.</td>
+                </tr>
+                <tr>
+                    <td><strong>SVG</strong></td>
+                    <td>.svg</td>
+                    <td>Sim</td>
+                    <td>Vetorial: logos, ícones, ilustrações. Escala sem perda de qualidade.</td>
+                </tr>
+                <tr>
+                    <td><strong>WebP</strong></td>
+                    <td>.webp</td>
+                    <td>Sim</td>
+                    <td>Formato moderno. Melhor compressão que JPEG/PNG. Recomendado.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="caixa-dica">
+            <strong>Regra prática</strong>
+            Fotografias → JPEG ou WebP | Logos/ícones → SVG ou PNG | Animações → GIF (ou vídeo MP4)
+        </div>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="organizacao">
+        <h2>4.5 Organização de ficheiros — boas práticas</h2>
+        <p>Mantém o projeto organizado com uma estrutura clara de pastas:</p>
+
+        <pre class="codigo">meu-site/
+├── index.html
+├── sobre.html
+├── css/
+│   └── estilo.css
+├── imagens/
+│   ├── logo.svg
+│   ├── hero.jpg
+│   └── galeria/
+│       ├── foto1.jpg
+│       ├── foto2.jpg
+│       └── foto3.jpg
+└── documentos/
+    └── brochura.pdf</pre>
+
+        <div class="caixa-nota">
+            <strong>Convenções de nomenclatura</strong>
+            Usa sempre minúsculas nos nomes de ficheiros e pastas.
+            Substitui espaços por hífens: <code>foto-da-turma.jpg</code>, não <code>Foto da Turma.jpg</code>.
+            Servidores web Linux são sensíveis a maiúsculas/minúsculas (<em>case-sensitive</em>).
+        </div>
+
+        <h3>Como referenciar as imagens</h3>
+        <pre class="codigo"><span class="hl-coment">&lt;!-- Em index.html (raiz) --&gt;</span>
+<span class="hl-tag">&lt;img</span> <span class="hl-attr">src</span>=<span class="hl-val">"imagens/logo.svg"</span> <span class="hl-attr">alt</span>=<span class="hl-val">"Logo"</span><span class="hl-tag">&gt;</span>
+<span class="hl-tag">&lt;img</span> <span class="hl-attr">src</span>=<span class="hl-val">"imagens/galeria/foto1.jpg"</span> <span class="hl-attr">alt</span>=<span class="hl-val">"Foto 1 da galeria"</span><span class="hl-tag">&gt;</span>
+
+<span class="hl-coment">&lt;!-- Em páginas/contacto.html (numa subpasta) --&gt;</span>
+<span class="hl-tag">&lt;img</span> <span class="hl-attr">src</span>=<span class="hl-val">"../imagens/logo.svg"</span> <span class="hl-attr">alt</span>=<span class="hl-val">"Logo"</span><span class="hl-tag">&gt;</span>
+<span class="hl-tag">&lt;img</span> <span class="hl-attr">src</span>=<span class="hl-val">"../imagens/galeria/foto1.jpg"</span> <span class="hl-attr">alt</span>=<span class="hl-val">"Foto 1"</span><span class="hl-tag">&gt;</span></pre>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="figure">
+        <h2>4.6 figure e figcaption</h2>
+        <p>
+            O elemento <code>&lt;figure&gt;</code> agrupa uma imagem com a sua legenda
+            (<code>&lt;figcaption&gt;</code>). É o uso semântico correto para imagens com legenda.
+        </p>
+
+        <pre class="codigo"><span class="hl-tag">&lt;figure&gt;</span>
+  <span class="hl-tag">&lt;img</span> <span class="hl-attr">src</span>=<span class="hl-val">"imagens/castelo.jpg"</span>
+       <span class="hl-attr">alt</span>=<span class="hl-val">"Vista aérea do Castelo de Viseu ao pôr do sol"</span>
+       <span class="hl-attr">width</span>=<span class="hl-val">"800"</span> <span class="hl-attr">height</span>=<span class="hl-val">"500"</span><span class="hl-tag">&gt;</span>
+  <span class="hl-tag">&lt;figcaption&gt;</span>Vista aérea do Castelo de Viseu. Foto: João Costa, 2024.<span class="hl-tag">&lt;/figcaption&gt;</span>
+<span class="hl-tag">&lt;/figure&gt;</span></pre>
+
+        <p>
+            O <code>&lt;figure&gt;</code> não precisa de ser sempre uma imagem — pode ser
+            um gráfico, código, vídeo ou qualquer conteúdo auto-contido com legenda:
+        </p>
+        <pre class="codigo"><span class="hl-tag">&lt;figure&gt;</span>
+  <span class="hl-tag">&lt;pre&gt;&lt;code&gt;</span>console.log("Olá mundo");<span class="hl-tag">&lt;/code&gt;&lt;/pre&gt;</span>
+  <span class="hl-tag">&lt;figcaption&gt;</span>Exemplo de código JavaScript para imprimir no console.<span class="hl-tag">&lt;/figcaption&gt;</span>
+<span class="hl-tag">&lt;/figure&gt;</span></pre>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="responsiva">
+        <h2>4.7 Imagem responsiva</h2>
+        <p>
+            Para servir imagens diferentes consoante o tamanho do ecrã, usa <code>srcset</code>:
+        </p>
+
+        <pre class="codigo"><span class="hl-coment">&lt;!-- O browser escolhe a imagem mais adequada --&gt;</span>
+<span class="hl-tag">&lt;img</span>
+  <span class="hl-attr">src</span>=<span class="hl-val">"foto-800.jpg"</span>
+  <span class="hl-attr">srcset</span>=<span class="hl-val">"foto-400.jpg 400w,
+          foto-800.jpg 800w,
+          foto-1200.jpg 1200w"</span>
+  <span class="hl-attr">sizes</span>=<span class="hl-val">"(max-width: 600px) 100vw, 50vw"</span>
+  <span class="hl-attr">alt</span>=<span class="hl-val">"Paisagem da Serra da Estrela"</span><span class="hl-tag">&gt;</span></pre>
+
+        <div class="caixa-nota">
+            <strong>Nota</strong>
+            <code>srcset</code> e <code>sizes</code> são avançados para quem começa.
+            O mais importante agora é usar <code>max-width: 100%</code> em CSS para que
+            as imagens não transbordem o seu contentor em ecrãs pequenos.
+        </div>
+    </div>
+
+    <div class="nav-capitulos">
+        <a href="../03-texto-ligacoes/teoria.html" class="btn-nav">← Cap. 03</a>
+        <a href="exercicio/enunciado.html" class="btn-nav btn-exercicio">Ficha de Exercícios →</a>
+        <a href="../05-css-fundamentos/teoria.html" class="btn-nav">Próximo: CSS →</a>
+    </div>
+
+</main>
+
+<footer class="manual-footer">
+    <p>Manual HTML5 + CSS3 · Instituto Politécnico de Viseu · 2024/2025</p>
+</footer>
+
+</body>
+</html>

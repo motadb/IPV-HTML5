@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cap. 03 — Texto e Ligações</title>
+    <link rel="stylesheet" href="../css/manual.css">
+</head>
+<body>
+
+<header class="manual-header">
+    <p class="breadcrumb"><a href="../index.html">Índice</a> › Capítulo 03</p>
+    <h1>Texto e Ligações</h1>
+    <p>Formatar texto, criar listas e hiperligações</p>
+</header>
+
+<nav class="manual-nav">
+    <a href="../index.html">Índice</a>
+    <a href="../01-introducao/teoria.html">01 · Introdução</a>
+    <a href="../02-semantica/teoria.html">02 · Semântica</a>
+    <a href="teoria.html" class="ativo">03 · Texto</a>
+    <a href="../04-imagens-caminhos/teoria.html">04 · Imagens</a>
+    <a href="../05-css-fundamentos/teoria.html">05 · CSS</a>
+    <a href="../06-css-box-model/teoria.html">06 · Box Model</a>
+    <a href="../07-css-flexbox/teoria.html">07 · Flexbox</a>
+    <a href="../08-css-grid/teoria.html">08 · Grid</a>
+    <a href="../09-formularios/teoria.html">09 · Formulários</a>
+</nav>
+
+<main class="conteudo">
+
+    <div class="indice-lateral">
+        <h3>Neste capítulo</h3>
+        <ol>
+            <li><a href="#formatacao">Formatação de texto</a></li>
+            <li><a href="#listas">Listas</a></li>
+            <li><a href="#links">Hiperligações (a)</a></li>
+            <li><a href="#caminhos">Caminhos relativos vs. absolutos</a></li>
+            <li><a href="#ancoras">Âncoras internas</a></li>
+            <li><a href="#links-especiais">Links especiais</a></li>
+        </ol>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="formatacao">
+        <h2>3.1 Formatação de texto</h2>
+
+        <table>
+            <thead>
+                <tr><th>Elemento</th><th>Significado semântico</th><th>Aspeto padrão</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><code>&lt;strong&gt;</code></td><td>Texto de grande importância</td><td><strong>negrito</strong></td></tr>
+                <tr><td><code>&lt;em&gt;</code></td><td>Ênfase</td><td><em>itálico</em></td></tr>
+                <tr><td><code>&lt;small&gt;</code></td><td>Texto secundário / nota</td><td><small>texto pequeno</small></td></tr>
+                <tr><td><code>&lt;mark&gt;</code></td><td>Texto destacado / relevante</td><td><mark>fundo amarelo</mark></td></tr>
+                <tr><td><code>&lt;del&gt;</code></td><td>Texto removido</td><td><del>riscado</del></td></tr>
+                <tr><td><code>&lt;ins&gt;</code></td><td>Texto inserido</td><td><ins>sublinhado</ins></td></tr>
+                <tr><td><code>&lt;sub&gt;</code></td><td>Subscrito</td><td>H<sub>2</sub>O</td></tr>
+                <tr><td><code>&lt;sup&gt;</code></td><td>Superscrito</td><td>x<sup>2</sup></td></tr>
+                <tr><td><code>&lt;code&gt;</code></td><td>Código de computador</td><td><code>monospace</code></td></tr>
+                <tr><td><code>&lt;pre&gt;</code></td><td>Texto pré-formatado (preserva espaços)</td><td>fonte mono, espaços preservados</td></tr>
+                <tr><td><code>&lt;blockquote&gt;</code></td><td>Citação longa</td><td>indentado</td></tr>
+                <tr><td><code>&lt;q&gt;</code></td><td>Citação curta inline</td><td>"entre aspas"</td></tr>
+                <tr><td><code>&lt;abbr&gt;</code></td><td>Abreviatura</td><td>sublinhado pontilhado + tooltip</td></tr>
+                <tr><td><code>&lt;br&gt;</code></td><td>Quebra de linha</td><td>nova linha</td></tr>
+                <tr><td><code>&lt;hr&gt;</code></td><td>Separador temático</td><td>linha horizontal</td></tr>
+            </tbody>
+        </table>
+
+        <pre class="codigo"><span class="hl-tag">&lt;p&gt;</span>
+  A fórmula da água é <span class="hl-tag">&lt;strong&gt;</span>H<span class="hl-tag">&lt;sub&gt;</span>2<span class="hl-tag">&lt;/sub&gt;</span>O<span class="hl-tag">&lt;/strong&gt;</span>.
+  O valor de x<span class="hl-tag">&lt;sup&gt;</span>2<span class="hl-tag">&lt;/sup&gt;</span> quando x=3 é <span class="hl-tag">&lt;em&gt;</span>9<span class="hl-tag">&lt;/em&gt;</span>.
+<span class="hl-tag">&lt;/p&gt;</span>
+
+<span class="hl-tag">&lt;blockquote</span> <span class="hl-attr">cite</span>=<span class="hl-val">"https://exemplo.pt"</span><span class="hl-tag">&gt;</span>
+  <span class="hl-tag">&lt;p&gt;</span>A imaginação é mais importante que o conhecimento.<span class="hl-tag">&lt;/p&gt;</span>
+  <span class="hl-tag">&lt;footer&gt;</span>— <span class="hl-tag">&lt;cite&gt;</span>Albert Einstein<span class="hl-tag">&lt;/cite&gt;</span><span class="hl-tag">&lt;/footer&gt;</span>
+<span class="hl-tag">&lt;/blockquote&gt;</span>
+
+<span class="hl-tag">&lt;p&gt;</span>
+  A linguagem <span class="hl-tag">&lt;abbr</span> <span class="hl-attr">title</span>=<span class="hl-val">"HyperText Markup Language"</span><span class="hl-tag">&gt;</span>HTML<span class="hl-tag">&lt;/abbr&gt;</span>
+  foi criada em 1991.
+<span class="hl-tag">&lt;/p&gt;</span></pre>
+
+        <div class="caixa-aviso">
+            <strong>strong/em vs. b/i</strong>
+            Usa <code>&lt;strong&gt;</code> e <code>&lt;em&gt;</code> para significado semântico.
+            Usa <code>&lt;b&gt;</code> e <code>&lt;i&gt;</code> apenas para estilização visual sem
+            significado especial (raramente necessário — o CSS faz isso melhor).
+        </div>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="listas">
+        <h2>3.2 Listas</h2>
+
+        <h3>Lista não ordenada (ul)</h3>
+        <p>Para itens sem ordem específica (marcadores):</p>
+        <pre class="codigo"><span class="hl-tag">&lt;ul&gt;</span>
+  <span class="hl-tag">&lt;li&gt;</span>HTML<span class="hl-tag">&lt;/li&gt;</span>
+  <span class="hl-tag">&lt;li&gt;</span>CSS<span class="hl-tag">&lt;/li&gt;</span>
+  <span class="hl-tag">&lt;li&gt;</span>JavaScript<span class="hl-tag">&lt;/li&gt;</span>
+<span class="hl-tag">&lt;/ul&gt;</span></pre>
+
+        <h3>Lista ordenada (ol)</h3>
+        <p>Para itens com ordem importa (numerados):</p>
+        <pre class="codigo"><span class="hl-tag">&lt;ol&gt;</span>
+  <span class="hl-tag">&lt;li&gt;</span>Criar o ficheiro HTML<span class="hl-tag">&lt;/li&gt;</span>
+  <span class="hl-tag">&lt;li&gt;</span>Escrever a estrutura base<span class="hl-tag">&lt;/li&gt;</span>
+  <span class="hl-tag">&lt;li&gt;</span>Abrir no browser<span class="hl-tag">&lt;/li&gt;</span>
+<span class="hl-tag">&lt;/ol&gt;</span>
+
+<span class="hl-coment">&lt;!-- Atributos do ol --&gt;</span>
+<span class="hl-tag">&lt;ol</span> <span class="hl-attr">start</span>=<span class="hl-val">"5"</span> <span class="hl-attr">type</span>=<span class="hl-val">"A"</span><span class="hl-tag">&gt;</span>  <span class="hl-coment">&lt;!-- começa em E --&gt;</span>
+  <span class="hl-tag">&lt;li&gt;</span>Item E<span class="hl-tag">&lt;/li&gt;</span>
+  <span class="hl-tag">&lt;li&gt;</span>Item F<span class="hl-tag">&lt;/li&gt;</span>
+<span class="hl-tag">&lt;/ol&gt;</span></pre>
+
+        <h3>Lista de definições (dl)</h3>
+        <p>Para pares termo-definição (glossários, metadados):</p>
+        <pre class="codigo"><span class="hl-tag">&lt;dl&gt;</span>
+  <span class="hl-tag">&lt;dt&gt;</span>HTML<span class="hl-tag">&lt;/dt&gt;</span>
+  <span class="hl-tag">&lt;dd&gt;</span>HyperText Markup Language — linguagem de marcação para páginas web.<span class="hl-tag">&lt;/dd&gt;</span>
+
+  <span class="hl-tag">&lt;dt&gt;</span>CSS<span class="hl-tag">&lt;/dt&gt;</span>
+  <span class="hl-tag">&lt;dd&gt;</span>Cascading Style Sheets — linguagem para estilizar páginas HTML.<span class="hl-tag">&lt;/dd&gt;</span>
+<span class="hl-tag">&lt;/dl&gt;</span></pre>
+
+        <h3>Listas aninhadas</h3>
+        <pre class="codigo"><span class="hl-tag">&lt;ul&gt;</span>
+  <span class="hl-tag">&lt;li&gt;</span>Tecnologias Web
+    <span class="hl-tag">&lt;ul&gt;</span>
+      <span class="hl-tag">&lt;li&gt;</span>HTML<span class="hl-tag">&lt;/li&gt;</span>
+      <span class="hl-tag">&lt;li&gt;</span>CSS<span class="hl-tag">&lt;/li&gt;</span>
+    <span class="hl-tag">&lt;/ul&gt;</span>
+  <span class="hl-tag">&lt;/li&gt;</span>
+  <span class="hl-tag">&lt;li&gt;</span>Linguagens de Programação
+    <span class="hl-tag">&lt;ul&gt;</span>
+      <span class="hl-tag">&lt;li&gt;</span>JavaScript<span class="hl-tag">&lt;/li&gt;</span>
+      <span class="hl-tag">&lt;li&gt;</span>Python<span class="hl-tag">&lt;/li&gt;</span>
+    <span class="hl-tag">&lt;/ul&gt;</span>
+  <span class="hl-tag">&lt;/li&gt;</span>
+<span class="hl-tag">&lt;/ul&gt;</span></pre>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="links">
+        <h2>3.3 Hiperligações — o elemento &lt;a&gt;</h2>
+        <p>
+            O elemento <code>&lt;a&gt;</code> (<em>anchor</em>) cria uma hiperligação.
+            O atributo <code>href</code> (<em>hypertext reference</em>) define o destino.
+        </p>
+
+        <pre class="codigo"><span class="hl-coment">&lt;!-- Link para outra página do site --&gt;</span>
+<span class="hl-tag">&lt;a</span> <span class="hl-attr">href</span>=<span class="hl-val">"sobre.html"</span><span class="hl-tag">&gt;</span>Sobre Nós<span class="hl-tag">&lt;/a&gt;</span>
+
+<span class="hl-coment">&lt;!-- Abrir em nova aba --&gt;</span>
+<span class="hl-tag">&lt;a</span> <span class="hl-attr">href</span>=<span class="hl-val">"https://www.ipv.pt"</span> <span class="hl-attr">target</span>=<span class="hl-val">"_blank"</span> <span class="hl-attr">rel</span>=<span class="hl-val">"noopener"</span><span class="hl-tag">&gt;</span>IPV<span class="hl-tag">&lt;/a&gt;</span>
+
+<span class="hl-coment">&lt;!-- Link com título (tooltip) --&gt;</span>
+<span class="hl-tag">&lt;a</span> <span class="hl-attr">href</span>=<span class="hl-val">"contacto.html"</span> <span class="hl-attr">title</span>=<span class="hl-val">"Formulário de contacto"</span><span class="hl-tag">&gt;</span>Contacto<span class="hl-tag">&lt;/a&gt;</span></pre>
+
+        <table>
+            <thead>
+                <tr><th>Atributo</th><th>Valor</th><th>Efeito</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><code>href</code></td><td>URL ou caminho</td><td>Destino do link</td></tr>
+                <tr><td><code>target</code></td><td><code>_blank</code></td><td>Abre em nova aba</td></tr>
+                <tr><td><code>target</code></td><td><code>_self</code> (padrão)</td><td>Abre na mesma aba</td></tr>
+                <tr><td><code>rel</code></td><td><code>noopener noreferrer</code></td><td>Segurança em links externos</td></tr>
+                <tr><td><code>download</code></td><td>nome do ficheiro</td><td>Força download em vez de abrir</td></tr>
+            </tbody>
+        </table>
+
+        <div class="caixa-aviso">
+            <strong>Segurança com target="_blank"</strong>
+            Ao abrir um link externo em nova aba, usa sempre <code>rel="noopener noreferrer"</code>
+            para prevenir que a página de destino aceda à janela original.
+        </div>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="caminhos">
+        <h2>3.4 Caminhos relativos vs. absolutos</h2>
+        <p>
+            Um <strong>caminho</strong> (<em>path</em>) é o endereço de um ficheiro.
+            Existem dois tipos:
+        </p>
+
+        <h3>Caminho absoluto</h3>
+        <p>
+            Contém o endereço completo, começando sempre pelo protocolo ou raiz.
+            Funciona em qualquer contexto mas é rígido — se o site muda de domínio, os links partem.
+        </p>
+        <pre class="codigo"><span class="hl-coment">&lt;!-- URL completo --&gt;</span>
+<span class="hl-tag">&lt;a</span> <span class="hl-attr">href</span>=<span class="hl-val">"https://www.exemplo.pt/paginas/sobre.html"</span><span class="hl-tag">&gt;</span>Sobre<span class="hl-tag">&lt;/a&gt;</span>
+
+<span class="hl-coment">&lt;!-- Desde a raiz do site (começa com /) --&gt;</span>
+<span class="hl-tag">&lt;a</span> <span class="hl-attr">href</span>=<span class="hl-val">"/paginas/sobre.html"</span><span class="hl-tag">&gt;</span>Sobre<span class="hl-tag">&lt;/a&gt;</span></pre>
+
+        <h3>Caminho relativo</h3>
+        <p>
+            É relativo à localização do ficheiro HTML atual.
+            Preferível para ficheiros dentro do mesmo projeto.
+        </p>
+
+        <p>Imaginando esta estrutura de pastas:</p>
+        <pre class="codigo">meu-site/
+├── index.html
+├── sobre.html
+├── css/
+│   └── estilo.css
+├── imagens/
+│   └── logo.png
+└── paginas/
+    ├── contacto.html
+    └── portfolio.html</pre>
+
+        <p>No ficheiro <code>index.html</code> (raiz):</p>
+        <pre class="codigo"><span class="hl-coment">&lt;!-- Mesmo nível --&gt;</span>
+<span class="hl-tag">&lt;a</span> <span class="hl-attr">href</span>=<span class="hl-val">"sobre.html"</span><span class="hl-tag">&gt;</span>Sobre<span class="hl-tag">&lt;/a&gt;</span>
+
+<span class="hl-coment">&lt;!-- Entrar numa pasta --&gt;</span>
+<span class="hl-tag">&lt;a</span> <span class="hl-attr">href</span>=<span class="hl-val">"paginas/contacto.html"</span><span class="hl-tag">&gt;</span>Contacto<span class="hl-tag">&lt;/a&gt;</span>
+
+<span class="hl-coment">&lt;!-- Ficheiro CSS numa subpasta --&gt;</span>
+<span class="hl-tag">&lt;link</span> <span class="hl-attr">rel</span>=<span class="hl-val">"stylesheet"</span> <span class="hl-attr">href</span>=<span class="hl-val">"css/estilo.css"</span><span class="hl-tag">&gt;</span>
+
+<span class="hl-coment">&lt;!-- Imagem numa subpasta --&gt;</span>
+<span class="hl-tag">&lt;img</span> <span class="hl-attr">src</span>=<span class="hl-val">"imagens/logo.png"</span> <span class="hl-attr">alt</span>=<span class="hl-val">"Logótipo"</span><span class="hl-tag">&gt;</span></pre>
+
+        <p>No ficheiro <code>paginas/contacto.html</code> (dentro da pasta <em>paginas</em>):</p>
+        <pre class="codigo"><span class="hl-coment">&lt;!-- Subir um nível com ../ --&gt;</span>
+<span class="hl-tag">&lt;a</span> <span class="hl-attr">href</span>=<span class="hl-val">"../index.html"</span><span class="hl-tag">&gt;</span>Início<span class="hl-tag">&lt;/a&gt;</span>
+
+<span class="hl-coment">&lt;!-- Subir e entrar noutra pasta --&gt;</span>
+<span class="hl-tag">&lt;link</span> <span class="hl-attr">rel</span>=<span class="hl-val">"stylesheet"</span> <span class="hl-attr">href</span>=<span class="hl-val">"../css/estilo.css"</span><span class="hl-tag">&gt;</span>
+<span class="hl-tag">&lt;img</span> <span class="hl-attr">src</span>=<span class="hl-val">"../imagens/logo.png"</span> <span class="hl-attr">alt</span>=<span class="hl-val">"Logótipo"</span><span class="hl-tag">&gt;</span>
+
+<span class="hl-coment">&lt;!-- Outro ficheiro na mesma pasta --&gt;</span>
+<span class="hl-tag">&lt;a</span> <span class="hl-attr">href</span>=<span class="hl-val">"portfolio.html"</span><span class="hl-tag">&gt;</span>Portfolio<span class="hl-tag">&lt;/a&gt;</span></pre>
+
+        <div class="caixa-dica">
+            <strong>Regra de memorização</strong>
+            <code>./</code> = pasta atual (opcional, podes omitir)<br>
+            <code>../</code> = subir um nível<br>
+            <code>../../</code> = subir dois níveis<br>
+            <code>pasta/ficheiro.html</code> = entrar numa pasta
+        </div>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="ancoras">
+        <h2>3.5 Âncoras internas</h2>
+        <p>
+            Permitem criar links que apontam para uma secção específica da mesma página
+            (ou de outra). Muito usados em páginas longas (índices de conteúdo).
+        </p>
+
+        <pre class="codigo"><span class="hl-coment">&lt;!-- 1. Marca o destino com um id --&gt;</span>
+<span class="hl-tag">&lt;h2</span> <span class="hl-attr">id</span>=<span class="hl-val">"sobre"</span><span class="hl-tag">&gt;</span>Sobre Nós<span class="hl-tag">&lt;/h2&gt;</span>
+
+<span class="hl-coment">&lt;!-- 2. Liga para esse id com # --&gt;</span>
+<span class="hl-tag">&lt;a</span> <span class="hl-attr">href</span>=<span class="hl-val">"#sobre"</span><span class="hl-tag">&gt;</span>Ir para Sobre Nós<span class="hl-tag">&lt;/a&gt;</span>
+
+<span class="hl-coment">&lt;!-- 3. Para outra página + secção --&gt;</span>
+<span class="hl-tag">&lt;a</span> <span class="hl-attr">href</span>=<span class="hl-val">"pagina.html#sobre"</span><span class="hl-tag">&gt;</span>Sobre na outra página<span class="hl-tag">&lt;/a&gt;</span>
+
+<span class="hl-coment">&lt;!-- 4. Voltar ao topo --&gt;</span>
+<span class="hl-tag">&lt;a</span> <span class="hl-attr">href</span>=<span class="hl-val">"#"</span><span class="hl-tag">&gt;</span>Voltar ao topo<span class="hl-tag">&lt;/a&gt;</span></pre>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="links-especiais">
+        <h2>3.6 Links especiais</h2>
+        <pre class="codigo"><span class="hl-coment">&lt;!-- Link de email --&gt;</span>
+<span class="hl-tag">&lt;a</span> <span class="hl-attr">href</span>=<span class="hl-val">"mailto:info@exemplo.pt"</span><span class="hl-tag">&gt;</span>info@exemplo.pt<span class="hl-tag">&lt;/a&gt;</span>
+
+<span class="hl-coment">&lt;!-- Email com assunto e corpo pré-preenchidos --&gt;</span>
+<span class="hl-tag">&lt;a</span> <span class="hl-attr">href</span>=<span class="hl-val">"mailto:info@exemplo.pt?subject=Dúvida&amp;body=Olá,"</span><span class="hl-tag">&gt;</span>
+  Enviar email
+<span class="hl-tag">&lt;/a&gt;</span>
+
+<span class="hl-coment">&lt;!-- Link de telefone (útil em mobile) --&gt;</span>
+<span class="hl-tag">&lt;a</span> <span class="hl-attr">href</span>=<span class="hl-val">"tel:+351232000000"</span><span class="hl-tag">&gt;</span>+351 232 000 000<span class="hl-tag">&lt;/a&gt;</span>
+
+<span class="hl-coment">&lt;!-- Download de ficheiro --&gt;</span>
+<span class="hl-tag">&lt;a</span> <span class="hl-attr">href</span>=<span class="hl-val">"documentos/ficha.pdf"</span> <span class="hl-attr">download</span>=<span class="hl-val">"ficha-inscricao.pdf"</span><span class="hl-tag">&gt;</span>
+  Descarregar Ficha
+<span class="hl-tag">&lt;/a&gt;</span></pre>
+    </div>
+
+    <div class="nav-capitulos">
+        <a href="../02-semantica/teoria.html" class="btn-nav">← Cap. 02</a>
+        <a href="exercicio/enunciado.html" class="btn-nav btn-exercicio">Ficha de Exercícios →</a>
+        <a href="../04-imagens-caminhos/teoria.html" class="btn-nav">Próximo: Imagens →</a>
+    </div>
+
+</main>
+
+<footer class="manual-footer">
+    <p>Manual HTML5 + CSS3 · Instituto Politécnico de Viseu · 2024/2025</p>
+</footer>
+
+</body>
+</html>

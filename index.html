@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual HTML5 + CSS3 — IPV</title>
+    <link rel="stylesheet" href="css/manual.css">
+</head>
+<body>
+
+<header class="manual-header">
+    <h1>Manual de HTML5 + CSS3</h1>
+    <p>Licenciatura · 1.º Ano · Instituto Politécnico de Viseu</p>
+</header>
+
+<nav class="manual-nav">
+    <a href="index.html" class="ativo">Índice</a>
+    <a href="01-introducao/teoria.html">01 · Introdução</a>
+    <a href="02-semantica/teoria.html">02 · Semântica</a>
+    <a href="03-texto-ligacoes/teoria.html">03 · Texto e Links</a>
+    <a href="04-imagens-caminhos/teoria.html">04 · Imagens</a>
+    <a href="05-css-fundamentos/teoria.html">05 · CSS Base</a>
+    <a href="06-css-box-model/teoria.html">06 · Box Model</a>
+    <a href="07-css-flexbox/teoria.html">07 · Flexbox</a>
+    <a href="08-css-grid/teoria.html">08 · Grid</a>
+    <a href="09-formularios/teoria.html">09 · Formulários</a>
+</nav>
+
+<main class="conteudo">
+
+    <div class="secao">
+        <h2>Bem-vindo ao Manual</h2>
+        <p>
+            Este manual foi criado para te guiar desde o zero absoluto até conseguires construir
+            páginas web com estrutura semântica, estilização profissional e formulários funcionais.
+            Não é necessário nenhum conhecimento prévio de programação.
+        </p>
+        <p>
+            Cada capítulo tem uma <strong>parte teórica</strong> com exemplos de código explicados
+            e uma <strong>ficha de exercícios</strong> com enunciado, esqueleto de arranque e solução.
+        </p>
+        <div class="caixa-dica">
+            <strong>Como usar este manual</strong>
+            Lê a teoria, experimenta os exemplos no teu editor, e depois resolve a ficha de exercícios
+            sem ver a solução. Só consultes a solução depois de tentares!
+        </div>
+    </div>
+
+    <div class="secao">
+        <h2>Ferramentas Necessárias</h2>
+        <p>Para acompanhar este manual precisas apenas de:</p>
+        <ul>
+            <li>
+                <strong>Editor de código:</strong> <a href="https://code.visualstudio.com" target="_blank">Visual Studio Code</a>
+                (recomendado) — instala a extensão <em>Live Server</em> para ver as alterações em tempo real.
+            </li>
+            <li>
+                <strong>Browser:</strong> Google Chrome ou Firefox com as ferramentas de programador
+                abertas com <kbd>F12</kbd>.
+            </li>
+        </ul>
+        <div class="caixa-nota">
+            <strong>Nota</strong>
+            Não precisas de servidor, internet ou instalar nada especial. Os ficheiros HTML abrem
+            diretamente no browser — basta fazer duplo clique ou arrastar para o browser.
+        </div>
+    </div>
+
+    <div class="secao">
+        <h2>Conteúdos do Manual</h2>
+        <div class="grid-capitulos">
+
+            <a href="01-introducao/teoria.html" class="card-capitulo">
+                <span class="num">Capítulo 01</span>
+                <span class="titulo">Introdução ao HTML5</span>
+                <span class="descricao">
+                    O que é HTML, história, estrutura base de uma página,
+                    primeiros elementos e como abrir no browser.
+                </span>
+                <div class="tags">
+                    <span class="tag-topico">DOCTYPE</span>
+                    <span class="tag-topico">head/body</span>
+                    <span class="tag-topico">h1–h6</span>
+                    <span class="tag-topico">p</span>
+                </div>
+            </a>
+
+            <a href="02-semantica/teoria.html" class="card-capitulo">
+                <span class="num">Capítulo 02</span>
+                <span class="titulo">Estrutura Semântica</span>
+                <span class="descricao">
+                    Elementos semânticos do HTML5 para estruturar corretamente
+                    uma página: header, nav, main, article, aside, footer.
+                </span>
+                <div class="tags">
+                    <span class="tag-topico">header</span>
+                    <span class="tag-topico">main</span>
+                    <span class="tag-topico">footer</span>
+                    <span class="tag-topico">article</span>
+                </div>
+            </a>
+
+            <a href="03-texto-ligacoes/teoria.html" class="card-capitulo">
+                <span class="num">Capítulo 03</span>
+                <span class="titulo">Texto e Ligações</span>
+                <span class="descricao">
+                    Formatação de texto, listas, hiperligações e caminhos
+                    relativos vs. absolutos.
+                </span>
+                <div class="tags">
+                    <span class="tag-topico">a href</span>
+                    <span class="tag-topico">listas</span>
+                    <span class="tag-topico">caminhos</span>
+                    <span class="tag-topico">âncoras</span>
+                </div>
+            </a>
+
+            <a href="04-imagens-caminhos/teoria.html" class="card-capitulo">
+                <span class="num">Capítulo 04</span>
+                <span class="titulo">Imagens e Caminhos</span>
+                <span class="descricao">
+                    Inserir imagens, organização de ficheiros, atributo alt,
+                    formatos e figura com legenda.
+                </span>
+                <div class="tags">
+                    <span class="tag-topico">img</span>
+                    <span class="tag-topico">alt</span>
+                    <span class="tag-topico">figure</span>
+                    <span class="tag-topico">paths</span>
+                </div>
+            </a>
+
+            <a href="05-css-fundamentos/teoria.html" class="card-capitulo">
+                <span class="num">Capítulo 05</span>
+                <span class="titulo">CSS — Fundamentos</span>
+                <span class="descricao">
+                    O que é CSS, sintaxe, seletores, especificidade, cores,
+                    tipografia e formas de aplicar estilos.
+                </span>
+                <div class="tags">
+                    <span class="tag-topico">seletores</span>
+                    <span class="tag-topico">cascata</span>
+                    <span class="tag-topico">cores</span>
+                    <span class="tag-topico">tipografia</span>
+                </div>
+            </a>
+
+            <a href="06-css-box-model/teoria.html" class="card-capitulo">
+                <span class="num">Capítulo 06</span>
+                <span class="titulo">CSS — Box Model</span>
+                <span class="descricao">
+                    Modelo de caixa, margin, padding, border, display,
+                    position e unidades de medida.
+                </span>
+                <div class="tags">
+                    <span class="tag-topico">box-model</span>
+                    <span class="tag-topico">margin</span>
+                    <span class="tag-topico">position</span>
+                    <span class="tag-topico">display</span>
+                </div>
+            </a>
+
+            <a href="07-css-flexbox/teoria.html" class="card-capitulo">
+                <span class="num">Capítulo 07</span>
+                <span class="titulo">CSS — Flexbox</span>
+                <span class="descricao">
+                    Layout flexível a uma dimensão: container, items,
+                    justify-content, align-items e flex-wrap.
+                </span>
+                <div class="tags">
+                    <span class="tag-topico">display: flex</span>
+                    <span class="tag-topico">justify</span>
+                    <span class="tag-topico">align</span>
+                    <span class="tag-topico">flex-wrap</span>
+                </div>
+            </a>
+
+            <a href="08-css-grid/teoria.html" class="card-capitulo">
+                <span class="num">Capítulo 08</span>
+                <span class="titulo">CSS — Grid</span>
+                <span class="descricao">
+                    Layout a duas dimensões: linhas e colunas,
+                    grid-template-areas e posicionamento de elementos.
+                </span>
+                <div class="tags">
+                    <span class="tag-topico">display: grid</span>
+                    <span class="tag-topico">columns</span>
+                    <span class="tag-topico">areas</span>
+                    <span class="tag-topico">fr</span>
+                </div>
+            </a>
+
+            <a href="09-formularios/teoria.html" class="card-capitulo">
+                <span class="num">Capítulo 09</span>
+                <span class="titulo">Formulários HTML5</span>
+                <span class="descricao">
+                    Criação de formulários completos com todos os tipos de input,
+                    validação nativa e acessibilidade.
+                </span>
+                <div class="tags">
+                    <span class="tag-topico">form</span>
+                    <span class="tag-topico">input</span>
+                    <span class="tag-topico">validação</span>
+                    <span class="tag-topico">label</span>
+                </div>
+            </a>
+
+        </div>
+    </div>
+
+</main>
+
+<footer class="manual-footer">
+    <p>Manual HTML5 + CSS3 · Instituto Politécnico de Viseu · 2024/2025</p>
+</footer>
+
+</body>
+</html>

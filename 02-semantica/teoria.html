@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cap. 02 — Estrutura Semântica</title>
+    <link rel="stylesheet" href="../css/manual.css">
+</head>
+<body>
+
+<header class="manual-header">
+    <p class="breadcrumb"><a href="../index.html">Índice</a> › Capítulo 02</p>
+    <h1>Estrutura Semântica</h1>
+    <p>Dar significado à estrutura da página com HTML5</p>
+</header>
+
+<nav class="manual-nav">
+    <a href="../index.html">Índice</a>
+    <a href="../01-introducao/teoria.html">01 · Introdução</a>
+    <a href="teoria.html" class="ativo">02 · Semântica</a>
+    <a href="../03-texto-ligacoes/teoria.html">03 · Texto</a>
+    <a href="../04-imagens-caminhos/teoria.html">04 · Imagens</a>
+    <a href="../05-css-fundamentos/teoria.html">05 · CSS</a>
+    <a href="../06-css-box-model/teoria.html">06 · Box Model</a>
+    <a href="../07-css-flexbox/teoria.html">07 · Flexbox</a>
+    <a href="../08-css-grid/teoria.html">08 · Grid</a>
+    <a href="../09-formularios/teoria.html">09 · Formulários</a>
+</nav>
+
+<main class="conteudo">
+
+    <div class="indice-lateral">
+        <h3>Neste capítulo</h3>
+        <ol>
+            <li><a href="#semantica">O que é semântica?</a></li>
+            <li><a href="#elementos">Elementos semânticos do HTML5</a></li>
+            <li><a href="#layout">Layout típico de uma página</a></li>
+            <li><a href="#bloco-inline">Bloco vs. Inline</a></li>
+            <li><a href="#div-span">div e span</a></li>
+            <li><a href="#atributos">Atributos id e class</a></li>
+        </ol>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="semantica">
+        <h2>2.1 O que é semântica?</h2>
+        <p>
+            <strong>Semântica</strong> significa dar <em>significado</em> ao código.
+            Antes do HTML5 era comum estruturar páginas inteiras apenas com <code>&lt;div&gt;</code>,
+            tornando impossível perceber a função de cada parte sem ler o conteúdo.
+        </p>
+
+        <h3>Antes (sem semântica):</h3>
+        <pre class="codigo"><span class="hl-tag">&lt;div</span> <span class="hl-attr">id</span>=<span class="hl-val">"cabecalho"</span><span class="hl-tag">&gt;</span> ... <span class="hl-tag">&lt;/div&gt;</span>
+<span class="hl-tag">&lt;div</span> <span class="hl-attr">id</span>=<span class="hl-val">"menu"</span><span class="hl-tag">&gt;</span> ... <span class="hl-tag">&lt;/div&gt;</span>
+<span class="hl-tag">&lt;div</span> <span class="hl-attr">id</span>=<span class="hl-val">"conteudo"</span><span class="hl-tag">&gt;</span>
+    <span class="hl-tag">&lt;div</span> <span class="hl-attr">class</span>=<span class="hl-val">"artigo"</span><span class="hl-tag">&gt;</span> ... <span class="hl-tag">&lt;/div&gt;</span>
+<span class="hl-tag">&lt;/div&gt;</span>
+<span class="hl-tag">&lt;div</span> <span class="hl-attr">id</span>=<span class="hl-val">"rodape"</span><span class="hl-tag">&gt;</span> ... <span class="hl-tag">&lt;/div&gt;</span></pre>
+
+        <h3>Depois (com semântica HTML5):</h3>
+        <pre class="codigo"><span class="hl-tag">&lt;header&gt;</span> ... <span class="hl-tag">&lt;/header&gt;</span>
+<span class="hl-tag">&lt;nav&gt;</span> ... <span class="hl-tag">&lt;/nav&gt;</span>
+<span class="hl-tag">&lt;main&gt;</span>
+    <span class="hl-tag">&lt;article&gt;</span> ... <span class="hl-tag">&lt;/article&gt;</span>
+<span class="hl-tag">&lt;/main&gt;</span>
+<span class="hl-tag">&lt;footer&gt;</span> ... <span class="hl-tag">&lt;/footer&gt;</span></pre>
+
+        <p>As vantagens do HTML semântico são:</p>
+        <ul>
+            <li><strong>Acessibilidade:</strong> leitores de ecrã (para invisuais) navegam pelos landmarks semânticos.</li>
+            <li><strong>SEO:</strong> motores de busca entendem melhor a estrutura do conteúdo.</li>
+            <li><strong>Manutenção:</strong> o código é mais fácil de ler e editar.</li>
+            <li><strong>Semântica:</strong> o HTML comunica a intenção, não apenas a apresentação.</li>
+        </ul>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="elementos">
+        <h2>2.2 Elementos semânticos do HTML5</h2>
+
+        <table>
+            <thead>
+                <tr><th>Elemento</th><th>Significado</th><th>Uso típico</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>&lt;header&gt;</code></td>
+                    <td>Cabeçalho</td>
+                    <td>Logo, nome do site, slogan (do site ou de uma secção)</td>
+                </tr>
+                <tr>
+                    <td><code>&lt;nav&gt;</code></td>
+                    <td>Navegação</td>
+                    <td>Menu principal, breadcrumbs, paginação</td>
+                </tr>
+                <tr>
+                    <td><code>&lt;main&gt;</code></td>
+                    <td>Conteúdo principal</td>
+                    <td>Conteúdo único da página. <strong>Apenas um por página.</strong></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;article&gt;</code></td>
+                    <td>Artigo independente</td>
+                    <td>Post de blog, notícia, comentário, produto</td>
+                </tr>
+                <tr>
+                    <td><code>&lt;section&gt;</code></td>
+                    <td>Secção temática</td>
+                    <td>Grupo de conteúdo relacionado com um tema</td>
+                </tr>
+                <tr>
+                    <td><code>&lt;aside&gt;</code></td>
+                    <td>Conteúdo lateral</td>
+                    <td>Sidebar, caixa de info, publicidade, links relacionados</td>
+                </tr>
+                <tr>
+                    <td><code>&lt;footer&gt;</code></td>
+                    <td>Rodapé</td>
+                    <td>Direitos de autor, contactos, links úteis</td>
+                </tr>
+                <tr>
+                    <td><code>&lt;figure&gt;</code></td>
+                    <td>Figura com legenda</td>
+                    <td>Imagem, gráfico, código com <code>&lt;figcaption&gt;</code></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;time&gt;</code></td>
+                    <td>Data/hora</td>
+                    <td><code>&lt;time datetime="2024-03-15"&gt;15 de março&lt;/time&gt;</code></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;mark&gt;</code></td>
+                    <td>Texto destacado</td>
+                    <td>Resultado de pesquisa, texto importante</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="caixa-nota">
+            <strong>article vs. section</strong>
+            Usa <code>&lt;article&gt;</code> para conteúdo que faz sentido sozinho fora da página
+            (podias copiar para outro site e fazia sentido). Usa <code>&lt;section&gt;</code> para
+            agrupar conteúdo relacionado que faz parte de um todo maior.
+        </div>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="layout">
+        <h2>2.3 Layout típico de uma página</h2>
+        <p>Estrutura de uma página de blog/notícias típica:</p>
+
+        <pre class="codigo"><span class="hl-tag">&lt;!DOCTYPE html&gt;</span>
+<span class="hl-tag">&lt;html</span> <span class="hl-attr">lang</span>=<span class="hl-val">"pt"</span><span class="hl-tag">&gt;</span>
+<span class="hl-tag">&lt;head&gt;</span>
+  <span class="hl-tag">&lt;meta</span> <span class="hl-attr">charset</span>=<span class="hl-val">"UTF-8"</span><span class="hl-tag">&gt;</span>
+  <span class="hl-tag">&lt;title&gt;</span>O Meu Blog<span class="hl-tag">&lt;/title&gt;</span>
+<span class="hl-tag">&lt;/head&gt;</span>
+<span class="hl-tag">&lt;body&gt;</span>
+
+  <span class="hl-tag">&lt;header&gt;</span>
+    <span class="hl-tag">&lt;h1&gt;</span>O Meu Blog<span class="hl-tag">&lt;/h1&gt;</span>
+    <span class="hl-tag">&lt;p&gt;</span>Textos sobre tecnologia e cultura<span class="hl-tag">&lt;/p&gt;</span>
+  <span class="hl-tag">&lt;/header&gt;</span>
+
+  <span class="hl-tag">&lt;nav&gt;</span>
+    <span class="hl-tag">&lt;a</span> <span class="hl-attr">href</span>=<span class="hl-val">"index.html"</span><span class="hl-tag">&gt;</span>Início<span class="hl-tag">&lt;/a&gt;</span>
+    <span class="hl-tag">&lt;a</span> <span class="hl-attr">href</span>=<span class="hl-val">"sobre.html"</span><span class="hl-tag">&gt;</span>Sobre<span class="hl-tag">&lt;/a&gt;</span>
+    <span class="hl-tag">&lt;a</span> <span class="hl-attr">href</span>=<span class="hl-val">"contacto.html"</span><span class="hl-tag">&gt;</span>Contacto<span class="hl-tag">&lt;/a&gt;</span>
+  <span class="hl-tag">&lt;/nav&gt;</span>
+
+  <span class="hl-tag">&lt;main&gt;</span>
+
+    <span class="hl-tag">&lt;article&gt;</span>
+      <span class="hl-tag">&lt;h2&gt;</span>Título do Artigo<span class="hl-tag">&lt;/h2&gt;</span>
+      <span class="hl-tag">&lt;p&gt;</span><span class="hl-tag">&lt;time</span> <span class="hl-attr">datetime</span>=<span class="hl-val">"2024-11-01"</span><span class="hl-tag">&gt;</span>1 de novembro de 2024<span class="hl-tag">&lt;/time&gt;</span><span class="hl-tag">&lt;/p&gt;</span>
+      <span class="hl-tag">&lt;p&gt;</span>Texto do artigo...<span class="hl-tag">&lt;/p&gt;</span>
+    <span class="hl-tag">&lt;/article&gt;</span>
+
+    <span class="hl-tag">&lt;article&gt;</span>
+      <span class="hl-tag">&lt;h2&gt;</span>Outro Artigo<span class="hl-tag">&lt;/h2&gt;</span>
+      <span class="hl-tag">&lt;p&gt;</span>Mais texto...<span class="hl-tag">&lt;/p&gt;</span>
+    <span class="hl-tag">&lt;/article&gt;</span>
+
+  <span class="hl-tag">&lt;/main&gt;</span>
+
+  <span class="hl-tag">&lt;aside&gt;</span>
+    <span class="hl-tag">&lt;h2&gt;</span>Artigos Recentes<span class="hl-tag">&lt;/h2&gt;</span>
+    <span class="hl-coment">&lt;!-- lista de links --&gt;</span>
+  <span class="hl-tag">&lt;/aside&gt;</span>
+
+  <span class="hl-tag">&lt;footer&gt;</span>
+    <span class="hl-tag">&lt;p&gt;</span>&amp;copy; 2024 O Meu Blog<span class="hl-tag">&lt;/p&gt;</span>
+  <span class="hl-tag">&lt;/footer&gt;</span>
+
+<span class="hl-tag">&lt;/body&gt;</span>
+<span class="hl-tag">&lt;/html&gt;</span></pre>
+
+        <div class="caixa-dica">
+            <strong>Entidade &amp;copy;</strong>
+            O símbolo © escreve-se em HTML como <code>&amp;copy;</code>.
+            Outras entidades úteis: <code>&amp;amp;</code> (&amp;), <code>&amp;lt;</code> (&lt;),
+            <code>&amp;gt;</code> (&gt;), <code>&amp;nbsp;</code> (espaço sem quebra de linha).
+        </div>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="bloco-inline">
+        <h2>2.4 Elementos de bloco vs. elementos inline</h2>
+        <p>Os elementos HTML dividem-se em dois grandes grupos:</p>
+
+        <table>
+            <thead>
+                <tr><th>Tipo</th><th>Comportamento</th><th>Exemplos</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Bloco</strong></td>
+                    <td>Ocupa toda a largura disponível. Começa numa nova linha.</td>
+                    <td><code>h1–h6</code>, <code>p</code>, <code>div</code>, <code>header</code>, <code>section</code>, <code>ul</code>, <code>li</code></td>
+                </tr>
+                <tr>
+                    <td><strong>Inline</strong></td>
+                    <td>Ocupa apenas o espaço do seu conteúdo. Flui dentro do texto.</td>
+                    <td><code>a</code>, <code>strong</code>, <code>em</code>, <code>span</code>, <code>img</code>, <code>code</code></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <pre class="codigo"><span class="hl-tag">&lt;p&gt;</span>
+  Este é um parágrafo com
+  <span class="hl-tag">&lt;strong&gt;</span>texto a negrito<span class="hl-tag">&lt;/strong&gt;</span> e
+  <span class="hl-tag">&lt;em&gt;</span>texto em itálico<span class="hl-tag">&lt;/em&gt;</span> dentro da mesma linha.
+<span class="hl-tag">&lt;/p&gt;</span>
+
+<span class="hl-coment">&lt;!-- ERRADO: não podes pôr um bloco dentro de um inline --&gt;</span>
+<span class="hl-tag">&lt;span&gt;</span><span class="hl-tag">&lt;p&gt;</span>Isto está errado!<span class="hl-tag">&lt;/p&gt;</span><span class="hl-tag">&lt;/span&gt;</span>
+
+<span class="hl-coment">&lt;!-- CORRETO: inline dentro de bloco --&gt;</span>
+<span class="hl-tag">&lt;p&gt;</span><span class="hl-tag">&lt;span&gt;</span>Isto está correto.<span class="hl-tag">&lt;/span&gt;</span><span class="hl-tag">&lt;/p&gt;</span></pre>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="div-span">
+        <h2>2.5 div e span — os contenores genéricos</h2>
+        <p>
+            Quando nenhum elemento semântico se aplica, usa os contenores genéricos:
+        </p>
+        <ul>
+            <li><code>&lt;div&gt;</code> — contentor de <strong>bloco</strong> genérico, para agrupar elementos.</li>
+            <li><code>&lt;span&gt;</code> — contentor <strong>inline</strong> genérico, para marcar partes de texto.</li>
+        </ul>
+
+        <pre class="codigo"><span class="hl-coment">&lt;!-- div para agrupar elementos com o mesmo estilo/função --&gt;</span>
+<span class="hl-tag">&lt;div</span> <span class="hl-attr">class</span>=<span class="hl-val">"cartao"</span><span class="hl-tag">&gt;</span>
+  <span class="hl-tag">&lt;h3&gt;</span>João Silva<span class="hl-tag">&lt;/h3&gt;</span>
+  <span class="hl-tag">&lt;p&gt;</span>Estudante de Informática<span class="hl-tag">&lt;/p&gt;</span>
+<span class="hl-tag">&lt;/div&gt;</span>
+
+<span class="hl-coment">&lt;!-- span para estilizar parte de um texto --&gt;</span>
+<span class="hl-tag">&lt;p&gt;</span>
+  O preço é <span class="hl-tag">&lt;span</span> <span class="hl-attr">class</span>=<span class="hl-val">"preco"</span><span class="hl-tag">&gt;</span>29,99€<span class="hl-tag">&lt;/span&gt;</span>.
+<span class="hl-tag">&lt;/p&gt;</span></pre>
+
+        <div class="caixa-nota">
+            <strong>Regra prática</strong>
+            Antes de usares <code>&lt;div&gt;</code>, pergunta: "existe um elemento semântico
+            que descreve melhor isto?" Se sim, usa-o. O <code>&lt;div&gt;</code> deve ser o
+            <em>último recurso</em>, não o primeiro.
+        </div>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="atributos">
+        <h2>2.6 Atributos id e class em detalhe</h2>
+
+        <h3>O atributo id</h3>
+        <ul>
+            <li>Identifica <strong>um único elemento</strong> na página.</li>
+            <li>Não pode haver dois elementos com o mesmo <code>id</code>.</li>
+            <li>Usado para: âncoras (<code>#secao1</code>), CSS específico, manipulação com JavaScript.</li>
+        </ul>
+
+        <h3>O atributo class</h3>
+        <ul>
+            <li>Pode ser usada em <strong>múltiplos elementos</strong>.</li>
+            <li>Um elemento pode ter <strong>múltiplas classes</strong> separadas por espaço.</li>
+            <li>Usado principalmente para aplicar estilos CSS.</li>
+        </ul>
+
+        <pre class="codigo"><span class="hl-coment">&lt;!-- id único por página --&gt;</span>
+<span class="hl-tag">&lt;section</span> <span class="hl-attr">id</span>=<span class="hl-val">"sobre-nos"</span><span class="hl-tag">&gt;</span>...<span class="hl-tag">&lt;/section&gt;</span>
+
+<span class="hl-coment">&lt;!-- class reutilizável --&gt;</span>
+<span class="hl-tag">&lt;p</span> <span class="hl-attr">class</span>=<span class="hl-val">"destaque"</span><span class="hl-tag">&gt;</span>Texto 1<span class="hl-tag">&lt;/p&gt;</span>
+<span class="hl-tag">&lt;p</span> <span class="hl-attr">class</span>=<span class="hl-val">"destaque"</span><span class="hl-tag">&gt;</span>Texto 2<span class="hl-tag">&lt;/p&gt;</span>
+
+<span class="hl-coment">&lt;!-- múltiplas classes no mesmo elemento --&gt;</span>
+<span class="hl-tag">&lt;button</span> <span class="hl-attr">class</span>=<span class="hl-val">"btn btn-primario btn-grande"</span><span class="hl-tag">&gt;</span>Enviar<span class="hl-tag">&lt;/button&gt;</span></pre>
+    </div>
+
+    <div class="nav-capitulos">
+        <a href="../01-introducao/teoria.html" class="btn-nav">← Cap. 01</a>
+        <a href="exercicio/enunciado.html" class="btn-nav btn-exercicio">Ficha de Exercícios →</a>
+        <a href="../03-texto-ligacoes/teoria.html" class="btn-nav">Próximo: Texto e Links →</a>
+    </div>
+
+</main>
+
+<footer class="manual-footer">
+    <p>Manual HTML5 + CSS3 · Instituto Politécnico de Viseu · 2024/2025</p>
+</footer>
+
+</body>
+</html>

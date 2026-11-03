@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha 05 — CSS Fundamentos</title>
+    <link rel="stylesheet" href="../../css/manual.css">
+</head>
+<body>
+
+<header class="manual-header">
+    <p class="breadcrumb"><a href="../../index.html">Índice</a> › <a href="../teoria.html">Cap. 05</a> › Exercício</p>
+    <h1>Ficha 05 — Estilizar uma Página</h1>
+    <p>CSS: seletores, cores e tipografia</p>
+</header>
+
+<main class="conteudo">
+
+    <div class="secao exercicio-header">
+        <h2>Objetivos</h2>
+        <ul class="objetivo-lista">
+            <li>Criar e ligar um ficheiro CSS externo</li>
+            <li>Usar seletores de elemento, classe e id</li>
+            <li>Aplicar cores em formatos hexadecimal e rgba</li>
+            <li>Controlar tipografia: família, tamanho, peso e alinhamento</li>
+            <li>Usar pseudo-classes :hover e :first-child</li>
+        </ul>
+    </div>
+
+    <div class="secao">
+        <h2>Enunciado</h2>
+        <p>
+            Pega na página <code>noticias.html</code> que criaste na Ficha 02
+            (ou no ficheiro de solução desta ficha) e cria um ficheiro CSS externo
+            chamado <code>estilos.css</code> para a estilizar.
+        </p>
+
+        <h3>Ficheiros necessários</h3>
+        <pre class="codigo">ficha05/
+├── noticias.html   (reutiliza a solução da ficha 02)
+└── css/
+    └── estilos.css (crias agora)</pre>
+
+        <h3>Requisitos do CSS</h3>
+        <p>O ficheiro <code>estilos.css</code> deve conter:</p>
+
+        <table>
+            <thead>
+                <tr><th>Elemento/Seletor</th><th>Estilos a aplicar</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>body</code></td>
+                    <td>Cor de fundo (#f5f5f5), família tipográfica (sans-serif), tamanho 16px, cor do texto (#333)</td>
+                </tr>
+                <tr>
+                    <td><code>header</code></td>
+                    <td>Cor de fundo azul escuro (#1a3a5c), cor do texto branco, padding 2rem, text-align center</td>
+                </tr>
+                <tr>
+                    <td><code>header h1</code></td>
+                    <td>Font-size 2.5rem, font-weight 700, margin-bottom 0.5rem</td>
+                </tr>
+                <tr>
+                    <td><code>nav</code></td>
+                    <td>Cor de fundo #2563eb, padding 1rem 2rem</td>
+                </tr>
+                <tr>
+                    <td><code>nav a</code></td>
+                    <td>Cor branca, sem sublinhado (text-decoration: none), padding 0.5rem 1rem</td>
+                </tr>
+                <tr>
+                    <td><code>nav a:hover</code></td>
+                    <td>Cor de fundo rgba(255,255,255,0.2), border-radius 4px</td>
+                </tr>
+                <tr>
+                    <td><code>main</code></td>
+                    <td>max-width 900px, margin 2rem auto, padding 0 1rem</td>
+                </tr>
+                <tr>
+                    <td><code>article</code></td>
+                    <td>Cor de fundo branca, padding 1.5rem, margin-bottom 1.5rem, border-radius 8px, border-left 4px solid #2563eb</td>
+                </tr>
+                <tr>
+                    <td><code>article h2</code></td>
+                    <td>Cor #1a3a5c, font-size 1.4rem</td>
+                </tr>
+                <tr>
+                    <td><code>article:first-child</code></td>
+                    <td>border-left-color #f59e0b (amarelo — destaque)</td>
+                </tr>
+                <tr>
+                    <td><code>aside</code></td>
+                    <td>Cor de fundo #eff6ff, padding 1.5rem, border-radius 8px</td>
+                </tr>
+                <tr>
+                    <td><code>footer</code></td>
+                    <td>Cor de fundo #1a3a5c, cor do texto #94a3b8, text-align center, padding 1.5rem, margin-top 2rem</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="caixa-dica">
+        <strong>Boa prática</strong>
+        Começa por escrever o reset: <code>* { box-sizing: border-box; margin: 0; padding: 0; }</code>
+        Esta regra garante que todos os elementos partem de zero e que o box model é previsível.
+    </div>
+
+    <div class="nav-capitulos">
+        <a href="../teoria.html" class="btn-nav">← Teoria</a>
+        <a href="esqueleto/noticias.html" class="btn-nav btn-exercicio">Abrir Esqueleto →</a>
+        <a href="solucao/noticias.html" class="btn-nav btn-solucao">Ver Solução →</a>
+    </div>
+
+</main>
+
+<footer class="manual-footer">
+    <p>Manual HTML5 + CSS3 · Instituto Politécnico de Viseu · 2024/2025</p>
+</footer>
+
+</body>
+</html>

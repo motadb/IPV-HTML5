@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha 07 — CSS Flexbox</title>
+    <link rel="stylesheet" href="../../css/manual.css">
+</head>
+<body>
+
+<header class="manual-header">
+    <p class="breadcrumb"><a href="../../index.html">Índice</a> › <a href="../teoria.html">Cap. 07</a> › Exercício</p>
+    <h1>Ficha 07 — Layout Flexbox</h1>
+    <p>Navbar, galeria de cards e footer com colunas</p>
+</header>
+
+<main class="conteudo">
+
+    <div class="secao exercicio-header">
+        <h2>Objetivos</h2>
+        <ul class="objetivo-lista">
+            <li>Criar uma navbar horizontal com Flexbox</li>
+            <li>Criar uma galeria de cards responsiva com flex-wrap</li>
+            <li>Usar justify-content e align-items para posicionamento</li>
+            <li>Usar flex: 1 para distribuição de espaço</li>
+            <li>Criar um footer com colunas usando Flexbox</li>
+        </ul>
+    </div>
+
+    <div class="secao">
+        <h2>Enunciado</h2>
+        <p>
+            Cria um site de portfolio chamado <code>portfolio.html</code> com <code>css/portfolio.css</code>.
+        </p>
+
+        <h3>Componentes a construir com Flexbox</h3>
+
+        <h3>1. Navbar</h3>
+        <ul>
+            <li>Logo à esquerda, links de navegação à direita.</li>
+            <li><code>justify-content: space-between; align-items: center;</code></li>
+            <li>Os links de nav são uma lista <code>&lt;ul&gt;</code> também em Flexbox com <code>gap</code>.</li>
+        </ul>
+
+        <h3>2. Hero</h3>
+        <ul>
+            <li>Flexbox em coluna (<code>flex-direction: column</code>) para centrar verticalmente.</li>
+            <li><code>min-height: 80vh; justify-content: center; align-items: center;</code></li>
+        </ul>
+
+        <h3>3. Galeria de Projetos (6 cards)</h3>
+        <ul>
+            <li>Container: <code>display: flex; flex-wrap: wrap; gap: 1.5rem;</code></li>
+            <li>Cada card: <code>flex: 1 1 280px;</code> (mínimo 280px, cresce igualmente)</li>
+            <li>Cada card é também um flex container em coluna, com o botão "Ver projeto" no fundo (usando <code>margin-top: auto</code>).</li>
+        </ul>
+
+        <h3>4. Footer com 3 colunas</h3>
+        <ul>
+            <li>Container: <code>display: flex; justify-content: space-between; flex-wrap: wrap;</code></li>
+            <li>Cada coluna: <code>flex: 1 1 200px;</code></li>
+            <li>Colunas: "Sobre", "Navegação" (lista de links), "Contacto".</li>
+        </ul>
+    </div>
+
+    <div class="caixa-dica">
+        <strong>Dica: botão no fundo do card</strong>
+        Para empurrar o botão para o fundo do card, independentemente do tamanho do texto:
+        <pre style="margin-top: 0.5rem; background: #1e293b; color: #e2e8f0; padding: 0.75rem; border-radius: 4px; font-family: monospace; font-size: 0.85rem;">.card { display: flex; flex-direction: column; }
+.card .btn { margin-top: auto; }</pre>
+    </div>
+
+    <div class="nav-capitulos">
+        <a href="../teoria.html" class="btn-nav">← Teoria</a>
+        <a href="esqueleto/portfolio.html" class="btn-nav btn-exercicio">Abrir Esqueleto →</a>
+        <a href="solucao/portfolio.html" class="btn-nav btn-solucao">Ver Solução →</a>
+    </div>
+
+</main>
+
+<footer class="manual-footer">
+    <p>Manual HTML5 + CSS3 · Instituto Politécnico de Viseu · 2024/2025</p>
+</footer>
+
+</body>
+</html>

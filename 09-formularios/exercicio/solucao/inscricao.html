@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscrição — Jornadas de Informática 2024</title>
+    <link rel="stylesheet" href="css/form.css">
+</head>
+<body>
+
+    <header>
+        <h1>Jornadas de Informática 2024</h1>
+        <p>Formulário de inscrição · 15 e 16 de novembro · IPV</p>
+    </header>
+
+    <main>
+        <form action="#" method="post">
+
+            <!-- SECÇÃO 1: DADOS PESSOAIS -->
+            <fieldset>
+                <legend>Dados Pessoais</legend>
+
+                <div class="campo">
+                    <label for="nome">Nome completo *</label>
+                    <input type="text" id="nome" name="nome"
+                           required minlength="3"
+                           placeholder="O teu nome completo"
+                           autocomplete="name" autofocus>
+                </div>
+
+                <div class="campo">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email"
+                           required
+                           placeholder="exemplo@ipv.pt"
+                           autocomplete="email">
+                </div>
+
+                <div class="campo">
+                    <label for="tel">Telefone</label>
+                    <input type="tel" id="tel" name="telefone"
+                           pattern="[0-9]{9}"
+                           placeholder="9 dígitos (ex: 912345678)">
+                </div>
+
+                <div class="campo">
+                    <label for="nascimento">Data de nascimento *</label>
+                    <input type="date" id="nascimento" name="nascimento"
+                           required max="2006-12-31">
+                </div>
+
+                <div class="campo">
+                    <label for="num-estudante">Número de estudante</label>
+                    <input type="text" id="num-estudante" name="numero_estudante"
+                           pattern="[0-9]{6}" maxlength="6"
+                           placeholder="6 dígitos">
+                </div>
+            </fieldset>
+
+            <!-- SECÇÃO 2: INSCRIÇÃO -->
+            <fieldset>
+                <legend>Inscrição no Evento</legend>
+
+                <div class="campo">
+                    <span class="label-grupo">Dia de participação *</span>
+                    <div class="grupo-radio">
+                        <label class="radio-label">
+                            <input type="radio" name="dia" value="15" required>
+                            Dia 15 de novembro
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="dia" value="16">
+                            Dia 16 de novembro
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="dia" value="ambos">
+                            Ambos os dias
+                        </label>
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <span class="label-grupo">Workshops de interesse</span>
+                    <div class="grupo-checkbox">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="workshop" value="html">
+                            HTML/CSS
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="workshop" value="js">
+                            JavaScript
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="workshop" value="python">
+                            Python
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="workshop" value="ia">
+                            Inteligência Artificial
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="workshop" value="git">
+                            Git e GitHub
+                        </label>
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label for="dieta">Regime alimentar</label>
+                    <select id="dieta" name="dieta">
+                        <option value="normal">Normal</option>
+                        <option value="vegetariano">Vegetariano</option>
+                        <option value="vegan">Vegan</option>
+                        <option value="sem-gluten">Sem glúten</option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label for="tshirt">Tamanho da t-shirt</label>
+                    <select id="tshirt" name="tshirt">
+                        <option value="">-- Seleciona --</option>
+                        <option value="xs">XS</option>
+                        <option value="s">S</option>
+                        <option value="m" selected>M</option>
+                        <option value="l">L</option>
+                        <option value="xl">XL</option>
+                        <option value="xxl">XXL</option>
+                    </select>
+                </div>
+            </fieldset>
+
+            <!-- SECÇÃO 3: INFORMAÇÃO ADICIONAL -->
+            <fieldset>
+                <legend>Informação Adicional</legend>
+
+                <div class="campo">
+                    <label for="origem">Como soubeste do evento?</label>
+                    <select id="origem" name="origem">
+                        <option value="">-- Seleciona --</option>
+                        <option value="email">Email institucional</option>
+                        <option value="redes">Redes sociais</option>
+                        <option value="colega">Colega</option>
+                        <option value="professor">Professor</option>
+                        <option value="outro">Outro</option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label for="satisfacao">
+                        Nível de interesse no evento: <span id="satisfacao-valor">3</span>/5
+                    </label>
+                    <input type="range" id="satisfacao" name="satisfacao"
+                           min="1" max="5" value="3">
+                </div>
+
+                <div class="campo">
+                    <label for="comentarios">Comentários ou questões</label>
+                    <textarea id="comentarios" name="comentarios"
+                              rows="4" maxlength="300"
+                              placeholder="Opcional — diz-nos o que quiseres (máx. 300 caracteres)"></textarea>
+                </div>
+
+                <div class="campo campo-check">
+                    <input type="checkbox" id="termos" name="termos" required>
+                    <label for="termos">Aceito os <a href="#">termos e condições</a> de participação *</label>
+                </div>
+
+                <div class="campo campo-check">
+                    <input type="checkbox" id="newsletter" name="newsletter">
+                    <label for="newsletter">Desejo receber a newsletter do IPV sobre eventos futuros</label>
+                </div>
+            </fieldset>
+
+            <p class="nota">* Campos obrigatórios</p>
+
+            <div class="botoes">
+                <button type="submit" class="btn-submit">Submeter inscrição</button>
+                <button type="reset" class="btn-reset">Limpar formulário</button>
+            </div>
+
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Instituto Politécnico de Viseu</p>
+    </footer>
+
+</body>
+</html>

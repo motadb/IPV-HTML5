@@ -1,0 +1,500 @@
+/* ============================================
+   Manual HTML5 + CSS3 — IPV
+   Folha de estilos partilhada
+   ============================================ */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --cor-primaria: #2563eb;
+    --cor-secundaria: #1e40af;
+    --cor-acento: #f59e0b;
+    --cor-sucesso: #10b981;
+    --cor-aviso: #f97316;
+    --cor-erro: #ef4444;
+    --cor-fundo: #f8fafc;
+    --cor-fundo-card: #ffffff;
+    --cor-texto: #1e293b;
+    --cor-texto-suave: #64748b;
+    --cor-borda: #e2e8f0;
+    --cor-codigo-fundo: #1e293b;
+    --cor-codigo-texto: #e2e8f0;
+    --raio: 8px;
+    --sombra: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+    --sombra-md: 0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06);
+    --fonte-texto: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    --fonte-codigo: 'Consolas', 'Monaco', 'Courier New', monospace;
+}
+
+body {
+    font-family: var(--fonte-texto);
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+/* ---- Header ---- */
+.manual-header {
+    background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: var(--sombra-md);
+}
+
+.manual-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.manual-header p {
+    opacity: 0.85;
+    font-size: 1.05rem;
+}
+
+.manual-header .breadcrumb {
+    font-size: 0.85rem;
+    opacity: 0.75;
+    margin-bottom: 0.75rem;
+}
+
+.manual-header .breadcrumb a {
+    color: white;
+    text-decoration: none;
+}
+
+.manual-header .breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+/* ---- Navegação de topo ---- */
+.manual-nav {
+    background: white;
+    border-bottom: 2px solid var(--cor-borda);
+    padding: 0 2rem;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    box-shadow: var(--sombra);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.manual-nav a {
+    color: var(--cor-texto-suave);
+    text-decoration: none;
+    padding: 1rem 1.1rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-bottom: 3px solid transparent;
+    white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.manual-nav a:hover,
+.manual-nav a.ativo {
+    color: var(--cor-primaria);
+    border-bottom-color: var(--cor-primaria);
+}
+
+/* ---- Conteúdo principal ---- */
+.conteudo {
+    max-width: 900px;
+    margin: 2.5rem auto;
+    padding: 0 1.5rem;
+}
+
+/* ---- Secções de teoria ---- */
+.secao {
+    background: var(--cor-fundo-card);
+    border-radius: var(--raio);
+    box-shadow: var(--sombra);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-left: 4px solid var(--cor-primaria);
+}
+
+.secao h2 {
+    font-size: 1.5rem;
+    color: var(--cor-primaria);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--cor-borda);
+}
+
+.secao h3 {
+    font-size: 1.1rem;
+    color: var(--cor-texto);
+    margin: 1.5rem 0 0.75rem;
+    font-weight: 600;
+}
+
+.secao p {
+    margin-bottom: 1rem;
+}
+
+.secao ul,
+.secao ol {
+    margin: 0.75rem 0 1rem 1.5rem;
+}
+
+.secao li {
+    margin-bottom: 0.4rem;
+}
+
+/* ---- Caixas informativas ---- */
+.caixa-nota,
+.caixa-aviso,
+.caixa-dica,
+.caixa-exemplo {
+    border-radius: var(--raio);
+    padding: 1rem 1.25rem;
+    margin: 1.25rem 0;
+    border-left: 4px solid;
+}
+
+.caixa-nota {
+    background: #eff6ff;
+    border-color: var(--cor-primaria);
+    color: #1e3a8a;
+}
+
+.caixa-aviso {
+    background: #fff7ed;
+    border-color: var(--cor-aviso);
+    color: #7c2d12;
+}
+
+.caixa-dica {
+    background: #f0fdf4;
+    border-color: var(--cor-sucesso);
+    color: #14532d;
+}
+
+.caixa-exemplo {
+    background: #fefce8;
+    border-color: var(--cor-acento);
+    color: #713f12;
+}
+
+.caixa-nota strong,
+.caixa-aviso strong,
+.caixa-dica strong,
+.caixa-exemplo strong {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ---- Blocos de código ---- */
+.codigo-titulo {
+    background: #334155;
+    color: #94a3b8;
+    font-family: var(--fonte-codigo);
+    font-size: 0.78rem;
+    padding: 0.4rem 1.25rem;
+    border-radius: var(--raio) var(--raio) 0 0;
+    margin-bottom: 0;
+}
+
+.codigo {
+    background: var(--cor-codigo-fundo);
+    color: var(--cor-codigo-texto);
+    border-radius: var(--raio);
+    padding: 1.25rem 1.5rem;
+    margin: 0 0 1rem 0;
+    overflow-x: auto;
+    font-family: var(--fonte-codigo);
+    font-size: 0.88rem;
+    line-height: 1.65;
+}
+
+.codigo-titulo + .codigo {
+    border-radius: 0 0 var(--raio) var(--raio);
+}
+
+/* Highlight de sintaxe manual */
+.hl-tag    { color: #f472b6; }
+.hl-attr   { color: #67e8f9; }
+.hl-val    { color: #a3e635; }
+.hl-coment { color: #64748b; font-style: italic; }
+.hl-texto  { color: #e2e8f0; }
+.hl-prop   { color: #67e8f9; }
+.hl-valor  { color: #a3e635; }
+.hl-seletor{ color: #f472b6; }
+.hl-chave  { color: #fbbf24; }
+.hl-num    { color: #fb923c; }
+.hl-str    { color: #a3e635; }
+
+/* Código inline */
+code {
+    background: #e2e8f0;
+    color: #1e293b;
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    font-family: var(--fonte-codigo);
+    font-size: 0.88em;
+}
+
+.codigo code {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+    border-radius: 0;
+    font-size: inherit;
+}
+
+/* ---- Tabelas ---- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0 1.5rem;
+    font-size: 0.93rem;
+}
+
+th {
+    background: var(--cor-primaria);
+    color: white;
+    padding: 0.7rem 1rem;
+    text-align: left;
+    font-weight: 600;
+}
+
+td {
+    padding: 0.6rem 1rem;
+    border-bottom: 1px solid var(--cor-borda);
+}
+
+tr:nth-child(even) td {
+    background: #f8fafc;
+}
+
+tr:hover td {
+    background: #eff6ff;
+}
+
+/* ---- Navegação entre capítulos ---- */
+.nav-capitulos {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.btn-nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: white;
+    border: 2px solid var(--cor-primaria);
+    color: var(--cor-primaria);
+    padding: 0.7rem 1.2rem;
+    border-radius: var(--raio);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    box-shadow: var(--sombra);
+}
+
+.btn-nav:hover {
+    background: var(--cor-primaria);
+    color: white;
+}
+
+.btn-exercicio {
+    background: var(--cor-acento);
+    border-color: var(--cor-acento);
+    color: white;
+}
+
+.btn-exercicio:hover {
+    background: #d97706;
+    border-color: #d97706;
+    color: white;
+}
+
+.btn-solucao {
+    background: var(--cor-sucesso);
+    border-color: var(--cor-sucesso);
+    color: white;
+}
+
+.btn-solucao:hover {
+    background: #059669;
+    border-color: #059669;
+}
+
+/* ---- Grid de capítulos (índice) ---- */
+.grid-capitulos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 1.25rem;
+    margin: 1.5rem 0;
+}
+
+.card-capitulo {
+    background: white;
+    border-radius: var(--raio);
+    box-shadow: var(--sombra);
+    padding: 1.5rem;
+    text-decoration: none;
+    color: var(--cor-texto);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border: 2px solid transparent;
+    transition: all 0.2s;
+}
+
+.card-capitulo:hover {
+    border-color: var(--cor-primaria);
+    box-shadow: var(--sombra-md);
+    transform: translateY(-2px);
+}
+
+.card-capitulo .num {
+    font-size: 0.78rem;
+    color: var(--cor-texto-suave);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.card-capitulo .titulo {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--cor-primaria);
+}
+
+.card-capitulo .descricao {
+    font-size: 0.88rem;
+    color: var(--cor-texto-suave);
+    line-height: 1.5;
+    flex: 1;
+}
+
+.card-capitulo .tags {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    margin-top: 0.25rem;
+}
+
+.tag-topico {
+    background: #eff6ff;
+    color: var(--cor-primaria);
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+
+/* ---- Caixa de preview (resultado visual) ---- */
+.preview-box {
+    border: 2px dashed var(--cor-borda);
+    border-radius: var(--raio);
+    padding: 1.25rem;
+    margin: 1rem 0;
+    background: white;
+}
+
+.preview-box .preview-titulo {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--cor-texto-suave);
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+/* ---- Índice lateral ---- */
+.indice-lateral {
+    background: white;
+    border-radius: var(--raio);
+    box-shadow: var(--sombra);
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+    border-left: 4px solid var(--cor-acento);
+}
+
+.indice-lateral h3 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--cor-texto-suave);
+    margin-bottom: 0.75rem;
+}
+
+.indice-lateral ol {
+    margin-left: 1.25rem;
+}
+
+.indice-lateral a {
+    color: var(--cor-primaria);
+    text-decoration: none;
+    font-size: 0.92rem;
+}
+
+.indice-lateral a:hover {
+    text-decoration: underline;
+}
+
+/* ---- Exercício ---- */
+.exercicio-header {
+    border-left: 4px solid var(--cor-acento);
+}
+
+.exercicio-header h2 {
+    color: #92400e;
+}
+
+.objetivo-lista {
+    list-style: none;
+    margin: 0 0 1rem 0;
+}
+
+.objetivo-lista li {
+    padding: 0.4rem 0 0.4rem 1.75rem;
+    position: relative;
+}
+
+.objetivo-lista li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--cor-sucesso);
+    font-weight: 700;
+}
+
+/* ---- Footer ---- */
+.manual-footer {
+    background: var(--cor-texto);
+    color: #94a3b8;
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.85rem;
+    margin-top: 3rem;
+}
+
+/* ---- Responsivo ---- */
+@media (max-width: 640px) {
+    .manual-header h1 { font-size: 1.4rem; }
+    .conteudo { padding: 0 1rem; }
+    .secao { padding: 1.25rem; }
+    .nav-capitulos { flex-direction: column; }
+    .grid-capitulos { grid-template-columns: 1fr; }
+    .manual-nav { padding: 0 0.5rem; }
+    .manual-nav a { padding: 0.75rem 0.65rem; font-size: 0.78rem; }
+    .codigo { font-size: 0.8rem; padding: 1rem; }
+}

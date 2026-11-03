@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cap. 08 — CSS Grid</title>
+    <link rel="stylesheet" href="../css/manual.css">
+</head>
+<body>
+
+<header class="manual-header">
+    <p class="breadcrumb"><a href="../index.html">Índice</a> › Capítulo 08</p>
+    <h1>CSS — Grid</h1>
+    <p>Layout a duas dimensões com CSS Grid</p>
+</header>
+
+<nav class="manual-nav">
+    <a href="../index.html">Índice</a>
+    <a href="../01-introducao/teoria.html">01</a>
+    <a href="../02-semantica/teoria.html">02</a>
+    <a href="../03-texto-ligacoes/teoria.html">03</a>
+    <a href="../04-imagens-caminhos/teoria.html">04</a>
+    <a href="../05-css-fundamentos/teoria.html">05</a>
+    <a href="../06-css-box-model/teoria.html">06</a>
+    <a href="../07-css-flexbox/teoria.html">07</a>
+    <a href="teoria.html" class="ativo">08 · Grid</a>
+    <a href="../09-formularios/teoria.html">09 · Formulários</a>
+</nav>
+
+<main class="conteudo">
+
+    <div class="indice-lateral">
+        <h3>Neste capítulo</h3>
+        <ol>
+            <li><a href="#conceito">Conceito de Grid</a></li>
+            <li><a href="#columns-rows">Colunas e linhas</a></li>
+            <li><a href="#fr">A unidade fr</a></li>
+            <li><a href="#gap">Gap</a></li>
+            <li><a href="#posicionamento">Posicionamento de items</a></li>
+            <li><a href="#areas">grid-template-areas</a></li>
+            <li><a href="#alinhamento">Alinhamento</a></li>
+            <li><a href="#responsivo">Grid responsivo</a></li>
+        </ol>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="conceito">
+        <h2>8.1 Conceito de CSS Grid</h2>
+        <p>
+            O <strong>CSS Grid Layout</strong> é um sistema de layout <strong>a duas dimensões</strong>
+            — linhas e colunas em simultâneo. Enquanto o Flexbox é ideal para componentes lineares
+            (uma barra de nav, um conjunto de botões), o Grid é ideal para <strong>layouts de página</strong>
+            completos.
+        </p>
+
+        <pre class="codigo"><span class="hl-coment">&lt;!-- HTML --&gt;</span>
+<span class="hl-tag">&lt;div</span> <span class="hl-attr">class</span>=<span class="hl-val">"grid"</span><span class="hl-tag">&gt;</span>
+  <span class="hl-tag">&lt;div&gt;</span>Item 1<span class="hl-tag">&lt;/div&gt;</span>
+  <span class="hl-tag">&lt;div&gt;</span>Item 2<span class="hl-tag">&lt;/div&gt;</span>
+  <span class="hl-tag">&lt;div&gt;</span>Item 3<span class="hl-tag">&lt;/div&gt;</span>
+  <span class="hl-tag">&lt;div&gt;</span>Item 4<span class="hl-tag">&lt;/div&gt;</span>
+<span class="hl-tag">&lt;/div&gt;</span></pre>
+        <pre class="codigo"><span class="hl-coment">/* CSS */</span>
+<span class="hl-seletor">.grid</span> {
+  <span class="hl-prop">display</span>: <span class="hl-valor">grid</span>;
+  <span class="hl-prop">grid-template-columns</span>: <span class="hl-valor">200px 200px 200px</span>;  <span class="hl-coment">/* 3 colunas de 200px */</span>
+}</pre>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="columns-rows">
+        <h2>8.2 Colunas e linhas</h2>
+
+        <pre class="codigo"><span class="hl-seletor">.grid</span> {
+  <span class="hl-prop">display</span>: <span class="hl-valor">grid</span>;
+
+  <span class="hl-coment">/* 3 colunas de tamanhos fixos */</span>
+  <span class="hl-prop">grid-template-columns</span>: <span class="hl-valor">200px 300px 200px</span>;
+
+  <span class="hl-coment">/* 3 colunas iguais com fr */</span>
+  <span class="hl-prop">grid-template-columns</span>: <span class="hl-valor">1fr 1fr 1fr</span>;
+
+  <span class="hl-coment">/* Atalho com repeat() */</span>
+  <span class="hl-prop">grid-template-columns</span>: <span class="hl-valor">repeat(3, 1fr)</span>;
+
+  <span class="hl-coment">/* Coluna lateral + conteúdo */</span>
+  <span class="hl-prop">grid-template-columns</span>: <span class="hl-valor">250px 1fr</span>;
+
+  <span class="hl-coment">/* Definir alturas das linhas */</span>
+  <span class="hl-prop">grid-template-rows</span>: <span class="hl-valor">80px 1fr 60px</span>;
+}</pre>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="fr">
+        <h2>8.3 A unidade fr (fraction)</h2>
+        <p>
+            <code>fr</code> representa uma fração do espaço disponível no container,
+            depois de deduzir colunas fixas.
+        </p>
+        <pre class="codigo"><span class="hl-coment">/* Container de 900px */</span>
+<span class="hl-seletor">.grid</span> {
+  <span class="hl-prop">display</span>: <span class="hl-valor">grid</span>;
+
+  <span class="hl-coment">/* 3 colunas iguais (300px cada) */</span>
+  <span class="hl-prop">grid-template-columns</span>: <span class="hl-valor">1fr 1fr 1fr</span>;
+
+  <span class="hl-coment">/* Sidebar 250px + conteúdo com o resto (650px) */</span>
+  <span class="hl-prop">grid-template-columns</span>: <span class="hl-valor">250px 1fr</span>;
+
+  <span class="hl-coment">/* Sidebar pequena + conteúdo grande + aside */</span>
+  <span class="hl-prop">grid-template-columns</span>: <span class="hl-valor">1fr 2fr 1fr</span>;
+  <span class="hl-coment">/* = 225px + 450px + 225px (com gap) */</span>
+}</pre>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="gap">
+        <h2>8.4 Gap (espaço entre células)</h2>
+        <pre class="codigo"><span class="hl-seletor">.grid</span> {
+  <span class="hl-prop">display</span>: <span class="hl-valor">grid</span>;
+  <span class="hl-prop">grid-template-columns</span>: <span class="hl-valor">repeat(3, 1fr)</span>;
+
+  <span class="hl-coment">/* Espaço igual entre linhas e colunas */</span>
+  <span class="hl-prop">gap</span>: <span class="hl-valor">1.5rem</span>;
+
+  <span class="hl-coment">/* Separado: linhas / colunas */</span>
+  <span class="hl-prop">row-gap</span>: <span class="hl-valor">2rem</span>;
+  <span class="hl-prop">column-gap</span>: <span class="hl-valor">1rem</span>;
+
+  <span class="hl-coment">/* Atalho equivalente */</span>
+  <span class="hl-prop">gap</span>: <span class="hl-valor">2rem 1rem</span>;
+}</pre>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="posicionamento">
+        <h2>8.5 Posicionamento de items</h2>
+        <p>
+            Podes controlar exatamente onde cada item começa e termina,
+            usando números de linha do grid:
+        </p>
+        <pre class="codigo"><span class="hl-coment">/* Grid de 3 colunas */</span>
+<span class="hl-seletor">.grid</span> {
+  <span class="hl-prop">display</span>: <span class="hl-valor">grid</span>;
+  <span class="hl-prop">grid-template-columns</span>: <span class="hl-valor">repeat(3, 1fr)</span>;
+}
+
+<span class="hl-coment">/* Item que ocupa as 3 colunas */</span>
+<span class="hl-seletor">.item-largo</span> {
+  <span class="hl-prop">grid-column</span>: <span class="hl-valor">1 / 4</span>;   <span class="hl-coment">/* da linha 1 à linha 4 */</span>
+  <span class="hl-coment">/* equivalente a: */</span>
+  <span class="hl-prop">grid-column</span>: <span class="hl-valor">1 / -1</span>;  <span class="hl-coment">/* da primeira à última */</span>
+  <span class="hl-coment">/* ou com span: */</span>
+  <span class="hl-prop">grid-column</span>: <span class="hl-valor">span 3</span>;   <span class="hl-coment">/* ocupa 3 colunas */</span>
+}
+
+<span class="hl-coment">/* Item que ocupa 2 linhas */</span>
+<span class="hl-seletor">.item-alto</span> {
+  <span class="hl-prop">grid-row</span>: <span class="hl-valor">span 2</span>;
+}
+
+<span class="hl-coment">/* Posição específica */</span>
+<span class="hl-seletor">.destaque</span> {
+  <span class="hl-prop">grid-column</span>: <span class="hl-valor">2 / 4</span>;
+  <span class="hl-prop">grid-row</span>: <span class="hl-valor">1 / 3</span>;
+}</pre>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="areas">
+        <h2>8.6 grid-template-areas</h2>
+        <p>
+            A propriedade mais poderosa do Grid: define o layout como um mapa visual,
+            nomeando cada zona.
+        </p>
+        <pre class="codigo"><span class="hl-coment">/* HTML */</span>
+<span class="hl-coment">&lt;div class="pagina"&gt;
+  &lt;header&gt;Header&lt;/header&gt;
+  &lt;nav&gt;Nav&lt;/nav&gt;
+  &lt;main&gt;Conteúdo&lt;/main&gt;
+  &lt;aside&gt;Aside&lt;/aside&gt;
+  &lt;footer&gt;Footer&lt;/footer&gt;
+&lt;/div&gt;</span></pre>
+        <pre class="codigo"><span class="hl-coment">/* CSS */</span>
+<span class="hl-seletor">.pagina</span> {
+  <span class="hl-prop">display</span>: <span class="hl-valor">grid</span>;
+  <span class="hl-prop">grid-template-columns</span>: <span class="hl-valor">200px 1fr 200px</span>;
+  <span class="hl-prop">grid-template-rows</span>: <span class="hl-valor">80px 1fr 60px</span>;
+  <span class="hl-prop">min-height</span>: <span class="hl-valor">100vh</span>;
+  <span class="hl-prop">gap</span>: <span class="hl-valor">1rem</span>;
+
+  <span class="hl-prop">grid-template-areas</span>:
+    <span class="hl-valor">"header header header"</span>
+    <span class="hl-valor">"nav    main   aside"</span>
+    <span class="hl-valor">"footer footer footer"</span>;
+}
+
+<span class="hl-coment">/* Atribuir cada elemento à sua área */</span>
+<span class="hl-seletor">header</span>  { <span class="hl-prop">grid-area</span>: <span class="hl-valor">header</span>; }
+<span class="hl-seletor">nav</span>     { <span class="hl-prop">grid-area</span>: <span class="hl-valor">nav</span>; }
+<span class="hl-seletor">main</span>    { <span class="hl-prop">grid-area</span>: <span class="hl-valor">main</span>; }
+<span class="hl-seletor">aside</span>   { <span class="hl-prop">grid-area</span>: <span class="hl-valor">aside</span>; }
+<span class="hl-seletor">footer</span>  { <span class="hl-prop">grid-area</span>: <span class="hl-valor">footer</span>; }</pre>
+
+        <div class="caixa-dica">
+            <strong>Layout responsivo com areas</strong>
+            Em ecrãs pequenos basta redefinir o <code>grid-template-areas</code> num media query:
+        </div>
+        <pre class="codigo"><span class="hl-seletor">@media (max-width: 768px)</span> {
+  <span class="hl-seletor">.pagina</span> {
+    <span class="hl-prop">grid-template-columns</span>: <span class="hl-valor">1fr</span>;
+    <span class="hl-prop">grid-template-areas</span>:
+      <span class="hl-valor">"header"</span>
+      <span class="hl-valor">"nav"</span>
+      <span class="hl-valor">"main"</span>
+      <span class="hl-valor">"aside"</span>
+      <span class="hl-valor">"footer"</span>;
+  }
+}</pre>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="alinhamento">
+        <h2>8.7 Alinhamento</h2>
+        <pre class="codigo"><span class="hl-coment">/* Alinhamento dos items dentro da célula */</span>
+<span class="hl-seletor">.grid</span> {
+  <span class="hl-prop">justify-items</span>: <span class="hl-valor">start | center | end | stretch</span>;   <span class="hl-coment">/* horizontal */</span>
+  <span class="hl-prop">align-items</span>: <span class="hl-valor">start | center | end | stretch</span>;     <span class="hl-coment">/* vertical */</span>
+  <span class="hl-prop">place-items</span>: <span class="hl-valor">center</span>;  <span class="hl-coment">/* atalho: align-items justify-items */</span>
+}
+
+<span class="hl-coment">/* Alinhamento de todo o grid no container */</span>
+<span class="hl-seletor">.grid</span> {
+  <span class="hl-prop">justify-content</span>: <span class="hl-valor">start | center | end | space-between</span>;
+  <span class="hl-prop">align-content</span>: <span class="hl-valor">start | center | end | space-between</span>;
+}
+
+<span class="hl-coment">/* Sobrepor para um item específico */</span>
+<span class="hl-seletor">.item</span> {
+  <span class="hl-prop">justify-self</span>: <span class="hl-valor">center</span>;
+  <span class="hl-prop">align-self</span>: <span class="hl-valor">end</span>;
+}</pre>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="responsivo">
+        <h2>8.8 Grid responsivo automático</h2>
+        <p>
+            Com <code>repeat(auto-fill, minmax(...))</code> o grid adapta automaticamente
+            o número de colunas ao espaço disponível — sem media queries!
+        </p>
+        <pre class="codigo"><span class="hl-coment">/* Cartões responsivos: colunas de mínimo 280px */</span>
+<span class="hl-seletor">.cards</span> {
+  <span class="hl-prop">display</span>: <span class="hl-valor">grid</span>;
+  <span class="hl-prop">grid-template-columns</span>: <span class="hl-valor">repeat(auto-fill, minmax(280px, 1fr))</span>;
+  <span class="hl-prop">gap</span>: <span class="hl-valor">1.5rem</span>;
+}
+<span class="hl-coment">/* → 1 coluna em mobile, 2 em tablet, 3+ em desktop */</span>
+
+<span class="hl-coment">/* auto-fill vs auto-fit:
+   auto-fill: mantém colunas vazias
+   auto-fit:  expande os items para preencher */</span>
+<span class="hl-seletor">.cards</span> {
+  <span class="hl-prop">grid-template-columns</span>: <span class="hl-valor">repeat(auto-fit, minmax(280px, 1fr))</span>;
+}</pre>
+    </div>
+
+    <div class="nav-capitulos">
+        <a href="../07-css-flexbox/teoria.html" class="btn-nav">← Cap. 07</a>
+        <a href="exercicio/enunciado.html" class="btn-nav btn-exercicio">Ficha de Exercícios →</a>
+        <a href="../09-formularios/teoria.html" class="btn-nav">Próximo: Formulários →</a>
+    </div>
+
+</main>
+
+<footer class="manual-footer">
+    <p>Manual HTML5 + CSS3 · Instituto Politécnico de Viseu · 2024/2025</p>
+</footer>
+
+</body>
+</html>

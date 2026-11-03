@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha 06 — CSS Box Model</title>
+    <link rel="stylesheet" href="../../css/manual.css">
+</head>
+<body>
+
+<header class="manual-header">
+    <p class="breadcrumb"><a href="../../index.html">Índice</a> › <a href="../teoria.html">Cap. 06</a> › Exercício</p>
+    <h1>Ficha 06 — Página de Perfil com Layout</h1>
+    <p>Box Model, display, margin, padding e position</p>
+</header>
+
+<main class="conteudo">
+
+    <div class="secao exercicio-header">
+        <h2>Objetivos</h2>
+        <ul class="objetivo-lista">
+            <li>Aplicar o box model: margin, padding, border</li>
+            <li>Usar box-sizing: border-box</li>
+            <li>Controlar display: block, inline-block e none</li>
+            <li>Usar position: relative, absolute e fixed</li>
+            <li>Criar um layout de página com largura máxima e centrado</li>
+        </ul>
+    </div>
+
+    <div class="secao">
+        <h2>Enunciado</h2>
+        <p>
+            Cria uma página de perfil de estudante chamada <code>perfil.html</code>
+            com um ficheiro CSS <code>css/perfil.css</code>.
+        </p>
+
+        <h3>Layout a implementar</h3>
+        <div class="preview-box">
+            <div class="preview-titulo">Estrutura visual esperada</div>
+            <pre style="font-family: monospace; font-size: 0.82rem; line-height: 1.5; color: #475569;">
+┌─────────────────────────────────────────────────┐
+│  NAVBAR (fixo no topo, fundo escuro, 60px)      │
+└─────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────┐
+│                                                 │
+│  HERO (fundo colorido, texto centrado, 200px)   │
+│                                                 │
+└─────────────────────────────────────────────────┘
+┌──────────────────────────── max-width: 800px ───┐
+│                                                 │
+│  ┌─────────────────────────────────────────┐   │
+│  │  CARD (fundo branco, sombra, padding)   │   │
+│  │  Nome, curso, avatar circular           │   │
+│  └─────────────────────────────────────────┘   │
+│                                                 │
+│  ┌──────────────┐  ┌───────────────────────┐   │
+│  │  BADGE       │  │  BADGE                │   │
+│  │ inline-block │  │  inline-block         │   │
+│  └──────────────┘  └───────────────────────┘   │
+│                                                 │
+│  SECÇÃO "Sobre mim" com border-left colorida   │
+│                                                 │
+└─────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────┐
+│  FOOTER (fundo escuro, text center)             │
+└─────────────────────────────────────────────────┘
+            </pre>
+        </div>
+
+        <h3>Requisitos CSS detalhados</h3>
+        <ul>
+            <li>Reset com <code>box-sizing: border-box</code> e margin/padding a 0.</li>
+            <li><strong>Navbar fixa</strong>: <code>position: fixed; top: 0; width: 100%;</code> com z-index.</li>
+            <li>O <code>body</code> deve ter <code>padding-top</code> suficiente para não ficar atrás da navbar.</li>
+            <li><strong>Hero</strong>: fundo em gradiente ou cor sólida, min-height 200px, texto centrado, padding 3rem.</li>
+            <li><strong>Container central</strong>: max-width 800px, margin 0 auto, padding 0 1.5rem.</li>
+            <li><strong>Card de perfil</strong>: fundo branco, padding 2rem, border-radius 12px, box-shadow.</li>
+            <li><strong>Avatar</strong>: imagem 100×100px com border-radius 50% (círculo).</li>
+            <li><strong>Badges de competências</strong>: <code>display: inline-block</code>, padding 0.25rem 0.75rem, border-radius 999px, cor de fundo e cor de texto.</li>
+            <li><strong>Secção "Sobre mim"</strong>: border-left de 4px com cor de destaque, padding-left 1rem.</li>
+        </ul>
+    </div>
+
+    <div class="nav-capitulos">
+        <a href="../teoria.html" class="btn-nav">← Teoria</a>
+        <a href="esqueleto/perfil.html" class="btn-nav btn-exercicio">Abrir Esqueleto →</a>
+        <a href="solucao/perfil.html" class="btn-nav btn-solucao">Ver Solução →</a>
+    </div>
+
+</main>
+
+<footer class="manual-footer">
+    <p>Manual HTML5 + CSS3 · Instituto Politécnico de Viseu · 2024/2025</p>
+</footer>
+
+</body>
+</html>

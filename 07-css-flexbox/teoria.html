@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cap. 07 — CSS Flexbox</title>
+    <link rel="stylesheet" href="../css/manual.css">
+</head>
+<body>
+
+<header class="manual-header">
+    <p class="breadcrumb"><a href="../index.html">Índice</a> › Capítulo 07</p>
+    <h1>CSS — Flexbox</h1>
+    <p>Layout flexível a uma dimensão</p>
+</header>
+
+<nav class="manual-nav">
+    <a href="../index.html">Índice</a>
+    <a href="../01-introducao/teoria.html">01</a>
+    <a href="../02-semantica/teoria.html">02</a>
+    <a href="../03-texto-ligacoes/teoria.html">03</a>
+    <a href="../04-imagens-caminhos/teoria.html">04</a>
+    <a href="../05-css-fundamentos/teoria.html">05</a>
+    <a href="../06-css-box-model/teoria.html">06</a>
+    <a href="teoria.html" class="ativo">07 · Flexbox</a>
+    <a href="../08-css-grid/teoria.html">08 · Grid</a>
+    <a href="../09-formularios/teoria.html">09 · Formulários</a>
+</nav>
+
+<main class="conteudo">
+
+    <div class="indice-lateral">
+        <h3>Neste capítulo</h3>
+        <ol>
+            <li><a href="#conceito">Conceito de Flexbox</a></li>
+            <li><a href="#container">Propriedades do container</a></li>
+            <li><a href="#flex-direction">flex-direction e eixos</a></li>
+            <li><a href="#justify">justify-content</a></li>
+            <li><a href="#align">align-items e align-content</a></li>
+            <li><a href="#wrap">flex-wrap</a></li>
+            <li><a href="#items">Propriedades dos items</a></li>
+            <li><a href="#exemplos">Exemplos práticos</a></li>
+        </ol>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="conceito">
+        <h2>7.1 Conceito de Flexbox</h2>
+        <p>
+            <strong>Flexbox</strong> (<em>Flexible Box Layout</em>) é um modelo de layout CSS
+            concebido para distribuir elementos <strong>a uma dimensão</strong> — numa linha
+            ou numa coluna — com controlo preciso sobre alinhamento e distribuição de espaço.
+        </p>
+        <p>
+            Funciona com dois tipos de elementos:
+        </p>
+        <ul>
+            <li><strong>Flex container</strong> — o elemento pai com <code>display: flex</code></li>
+            <li><strong>Flex items</strong> — os filhos diretos do container</li>
+        </ul>
+
+        <pre class="codigo"><span class="hl-coment">&lt;!-- HTML --&gt;</span>
+<span class="hl-tag">&lt;div</span> <span class="hl-attr">class</span>=<span class="hl-val">"container"</span><span class="hl-tag">&gt;</span>        <span class="hl-coment">&lt;!-- flex container --&gt;</span>
+  <span class="hl-tag">&lt;div</span> <span class="hl-attr">class</span>=<span class="hl-val">"item"</span><span class="hl-tag">&gt;</span>A<span class="hl-tag">&lt;/div&gt;</span>  <span class="hl-coment">&lt;!-- flex item --&gt;</span>
+  <span class="hl-tag">&lt;div</span> <span class="hl-attr">class</span>=<span class="hl-val">"item"</span><span class="hl-tag">&gt;</span>B<span class="hl-tag">&lt;/div&gt;</span>
+  <span class="hl-tag">&lt;div</span> <span class="hl-attr">class</span>=<span class="hl-val">"item"</span><span class="hl-tag">&gt;</span>C<span class="hl-tag">&lt;/div&gt;</span>
+<span class="hl-tag">&lt;/div&gt;</span></pre>
+        <pre class="codigo"><span class="hl-coment">/* CSS */</span>
+<span class="hl-seletor">.container</span> {
+  <span class="hl-prop">display</span>: <span class="hl-valor">flex</span>;
+}</pre>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="container">
+        <h2>7.2 Propriedades do container</h2>
+        <table>
+            <thead>
+                <tr><th>Propriedade</th><th>Valores principais</th><th>Efeito</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><code>flex-direction</code></td><td>row | column | row-reverse | column-reverse</td><td>Direção do eixo principal</td></tr>
+                <tr><td><code>justify-content</code></td><td>flex-start | center | flex-end | space-between | space-around | space-evenly</td><td>Alinhamento no eixo principal</td></tr>
+                <tr><td><code>align-items</code></td><td>flex-start | center | flex-end | stretch | baseline</td><td>Alinhamento no eixo cruzado</td></tr>
+                <tr><td><code>flex-wrap</code></td><td>nowrap | wrap | wrap-reverse</td><td>Quebra de linha automática</td></tr>
+                <tr><td><code>gap</code></td><td>valor em px/rem</td><td>Espaço entre os items</td></tr>
+                <tr><td><code>align-content</code></td><td>mesmos de justify-content</td><td>Alinhamento de múltiplas linhas</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="flex-direction">
+        <h2>7.3 flex-direction e os eixos</h2>
+        <p>O Flexbox trabalha com dois eixos perpendiculares:</p>
+        <ul>
+            <li><strong>Eixo principal</strong> — a direção dos flex items (definido por <code>flex-direction</code>)</li>
+            <li><strong>Eixo cruzado</strong> — perpendicular ao eixo principal</li>
+        </ul>
+
+        <pre class="codigo"><span class="hl-seletor">.container</span> {
+  <span class="hl-prop">display</span>: <span class="hl-valor">flex</span>;
+
+  <span class="hl-coment">/* → em linha (padrão) */</span>
+  <span class="hl-prop">flex-direction</span>: <span class="hl-valor">row</span>;
+
+  <span class="hl-coment">/* ↓ em coluna */</span>
+  <span class="hl-prop">flex-direction</span>: <span class="hl-valor">column</span>;
+
+  <span class="hl-coment">/* ← linha invertida */</span>
+  <span class="hl-prop">flex-direction</span>: <span class="hl-valor">row-reverse</span>;
+
+  <span class="hl-coment">/* ↑ coluna invertida */</span>
+  <span class="hl-prop">flex-direction</span>: <span class="hl-valor">column-reverse</span>;
+}</pre>
+
+        <div class="caixa-nota">
+            <strong>Atenção ao eixo!</strong>
+            <code>justify-content</code> alinha no <em>eixo principal</em> e
+            <code>align-items</code> alinha no <em>eixo cruzado</em>.
+            Quando mudas o <code>flex-direction</code> para <code>column</code>,
+            os eixos trocam!
+        </div>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="justify">
+        <h2>7.4 justify-content</h2>
+        <p>Distribui os items no <strong>eixo principal</strong>:</p>
+        <pre class="codigo"><span class="hl-seletor">.container</span> {
+  <span class="hl-prop">display</span>: <span class="hl-valor">flex</span>;
+
+  <span class="hl-coment">/* [A B C      ] items no início (padrão) */</span>
+  <span class="hl-prop">justify-content</span>: <span class="hl-valor">flex-start</span>;
+
+  <span class="hl-coment">/* [   A B C   ] items no centro */</span>
+  <span class="hl-prop">justify-content</span>: <span class="hl-valor">center</span>;
+
+  <span class="hl-coment">/* [      A B C] items no fim */</span>
+  <span class="hl-prop">justify-content</span>: <span class="hl-valor">flex-end</span>;
+
+  <span class="hl-coment">/* [A    B    C] espaço entre items */</span>
+  <span class="hl-prop">justify-content</span>: <span class="hl-valor">space-between</span>;
+
+  <span class="hl-coment">/* [ A   B   C ] espaço à volta de cada item */</span>
+  <span class="hl-prop">justify-content</span>: <span class="hl-valor">space-around</span>;
+
+  <span class="hl-coment">/* [  A  B  C  ] espaço igual entre todos */</span>
+  <span class="hl-prop">justify-content</span>: <span class="hl-valor">space-evenly</span>;
+}</pre>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="align">
+        <h2>7.5 align-items e align-content</h2>
+        <pre class="codigo"><span class="hl-seletor">.container</span> {
+  <span class="hl-prop">display</span>: <span class="hl-valor">flex</span>;
+  <span class="hl-prop">height</span>: <span class="hl-valor">200px</span>;   <span class="hl-coment">/* precisa de altura para ver efeito */</span>
+
+  <span class="hl-coment">/* items esticados para preencher (padrão) */</span>
+  <span class="hl-prop">align-items</span>: <span class="hl-valor">stretch</span>;
+
+  <span class="hl-coment">/* items no topo do eixo cruzado */</span>
+  <span class="hl-prop">align-items</span>: <span class="hl-valor">flex-start</span>;
+
+  <span class="hl-coment">/* items centrados verticalmente */</span>
+  <span class="hl-prop">align-items</span>: <span class="hl-valor">center</span>;
+
+  <span class="hl-coment">/* items na base */</span>
+  <span class="hl-prop">align-items</span>: <span class="hl-valor">flex-end</span>;
+
+  <span class="hl-coment">/* alinhados pela linha de base do texto */</span>
+  <span class="hl-prop">align-items</span>: <span class="hl-valor">baseline</span>;
+}
+
+<span class="hl-coment">/* Centrar perfeito — horizontal E vertical */</span>
+<span class="hl-seletor">.centrado</span> {
+  <span class="hl-prop">display</span>: <span class="hl-valor">flex</span>;
+  <span class="hl-prop">justify-content</span>: <span class="hl-valor">center</span>;
+  <span class="hl-prop">align-items</span>: <span class="hl-valor">center</span>;
+}</pre>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="wrap">
+        <h2>7.6 flex-wrap</h2>
+        <p>Por padrão, os flex items tentam caber todos numa linha. Com <code>flex-wrap</code>
+        permites que quebrem para nova linha:</p>
+        <pre class="codigo"><span class="hl-seletor">.galeria</span> {
+  <span class="hl-prop">display</span>: <span class="hl-valor">flex</span>;
+  <span class="hl-prop">flex-wrap</span>: <span class="hl-valor">wrap</span>;
+  <span class="hl-prop">gap</span>: <span class="hl-valor">1rem</span>;
+}
+
+<span class="hl-seletor">.galeria .foto</span> {
+  <span class="hl-prop">width</span>: <span class="hl-valor">200px</span>;
+  <span class="hl-prop">height</span>: <span class="hl-valor">150px</span>;
+}</span></pre>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="items">
+        <h2>7.7 Propriedades dos flex items</h2>
+
+        <pre class="codigo"><span class="hl-seletor">.item</span> {
+  <span class="hl-coment">/* flex-grow: quanto cresce relativamente (padrão: 0) */</span>
+  <span class="hl-prop">flex-grow</span>: <span class="hl-valor">1</span>;   <span class="hl-coment">/* preenche espaço disponível */</span>
+
+  <span class="hl-coment">/* flex-shrink: quanto encolhe se necessário (padrão: 1) */</span>
+  <span class="hl-prop">flex-shrink</span>: <span class="hl-valor">0</span>;  <span class="hl-coment">/* não encolhe */</span>
+
+  <span class="hl-coment">/* flex-basis: tamanho inicial (padrão: auto) */</span>
+  <span class="hl-prop">flex-basis</span>: <span class="hl-valor">200px</span>;
+
+  <span class="hl-coment">/* Atalho: flex: grow shrink basis */</span>
+  <span class="hl-prop">flex</span>: <span class="hl-valor">1 1 200px</span>;
+  <span class="hl-prop">flex</span>: <span class="hl-valor">1</span>;           <span class="hl-coment">/* = flex: 1 1 0 */</span>
+
+  <span class="hl-coment">/* Sobrepor o align-items do container */</span>
+  <span class="hl-prop">align-self</span>: <span class="hl-valor">flex-end</span>;
+
+  <span class="hl-coment">/* Ordem de exibição (padrão: 0) */</span>
+  <span class="hl-prop">order</span>: <span class="hl-valor">-1</span>;  <span class="hl-coment">/* aparece primeiro */</span>
+}</pre>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="exemplos">
+        <h2>7.8 Exemplos práticos</h2>
+
+        <h3>Barra de navegação</h3>
+        <pre class="codigo"><span class="hl-coment">/* HTML */</span>
+<span class="hl-coment">&lt;nav class="navbar"&gt;
+  &lt;a href="#" class="logo"&gt;Site&lt;/a&gt;
+  &lt;ul class="links"&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Início&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Sobre&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Contacto&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</span></pre>
+        <pre class="codigo"><span class="hl-coment">/* CSS */</span>
+<span class="hl-seletor">.navbar</span> {
+  <span class="hl-prop">display</span>: <span class="hl-valor">flex</span>;
+  <span class="hl-prop">justify-content</span>: <span class="hl-valor">space-between</span>;
+  <span class="hl-prop">align-items</span>: <span class="hl-valor">center</span>;
+  <span class="hl-prop">padding</span>: <span class="hl-valor">1rem 2rem</span>;
+}
+
+<span class="hl-seletor">.links</span> {
+  <span class="hl-prop">display</span>: <span class="hl-valor">flex</span>;
+  <span class="hl-prop">list-style</span>: <span class="hl-valor">none</span>;
+  <span class="hl-prop">gap</span>: <span class="hl-valor">2rem</span>;
+}</pre>
+
+        <h3>Cards responsivos</h3>
+        <pre class="codigo"><span class="hl-seletor">.cards</span> {
+  <span class="hl-prop">display</span>: <span class="hl-valor">flex</span>;
+  <span class="hl-prop">flex-wrap</span>: <span class="hl-valor">wrap</span>;
+  <span class="hl-prop">gap</span>: <span class="hl-valor">1.5rem</span>;
+}
+
+<span class="hl-seletor">.card</span> {
+  <span class="hl-prop">flex</span>: <span class="hl-valor">1 1 280px</span>;  <span class="hl-coment">/* mínimo 280px, cresce igualmente */</span>
+  <span class="hl-prop">padding</span>: <span class="hl-valor">1.5rem</span>;
+  <span class="hl-prop">border</span>: <span class="hl-valor">1px solid #e2e8f0</span>;
+  <span class="hl-prop">border-radius</span>: <span class="hl-valor">8px</span>;
+}</pre>
+
+        <h3>Footer com colunas</h3>
+        <pre class="codigo"><span class="hl-seletor">footer</span> {
+  <span class="hl-prop">display</span>: <span class="hl-valor">flex</span>;
+  <span class="hl-prop">justify-content</span>: <span class="hl-valor">space-between</span>;
+  <span class="hl-prop">flex-wrap</span>: <span class="hl-valor">wrap</span>;
+  <span class="hl-prop">gap</span>: <span class="hl-valor">2rem</span>;
+}
+
+<span class="hl-seletor">footer .coluna</span> {
+  <span class="hl-prop">flex</span>: <span class="hl-valor">1 1 200px</span>;
+}</pre>
+    </div>
+
+    <div class="nav-capitulos">
+        <a href="../06-css-box-model/teoria.html" class="btn-nav">← Cap. 06</a>
+        <a href="exercicio/enunciado.html" class="btn-nav btn-exercicio">Ficha de Exercícios →</a>
+        <a href="../08-css-grid/teoria.html" class="btn-nav">Próximo: Grid →</a>
+    </div>
+
+</main>
+
+<footer class="manual-footer">
+    <p>Manual HTML5 + CSS3 · Instituto Politécnico de Viseu · 2024/2025</p>
+</footer>
+
+</body>
+</html>

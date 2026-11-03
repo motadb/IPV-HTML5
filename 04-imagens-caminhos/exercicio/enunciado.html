@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha 04 — Imagens e Caminhos</title>
+    <link rel="stylesheet" href="../../css/manual.css">
+</head>
+<body>
+
+<header class="manual-header">
+    <p class="breadcrumb"><a href="../../index.html">Índice</a> › <a href="../teoria.html">Cap. 04</a> › Exercício</p>
+    <h1>Ficha 04 — Galeria de Imagens</h1>
+    <p>Imagens, caminhos relativos e figure/figcaption</p>
+</header>
+
+<main class="conteudo">
+
+    <div class="secao exercicio-header">
+        <h2>Objetivos</h2>
+        <ul class="objetivo-lista">
+            <li>Organizar ficheiros de imagem em pastas com nomes corretos</li>
+            <li>Inserir imagens com src usando caminhos relativos corretos</li>
+            <li>Escrever atributos alt descritivos e adequados</li>
+            <li>Usar figure e figcaption para imagens com legenda</li>
+            <li>Criar uma imagem que funcione como link</li>
+        </ul>
+    </div>
+
+    <div class="secao">
+        <h2>Enunciado</h2>
+        <p>
+            Cria uma <strong>galeria de fotografias</strong> sobre um tema à tua escolha
+            (natureza, arquitetura, animais, desporto, etc.).
+        </p>
+
+        <h3>Estrutura de ficheiros obrigatória</h3>
+        <pre class="codigo">galeria/
+├── index.html
+├── sobre.html
+└── imagens/
+    ├── logo.png       (cria um ficheiro de texto com este nome — vê nota)
+    ├── destaque.jpg
+    └── galeria/
+        ├── foto1.jpg
+        ├── foto2.jpg
+        ├── foto3.jpg
+        └── foto4.jpg</pre>
+
+        <div class="caixa-nota">
+            <strong>Nota sobre imagens reais</strong>
+            Podes usar imagens reais que tenhas disponíveis, ou usar imagens placeholder:
+            <code>&lt;img src="https://picsum.photos/400/300" alt="Foto aleatória"&gt;</code>
+            (Picsum Photos fornece imagens de placeholder gratuitas)
+        </div>
+
+        <h3>Página index.html</h3>
+        <ul>
+            <li>Logo no topo — imagem <code>imagens/logo.png</code> que funciona como link para <code>index.html</code>. Alt: "Logo da galeria".</li>
+            <li>Título h1 da galeria.</li>
+            <li>Parágrafo de descrição.</li>
+            <li>Imagem de destaque usando <code>&lt;figure&gt;</code> + <code>&lt;figcaption&gt;</code>. Dimensões: 800x400.</li>
+            <li>Secção de galeria com 4 imagens em <code>&lt;figure&gt;</code>, cada uma com legenda. Dimensões: 300x200 cada.</li>
+            <li>Link para <code>sobre.html</code>.</li>
+        </ul>
+
+        <h3>Página sobre.html</h3>
+        <ul>
+            <li>Navegação com link de volta ao índice usando caminho relativo.</li>
+            <li>Logo no topo usando o caminho correto (<code>imagens/logo.png</code>).</li>
+            <li>Título h1 "Sobre esta galeria".</li>
+            <li>Parágrafo sobre o tema das fotos.</li>
+        </ul>
+    </div>
+
+    <div class="caixa-dica">
+        <strong>Dica sobre caminhos</strong>
+        Tanto no <code>index.html</code> como no <code>sobre.html</code> (que estão no mesmo nível),
+        o caminho para as imagens começa por <code>imagens/</code>.
+        O caminho <code>../imagens/</code> seria necessário se os HTML estivessem numa subpasta.
+    </div>
+
+    <div class="nav-capitulos">
+        <a href="../teoria.html" class="btn-nav">← Teoria</a>
+        <a href="esqueleto/index.html" class="btn-nav btn-exercicio">Abrir Esqueleto →</a>
+        <a href="solucao/index.html" class="btn-nav btn-solucao">Ver Solução →</a>
+    </div>
+
+</main>
+
+<footer class="manual-footer">
+    <p>Manual HTML5 + CSS3 · Instituto Politécnico de Viseu · 2024/2025</p>
+</footer>
+
+</body>
+</html>

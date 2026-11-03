@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cap. 09 — Formulários HTML5</title>
+    <link rel="stylesheet" href="../css/manual.css">
+</head>
+<body>
+
+<header class="manual-header">
+    <p class="breadcrumb"><a href="../index.html">Índice</a> › Capítulo 09</p>
+    <h1>Formulários HTML5</h1>
+    <p>inputs, validação e acessibilidade</p>
+</header>
+
+<nav class="manual-nav">
+    <a href="../index.html">Índice</a>
+    <a href="../01-introducao/teoria.html">01</a>
+    <a href="../02-semantica/teoria.html">02</a>
+    <a href="../03-texto-ligacoes/teoria.html">03</a>
+    <a href="../04-imagens-caminhos/teoria.html">04</a>
+    <a href="../05-css-fundamentos/teoria.html">05</a>
+    <a href="../06-css-box-model/teoria.html">06</a>
+    <a href="../07-css-flexbox/teoria.html">07</a>
+    <a href="../08-css-grid/teoria.html">08</a>
+    <a href="teoria.html" class="ativo">09 · Formulários</a>
+</nav>
+
+<main class="conteudo">
+
+    <div class="indice-lateral">
+        <h3>Neste capítulo</h3>
+        <ol>
+            <li><a href="#form">O elemento form</a></li>
+            <li><a href="#label-input">label e input</a></li>
+            <li><a href="#tipos-input">Tipos de input</a></li>
+            <li><a href="#textarea-select">textarea e select</a></li>
+            <li><a href="#fieldset">fieldset e legend</a></li>
+            <li><a href="#validacao">Validação HTML5</a></li>
+            <li><a href="#button">O elemento button</a></li>
+            <li><a href="#exemplo">Formulário completo</a></li>
+        </ol>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="form">
+        <h2>9.1 O elemento &lt;form&gt;</h2>
+        <p>
+            O <code>&lt;form&gt;</code> agrupa todos os controlos de um formulário
+            e define para onde e como os dados são enviados.
+        </p>
+        <pre class="codigo"><span class="hl-tag">&lt;form</span> <span class="hl-attr">action</span>=<span class="hl-val">"processar.php"</span> <span class="hl-attr">method</span>=<span class="hl-val">"post"</span><span class="hl-tag">&gt;</span>
+  <span class="hl-coment">&lt;!-- campos do formulário --&gt;</span>
+<span class="hl-tag">&lt;/form&gt;</span></pre>
+
+        <table>
+            <thead>
+                <tr><th>Atributo</th><th>Valores</th><th>Descrição</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>action</code></td>
+                    <td>URL</td>
+                    <td>Para onde os dados são enviados ao submeter. Omitindo, envia para a página atual.</td>
+                </tr>
+                <tr>
+                    <td><code>method</code></td>
+                    <td><code>get</code> / <code>post</code></td>
+                    <td><strong>GET</strong>: dados na URL (pesquisas). <strong>POST</strong>: dados no corpo do pedido (dados sensíveis, ficheiros).</td>
+                </tr>
+                <tr>
+                    <td><code>enctype</code></td>
+                    <td><code>multipart/form-data</code></td>
+                    <td>Obrigatório para upload de ficheiros.</td>
+                </tr>
+                <tr>
+                    <td><code>novalidate</code></td>
+                    <td>—</td>
+                    <td>Desativa a validação nativa do browser.</td>
+                </tr>
+                <tr>
+                    <td><code>autocomplete</code></td>
+                    <td><code>on</code> / <code>off</code></td>
+                    <td>Ativa/desativa preenchimento automático.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="label-input">
+        <h2>9.2 label e input — a ligação essencial</h2>
+        <p>
+            O <code>&lt;label&gt;</code> descreve o campo e deve estar <strong>sempre associado</strong>
+            ao input correspondente. Melhora drasticamente a usabilidade e acessibilidade:
+            clicar no label foca o campo.
+        </p>
+
+        <pre class="codigo"><span class="hl-coment">&lt;!-- Método 1: for + id (recomendado) --&gt;</span>
+<span class="hl-tag">&lt;label</span> <span class="hl-attr">for</span>=<span class="hl-val">"nome"</span><span class="hl-tag">&gt;</span>Nome completo<span class="hl-tag">&lt;/label&gt;</span>
+<span class="hl-tag">&lt;input</span> <span class="hl-attr">type</span>=<span class="hl-val">"text"</span> <span class="hl-attr">id</span>=<span class="hl-val">"nome"</span> <span class="hl-attr">name</span>=<span class="hl-val">"nome"</span><span class="hl-tag">&gt;</span>
+
+<span class="hl-coment">&lt;!-- Método 2: label envolve o input --&gt;</span>
+<span class="hl-tag">&lt;label&gt;</span>
+  Email
+  <span class="hl-tag">&lt;input</span> <span class="hl-attr">type</span>=<span class="hl-val">"email"</span> <span class="hl-attr">name</span>=<span class="hl-val">"email"</span><span class="hl-tag">&gt;</span>
+<span class="hl-tag">&lt;/label&gt;</span></pre>
+
+        <div class="caixa-aviso">
+            <strong>O atributo name é obrigatório!</strong>
+            O <code>name</code> identifica o campo quando os dados são enviados para o servidor.
+            Sem ele, o campo não é incluído na submissão do formulário.
+        </div>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="tipos-input">
+        <h2>9.3 Tipos de input</h2>
+
+        <table>
+            <thead>
+                <tr><th>type</th><th>Aparência / Comportamento</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><code>text</code></td><td>Campo de texto de uma linha (padrão)</td></tr>
+                <tr><td><code>email</code></td><td>Valida formato de email. Teclado adaptado em mobile.</td></tr>
+                <tr><td><code>password</code></td><td>Esconde os caracteres com •</td></tr>
+                <tr><td><code>number</code></td><td>Aceita apenas números. Setas para incrementar.</td></tr>
+                <tr><td><code>tel</code></td><td>Teclado numérico em mobile. Sem validação automática.</td></tr>
+                <tr><td><code>url</code></td><td>Valida formato de URL.</td></tr>
+                <tr><td><code>date</code></td><td>Seletor de data nativo do browser.</td></tr>
+                <tr><td><code>time</code></td><td>Seletor de hora.</td></tr>
+                <tr><td><code>datetime-local</code></td><td>Seletor de data e hora.</td></tr>
+                <tr><td><code>checkbox</code></td><td>Caixa de seleção (múltiplas opções).</td></tr>
+                <tr><td><code>radio</code></td><td>Botão de opção (escolha exclusiva no grupo).</td></tr>
+                <tr><td><code>range</code></td><td>Slider entre min e max.</td></tr>
+                <tr><td><code>color</code></td><td>Seletor de cor.</td></tr>
+                <tr><td><code>file</code></td><td>Upload de ficheiro.</td></tr>
+                <tr><td><code>hidden</code></td><td>Invisível ao utilizador. Envia valores fixos.</td></tr>
+                <tr><td><code>search</code></td><td>Campo de pesquisa (com botão de limpar).</td></tr>
+                <tr><td><code>submit</code></td><td>Botão de submissão.</td></tr>
+                <tr><td><code>reset</code></td><td>Botão que limpa o formulário.</td></tr>
+            </tbody>
+        </table>
+
+        <pre class="codigo"><span class="hl-coment">&lt;!-- Checkbox --&gt;</span>
+<span class="hl-tag">&lt;input</span> <span class="hl-attr">type</span>=<span class="hl-val">"checkbox"</span> <span class="hl-attr">id</span>=<span class="hl-val">"newsletter"</span> <span class="hl-attr">name</span>=<span class="hl-val">"newsletter"</span><span class="hl-tag">&gt;</span>
+<span class="hl-tag">&lt;label</span> <span class="hl-attr">for</span>=<span class="hl-val">"newsletter"</span><span class="hl-tag">&gt;</span>Subscrever newsletter<span class="hl-tag">&lt;/label&gt;</span>
+
+<span class="hl-coment">&lt;!-- Radio buttons (mesmo name = grupo exclusivo) --&gt;</span>
+<span class="hl-tag">&lt;p&gt;</span>Género:<span class="hl-tag">&lt;/p&gt;</span>
+<span class="hl-tag">&lt;input</span> <span class="hl-attr">type</span>=<span class="hl-val">"radio"</span> <span class="hl-attr">id</span>=<span class="hl-val">"masc"</span> <span class="hl-attr">name</span>=<span class="hl-val">"genero"</span> <span class="hl-attr">value</span>=<span class="hl-val">"M"</span><span class="hl-tag">&gt;</span>
+<span class="hl-tag">&lt;label</span> <span class="hl-attr">for</span>=<span class="hl-val">"masc"</span><span class="hl-tag">&gt;</span>Masculino<span class="hl-tag">&lt;/label&gt;</span>
+<span class="hl-tag">&lt;input</span> <span class="hl-attr">type</span>=<span class="hl-val">"radio"</span> <span class="hl-attr">id</span>=<span class="hl-val">"fem"</span>  <span class="hl-attr">name</span>=<span class="hl-val">"genero"</span> <span class="hl-attr">value</span>=<span class="hl-val">"F"</span><span class="hl-tag">&gt;</span>
+<span class="hl-tag">&lt;label</span> <span class="hl-attr">for</span>=<span class="hl-val">"fem"</span><span class="hl-tag">&gt;</span>Feminino<span class="hl-tag">&lt;/label&gt;</span>
+
+<span class="hl-coment">&lt;!-- Range --&gt;</span>
+<span class="hl-tag">&lt;label</span> <span class="hl-attr">for</span>=<span class="hl-val">"satisfacao"</span><span class="hl-tag">&gt;</span>Satisfação (1–10):<span class="hl-tag">&lt;/label&gt;</span>
+<span class="hl-tag">&lt;input</span> <span class="hl-attr">type</span>=<span class="hl-val">"range"</span> <span class="hl-attr">id</span>=<span class="hl-val">"satisfacao"</span> <span class="hl-attr">name</span>=<span class="hl-val">"satisfacao"</span>
+       <span class="hl-attr">min</span>=<span class="hl-val">"1"</span> <span class="hl-attr">max</span>=<span class="hl-val">"10"</span> <span class="hl-attr">value</span>=<span class="hl-val">"5"</span><span class="hl-tag">&gt;</span>
+
+<span class="hl-coment">&lt;!-- Upload de ficheiro --&gt;</span>
+<span class="hl-tag">&lt;input</span> <span class="hl-attr">type</span>=<span class="hl-val">"file"</span> <span class="hl-attr">name</span>=<span class="hl-val">"foto"</span> <span class="hl-attr">accept</span>=<span class="hl-val">"image/*"</span><span class="hl-tag">&gt;</span></pre>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="textarea-select">
+        <h2>9.4 textarea e select</h2>
+
+        <h3>textarea — texto longo</h3>
+        <pre class="codigo"><span class="hl-tag">&lt;label</span> <span class="hl-attr">for</span>=<span class="hl-val">"mensagem"</span><span class="hl-tag">&gt;</span>Mensagem<span class="hl-tag">&lt;/label&gt;</span>
+<span class="hl-tag">&lt;textarea</span> <span class="hl-attr">id</span>=<span class="hl-val">"mensagem"</span> <span class="hl-attr">name</span>=<span class="hl-val">"mensagem"</span>
+           <span class="hl-attr">rows</span>=<span class="hl-val">"5"</span> <span class="hl-attr">cols</span>=<span class="hl-val">"40"</span>
+           <span class="hl-attr">placeholder</span>=<span class="hl-val">"Escreve a tua mensagem aqui..."</span>
+           <span class="hl-attr">maxlength</span>=<span class="hl-val">"500"</span><span class="hl-tag">&gt;</span><span class="hl-tag">&lt;/textarea&gt;</span></pre>
+
+        <h3>select — lista de opções</h3>
+        <pre class="codigo"><span class="hl-tag">&lt;label</span> <span class="hl-attr">for</span>=<span class="hl-val">"pais"</span><span class="hl-tag">&gt;</span>País<span class="hl-tag">&lt;/label&gt;</span>
+<span class="hl-tag">&lt;select</span> <span class="hl-attr">id</span>=<span class="hl-val">"pais"</span> <span class="hl-attr">name</span>=<span class="hl-val">"pais"</span> <span class="hl-attr">required</span><span class="hl-tag">&gt;</span>
+  <span class="hl-tag">&lt;option</span> <span class="hl-attr">value</span>=<span class="hl-val">""</span><span class="hl-tag">&gt;</span>-- Seleciona --<span class="hl-tag">&lt;/option&gt;</span>
+  <span class="hl-tag">&lt;optgroup</span> <span class="hl-attr">label</span>=<span class="hl-val">"Europa"</span><span class="hl-tag">&gt;</span>
+    <span class="hl-tag">&lt;option</span> <span class="hl-attr">value</span>=<span class="hl-val">"pt"</span><span class="hl-tag">&gt;</span>Portugal<span class="hl-tag">&lt;/option&gt;</span>
+    <span class="hl-tag">&lt;option</span> <span class="hl-attr">value</span>=<span class="hl-val">"es"</span><span class="hl-tag">&gt;</span>Espanha<span class="hl-tag">&lt;/option&gt;</span>
+    <span class="hl-tag">&lt;option</span> <span class="hl-attr">value</span>=<span class="hl-val">"fr"</span><span class="hl-tag">&gt;</span>França<span class="hl-tag">&lt;/option&gt;</span>
+  <span class="hl-tag">&lt;/optgroup&gt;</span>
+  <span class="hl-tag">&lt;optgroup</span> <span class="hl-attr">label</span>=<span class="hl-val">"América"</span><span class="hl-tag">&gt;</span>
+    <span class="hl-tag">&lt;option</span> <span class="hl-attr">value</span>=<span class="hl-val">"br"</span><span class="hl-tag">&gt;</span>Brasil<span class="hl-tag">&lt;/option&gt;</span>
+  <span class="hl-tag">&lt;/optgroup&gt;</span>
+<span class="hl-tag">&lt;/select&gt;</span>
+
+<span class="hl-coment">&lt;!-- Seleção múltipla --&gt;</span>
+<span class="hl-tag">&lt;select</span> <span class="hl-attr">name</span>=<span class="hl-val">"interesses"</span> <span class="hl-attr">multiple</span> <span class="hl-attr">size</span>=<span class="hl-val">"4"</span><span class="hl-tag">&gt;</span>
+  <span class="hl-tag">&lt;option</span> <span class="hl-attr">value</span>=<span class="hl-val">"html"</span><span class="hl-tag">&gt;</span>HTML/CSS<span class="hl-tag">&lt;/option&gt;</span>
+  <span class="hl-tag">&lt;option</span> <span class="hl-attr">value</span>=<span class="hl-val">"js"</span><span class="hl-tag">&gt;</span>JavaScript<span class="hl-tag">&lt;/option&gt;</span>
+<span class="hl-tag">&lt;/select&gt;</span></pre>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="fieldset">
+        <h2>9.5 fieldset e legend</h2>
+        <p>
+            <code>&lt;fieldset&gt;</code> agrupa campos relacionados.
+            <code>&lt;legend&gt;</code> é o título do grupo. Essencial para acessibilidade.
+        </p>
+        <pre class="codigo"><span class="hl-tag">&lt;fieldset&gt;</span>
+  <span class="hl-tag">&lt;legend&gt;</span>Dados Pessoais<span class="hl-tag">&lt;/legend&gt;</span>
+
+  <span class="hl-tag">&lt;label</span> <span class="hl-attr">for</span>=<span class="hl-val">"nome"</span><span class="hl-tag">&gt;</span>Nome<span class="hl-tag">&lt;/label&gt;</span>
+  <span class="hl-tag">&lt;input</span> <span class="hl-attr">type</span>=<span class="hl-val">"text"</span> <span class="hl-attr">id</span>=<span class="hl-val">"nome"</span> <span class="hl-attr">name</span>=<span class="hl-val">"nome"</span><span class="hl-tag">&gt;</span>
+
+  <span class="hl-tag">&lt;label</span> <span class="hl-attr">for</span>=<span class="hl-val">"email"</span><span class="hl-tag">&gt;</span>Email<span class="hl-tag">&lt;/label&gt;</span>
+  <span class="hl-tag">&lt;input</span> <span class="hl-attr">type</span>=<span class="hl-val">"email"</span> <span class="hl-attr">id</span>=<span class="hl-val">"email"</span> <span class="hl-attr">name</span>=<span class="hl-val">"email"</span><span class="hl-tag">&gt;</span>
+<span class="hl-tag">&lt;/fieldset&gt;</span>
+
+<span class="hl-tag">&lt;fieldset&gt;</span>
+  <span class="hl-tag">&lt;legend&gt;</span>Preferências<span class="hl-tag">&lt;/legend&gt;</span>
+  <span class="hl-coment">&lt;!-- campos de preferências --&gt;</span>
+<span class="hl-tag">&lt;/fieldset&gt;</span></pre>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="validacao">
+        <h2>9.6 Validação HTML5</h2>
+        <p>
+            O HTML5 inclui validação nativa — o browser verifica os campos
+            antes de submeter o formulário, sem precisar de JavaScript.
+        </p>
+
+        <table>
+            <thead>
+                <tr><th>Atributo</th><th>Aplica-se a</th><th>Efeito</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><code>required</code></td><td>Qualquer campo</td><td>Obrigatório — não permite submeter vazio.</td></tr>
+                <tr><td><code>min</code></td><td>number, date, range</td><td>Valor mínimo.</td></tr>
+                <tr><td><code>max</code></td><td>number, date, range</td><td>Valor máximo.</td></tr>
+                <tr><td><code>minlength</code></td><td>text, email, etc.</td><td>Mínimo de caracteres.</td></tr>
+                <tr><td><code>maxlength</code></td><td>text, email, etc.</td><td>Máximo de caracteres.</td></tr>
+                <tr><td><code>pattern</code></td><td>text, email, etc.</td><td>Expressão regular que o valor deve seguir.</td></tr>
+                <tr><td><code>placeholder</code></td><td>Qualquer campo de texto</td><td>Texto de dica (desaparece ao escrever).</td></tr>
+                <tr><td><code>autocomplete</code></td><td>Qualquer campo</td><td>on/off — preenchimento automático.</td></tr>
+                <tr><td><code>autofocus</code></td><td>Qualquer campo</td><td>Foca este campo ao carregar a página.</td></tr>
+                <tr><td><code>disabled</code></td><td>Qualquer campo</td><td>Campo inativo — não é enviado.</td></tr>
+                <tr><td><code>readonly</code></td><td>Qualquer campo</td><td>Apenas leitura — é enviado.</td></tr>
+                <tr><td><code>multiple</code></td><td>email, file, select</td><td>Aceita múltiplos valores.</td></tr>
+            </tbody>
+        </table>
+
+        <pre class="codigo"><span class="hl-tag">&lt;input</span> <span class="hl-attr">type</span>=<span class="hl-val">"text"</span>
+       <span class="hl-attr">name</span>=<span class="hl-val">"username"</span>
+       <span class="hl-attr">required</span>
+       <span class="hl-attr">minlength</span>=<span class="hl-val">"3"</span>
+       <span class="hl-attr">maxlength</span>=<span class="hl-val">"20"</span>
+       <span class="hl-attr">pattern</span>=<span class="hl-val">"[a-zA-Z0-9_]+"</span>
+       <span class="hl-attr">placeholder</span>=<span class="hl-val">"3 a 20 letras, números ou _"</span>
+       <span class="hl-attr">autocomplete</span>=<span class="hl-val">"username"</span><span class="hl-tag">&gt;</span>
+
+<span class="hl-tag">&lt;input</span> <span class="hl-attr">type</span>=<span class="hl-val">"number"</span>
+       <span class="hl-attr">name</span>=<span class="hl-val">"idade"</span>
+       <span class="hl-attr">min</span>=<span class="hl-val">"18"</span>
+       <span class="hl-attr">max</span>=<span class="hl-val">"120"</span>
+       <span class="hl-attr">required</span><span class="hl-tag">&gt;</span></pre>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="button">
+        <h2>9.7 O elemento button</h2>
+        <pre class="codigo"><span class="hl-coment">&lt;!-- Submete o formulário (padrão dentro de um form) --&gt;</span>
+<span class="hl-tag">&lt;button</span> <span class="hl-attr">type</span>=<span class="hl-val">"submit"</span><span class="hl-tag">&gt;</span>Enviar<span class="hl-tag">&lt;/button&gt;</span>
+
+<span class="hl-coment">&lt;!-- Limpa o formulário --&gt;</span>
+<span class="hl-tag">&lt;button</span> <span class="hl-attr">type</span>=<span class="hl-val">"reset"</span><span class="hl-tag">&gt;</span>Limpar<span class="hl-tag">&lt;/button&gt;</span>
+
+<span class="hl-coment">&lt;!-- Botão genérico (não submete, para JavaScript) --&gt;</span>
+<span class="hl-tag">&lt;button</span> <span class="hl-attr">type</span>=<span class="hl-val">"button"</span><span class="hl-tag">&gt;</span>Ação<span class="hl-tag">&lt;/button&gt;</span>
+
+<span class="hl-coment">&lt;!-- Button vs input type="submit":
+     button permite HTML dentro (ícones, spans)
+     input type="submit" só permite texto simples --&gt;</span>
+<span class="hl-tag">&lt;button</span> <span class="hl-attr">type</span>=<span class="hl-val">"submit"</span><span class="hl-tag">&gt;</span>
+  Enviar →
+<span class="hl-tag">&lt;/button&gt;</span></pre>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="exemplo">
+        <h2>9.8 Formulário completo — Exemplo</h2>
+        <pre class="codigo"><span class="hl-tag">&lt;form</span> <span class="hl-attr">action</span>=<span class="hl-val">"#"</span> <span class="hl-attr">method</span>=<span class="hl-val">"post"</span><span class="hl-tag">&gt;</span>
+
+  <span class="hl-tag">&lt;fieldset&gt;</span>
+    <span class="hl-tag">&lt;legend&gt;</span>Dados Pessoais<span class="hl-tag">&lt;/legend&gt;</span>
+
+    <span class="hl-tag">&lt;label</span> <span class="hl-attr">for</span>=<span class="hl-val">"nome"</span><span class="hl-tag">&gt;</span>Nome *<span class="hl-tag">&lt;/label&gt;</span>
+    <span class="hl-tag">&lt;input</span> <span class="hl-attr">type</span>=<span class="hl-val">"text"</span> <span class="hl-attr">id</span>=<span class="hl-val">"nome"</span> <span class="hl-attr">name</span>=<span class="hl-val">"nome"</span>
+           <span class="hl-attr">required</span> <span class="hl-attr">minlength</span>=<span class="hl-val">"2"</span>
+           <span class="hl-attr">placeholder</span>=<span class="hl-val">"O teu nome"</span>
+           <span class="hl-attr">autocomplete</span>=<span class="hl-val">"name"</span> <span class="hl-attr">autofocus</span><span class="hl-tag">&gt;</span>
+
+    <span class="hl-tag">&lt;label</span> <span class="hl-attr">for</span>=<span class="hl-val">"email"</span><span class="hl-tag">&gt;</span>Email *<span class="hl-tag">&lt;/label&gt;</span>
+    <span class="hl-tag">&lt;input</span> <span class="hl-attr">type</span>=<span class="hl-val">"email"</span> <span class="hl-attr">id</span>=<span class="hl-val">"email"</span> <span class="hl-attr">name</span>=<span class="hl-val">"email"</span>
+           <span class="hl-attr">required</span> <span class="hl-attr">placeholder</span>=<span class="hl-val">"exemplo@email.com"</span>
+           <span class="hl-attr">autocomplete</span>=<span class="hl-val">"email"</span><span class="hl-tag">&gt;</span>
+
+    <span class="hl-tag">&lt;label</span> <span class="hl-attr">for</span>=<span class="hl-val">"tel"</span><span class="hl-tag">&gt;</span>Telefone<span class="hl-tag">&lt;/label&gt;</span>
+    <span class="hl-tag">&lt;input</span> <span class="hl-attr">type</span>=<span class="hl-val">"tel"</span> <span class="hl-attr">id</span>=<span class="hl-val">"tel"</span> <span class="hl-attr">name</span>=<span class="hl-val">"telefone"</span>
+           <span class="hl-attr">pattern</span>=<span class="hl-val">"[0-9]{9}"</span>
+           <span class="hl-attr">placeholder</span>=<span class="hl-val">"9 dígitos"</span><span class="hl-tag">&gt;</span>
+  <span class="hl-tag">&lt;/fieldset&gt;</span>
+
+  <span class="hl-tag">&lt;fieldset&gt;</span>
+    <span class="hl-tag">&lt;legend&gt;</span>Mensagem<span class="hl-tag">&lt;/legend&gt;</span>
+
+    <span class="hl-tag">&lt;label</span> <span class="hl-attr">for</span>=<span class="hl-val">"assunto"</span><span class="hl-tag">&gt;</span>Assunto *<span class="hl-tag">&lt;/label&gt;</span>
+    <span class="hl-tag">&lt;select</span> <span class="hl-attr">id</span>=<span class="hl-val">"assunto"</span> <span class="hl-attr">name</span>=<span class="hl-val">"assunto"</span> <span class="hl-attr">required</span><span class="hl-tag">&gt;</span>
+      <span class="hl-tag">&lt;option</span> <span class="hl-attr">value</span>=<span class="hl-val">""</span><span class="hl-tag">&gt;</span>-- Seleciona --<span class="hl-tag">&lt;/option&gt;</span>
+      <span class="hl-tag">&lt;option</span> <span class="hl-attr">value</span>=<span class="hl-val">"info"</span><span class="hl-tag">&gt;</span>Informação<span class="hl-tag">&lt;/option&gt;</span>
+      <span class="hl-tag">&lt;option</span> <span class="hl-attr">value</span>=<span class="hl-val">"suporte"</span><span class="hl-tag">&gt;</span>Suporte<span class="hl-tag">&lt;/option&gt;</span>
+    <span class="hl-tag">&lt;/select&gt;</span>
+
+    <span class="hl-tag">&lt;label</span> <span class="hl-attr">for</span>=<span class="hl-val">"mensagem"</span><span class="hl-tag">&gt;</span>Mensagem *<span class="hl-tag">&lt;/label&gt;</span>
+    <span class="hl-tag">&lt;textarea</span> <span class="hl-attr">id</span>=<span class="hl-val">"mensagem"</span> <span class="hl-attr">name</span>=<span class="hl-val">"mensagem"</span>
+              <span class="hl-attr">rows</span>=<span class="hl-val">"5"</span> <span class="hl-attr">required</span>
+              <span class="hl-attr">minlength</span>=<span class="hl-val">"10"</span> <span class="hl-attr">maxlength</span>=<span class="hl-val">"500"</span>
+              <span class="hl-attr">placeholder</span>=<span class="hl-val">"Descreve o assunto..."</span><span class="hl-tag">&gt;&lt;/textarea&gt;</span>
+  <span class="hl-tag">&lt;/fieldset&gt;</span>
+
+  <span class="hl-tag">&lt;div&gt;</span>
+    <span class="hl-tag">&lt;input</span> <span class="hl-attr">type</span>=<span class="hl-val">"checkbox"</span> <span class="hl-attr">id</span>=<span class="hl-val">"aceito"</span> <span class="hl-attr">name</span>=<span class="hl-val">"aceito"</span> <span class="hl-attr">required</span><span class="hl-tag">&gt;</span>
+    <span class="hl-tag">&lt;label</span> <span class="hl-attr">for</span>=<span class="hl-val">"aceito"</span><span class="hl-tag">&gt;</span>Aceito os termos e condições *<span class="hl-tag">&lt;/label&gt;</span>
+  <span class="hl-tag">&lt;/div&gt;</span>
+
+  <span class="hl-tag">&lt;button</span> <span class="hl-attr">type</span>=<span class="hl-val">"submit"</span><span class="hl-tag">&gt;</span>Enviar Mensagem<span class="hl-tag">&lt;/button&gt;</span>
+  <span class="hl-tag">&lt;button</span> <span class="hl-attr">type</span>=<span class="hl-val">"reset"</span><span class="hl-tag">&gt;</span>Limpar<span class="hl-tag">&lt;/button&gt;</span>
+
+<span class="hl-tag">&lt;/form&gt;</span></pre>
+    </div>
+
+    <div class="nav-capitulos">
+        <a href="../08-css-grid/teoria.html" class="btn-nav">← Cap. 08</a>
+        <a href="exercicio/enunciado.html" class="btn-nav btn-exercicio">Ficha de Exercícios →</a>
+        <a href="../index.html" class="btn-nav">← Índice</a>
+    </div>
+
+</main>
+
+<footer class="manual-footer">
+    <p>Manual HTML5 + CSS3 · Instituto Politécnico de Viseu · 2024/2025</p>
+</footer>
+
+</body>
+</html>

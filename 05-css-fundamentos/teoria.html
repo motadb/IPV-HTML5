@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cap. 05 — CSS Fundamentos</title>
+    <link rel="stylesheet" href="../css/manual.css">
+</head>
+<body>
+
+<header class="manual-header">
+    <p class="breadcrumb"><a href="../index.html">Índice</a> › Capítulo 05</p>
+    <h1>CSS — Fundamentos</h1>
+    <p>Sintaxe, seletores, cores e tipografia</p>
+</header>
+
+<nav class="manual-nav">
+    <a href="../index.html">Índice</a>
+    <a href="../01-introducao/teoria.html">01</a>
+    <a href="../02-semantica/teoria.html">02</a>
+    <a href="../03-texto-ligacoes/teoria.html">03</a>
+    <a href="../04-imagens-caminhos/teoria.html">04</a>
+    <a href="teoria.html" class="ativo">05 · CSS Base</a>
+    <a href="../06-css-box-model/teoria.html">06 · Box Model</a>
+    <a href="../07-css-flexbox/teoria.html">07 · Flexbox</a>
+    <a href="../08-css-grid/teoria.html">08 · Grid</a>
+    <a href="../09-formularios/teoria.html">09 · Formulários</a>
+</nav>
+
+<main class="conteudo">
+
+    <div class="indice-lateral">
+        <h3>Neste capítulo</h3>
+        <ol>
+            <li><a href="#oque-e">O que é CSS?</a></li>
+            <li><a href="#como-aplicar">Formas de aplicar CSS</a></li>
+            <li><a href="#sintaxe">Sintaxe CSS</a></li>
+            <li><a href="#seletores">Tipos de seletores</a></li>
+            <li><a href="#especificidade">Especificidade e cascata</a></li>
+            <li><a href="#cores">Cores</a></li>
+            <li><a href="#tipografia">Tipografia</a></li>
+            <li><a href="#unidades">Unidades de medida</a></li>
+        </ol>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="oque-e">
+        <h2>5.1 O que é CSS?</h2>
+        <p>
+            <strong>CSS</strong> significa <em>Cascading Style Sheets</em> (Folhas de Estilo em Cascata).
+            Define a <strong>apresentação visual</strong> de um documento HTML: cores, tipografia,
+            espaçamentos, dimensões, posicionamento e muito mais.
+        </p>
+        <p>
+            O conceito de <em>cascata</em> refere-se ao facto de múltiplas regras CSS poderem
+            aplicar-se ao mesmo elemento, com regras específicas para decidir qual prevalece.
+        </p>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="como-aplicar">
+        <h2>5.2 Formas de aplicar CSS</h2>
+
+        <h3>1. CSS Externo (recomendado)</h3>
+        <p>Num ficheiro <code>.css</code> separado, ligado no <code>&lt;head&gt;</code>:</p>
+        <pre class="codigo"><span class="hl-coment">&lt;!-- No &lt;head&gt; do HTML --&gt;</span>
+<span class="hl-tag">&lt;link</span> <span class="hl-attr">rel</span>=<span class="hl-val">"stylesheet"</span> <span class="hl-attr">href</span>=<span class="hl-val">"css/estilo.css"</span><span class="hl-tag">&gt;</span></pre>
+        <pre class="codigo"><span class="hl-coment">/* estilo.css */</span>
+<span class="hl-seletor">body</span> {
+  <span class="hl-prop">font-family</span>: <span class="hl-valor">Arial, sans-serif</span>;
+  <span class="hl-prop">color</span>: <span class="hl-valor">#333</span>;
+}</span></pre>
+
+        <h3>2. CSS Interno</h3>
+        <p>Numa tag <code>&lt;style&gt;</code> dentro do <code>&lt;head&gt;</code>:</p>
+        <pre class="codigo"><span class="hl-tag">&lt;head&gt;</span>
+  <span class="hl-tag">&lt;style&gt;</span>
+    <span class="hl-seletor">p</span> { <span class="hl-prop">color</span>: <span class="hl-valor">blue</span>; }
+  <span class="hl-tag">&lt;/style&gt;</span>
+<span class="hl-tag">&lt;/head&gt;</span></pre>
+
+        <h3>3. CSS Inline (evitar)</h3>
+        <p>Diretamente no atributo <code>style</code> do elemento:</p>
+        <pre class="codigo"><span class="hl-tag">&lt;p</span> <span class="hl-attr">style</span>=<span class="hl-val">"color: blue; font-size: 18px;"</span><span class="hl-tag">&gt;</span>Texto azul<span class="hl-tag">&lt;/p&gt;</span></pre>
+
+        <div class="caixa-aviso">
+            <strong>Usa sempre CSS externo</strong>
+            O CSS externo separa a estrutura (HTML) da apresentação (CSS), facilita a manutenção
+            e permite reutilizar o mesmo estilo em múltiplas páginas. CSS inline dificulta
+            a manutenção e tem prioridade máxima, tornando difícil sobrescrever.
+        </div>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="sintaxe">
+        <h2>5.3 Sintaxe CSS</h2>
+        <pre class="codigo"><span class="hl-seletor">seletor</span> {
+  <span class="hl-prop">propriedade</span>: <span class="hl-valor">valor</span>;
+  <span class="hl-prop">outra-propriedade</span>: <span class="hl-valor">outro-valor</span>;
+}</pre>
+
+        <pre class="codigo"><span class="hl-seletor">h1</span> {
+  <span class="hl-prop">color</span>: <span class="hl-valor">#2563eb</span>;
+  <span class="hl-prop">font-size</span>: <span class="hl-valor">2rem</span>;
+  <span class="hl-prop">font-weight</span>: <span class="hl-valor">700</span>;
+  <span class="hl-prop">margin-bottom</span>: <span class="hl-valor">1rem</span>;
+}
+
+<span class="hl-seletor">p</span> {
+  <span class="hl-prop">line-height</span>: <span class="hl-valor">1.6</span>;
+  <span class="hl-prop">color</span>: <span class="hl-valor">#333</span>;
+}
+
+<span class="hl-coment">/* Múltiplos seletores com a mesma regra */</span>
+<span class="hl-seletor">h1, h2, h3</span> {
+  <span class="hl-prop">font-family</span>: <span class="hl-valor">Georgia, serif</span>;
+}</pre>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="seletores">
+        <h2>5.4 Tipos de seletores</h2>
+
+        <table>
+            <thead>
+                <tr><th>Seletor</th><th>Sintaxe</th><th>Seleciona</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Elemento</td><td><code>p</code></td><td>Todos os &lt;p&gt;</td></tr>
+                <tr><td>Classe</td><td><code>.destaque</code></td><td>Elementos com class="destaque"</td></tr>
+                <tr><td>ID</td><td><code>#cabecalho</code></td><td>Elemento com id="cabecalho"</td></tr>
+                <tr><td>Universal</td><td><code>*</code></td><td>Todos os elementos</td></tr>
+                <tr><td>Descendente</td><td><code>nav a</code></td><td>&lt;a&gt; dentro de &lt;nav&gt;</td></tr>
+                <tr><td>Filho direto</td><td><code>ul > li</code></td><td>&lt;li&gt; filhos diretos de &lt;ul&gt;</td></tr>
+                <tr><td>Irmão adjacente</td><td><code>h2 + p</code></td><td>&lt;p&gt; imediatamente após &lt;h2&gt;</td></tr>
+                <tr><td>Atributo</td><td><code>input[type="email"]</code></td><td>Inputs do tipo email</td></tr>
+                <tr><td>Pseudo-classe</td><td><code>a:hover</code></td><td>Link com rato em cima</td></tr>
+                <tr><td>Pseudo-classe</td><td><code>li:first-child</code></td><td>Primeiro item de lista</td></tr>
+                <tr><td>Pseudo-classe</td><td><code>li:nth-child(2)</code></td><td>Segundo item de lista</td></tr>
+                <tr><td>Pseudo-elemento</td><td><code>p::first-line</code></td><td>Primeira linha do parágrafo</td></tr>
+                <tr><td>Pseudo-elemento</td><td><code>p::before</code></td><td>Conteúdo antes do elemento</td></tr>
+            </tbody>
+        </table>
+
+        <pre class="codigo"><span class="hl-coment">/* Exemplos práticos */</span>
+
+<span class="hl-seletor">.btn</span> { <span class="hl-prop">padding</span>: <span class="hl-valor">0.5rem 1rem</span>; }
+
+<span class="hl-seletor">#hero</span> { <span class="hl-prop">background</span>: <span class="hl-valor">#2563eb</span>; }
+
+<span class="hl-seletor">nav a</span> { <span class="hl-prop">text-decoration</span>: <span class="hl-valor">none</span>; }
+
+<span class="hl-seletor">a:hover</span> { <span class="hl-prop">color</span>: <span class="hl-valor">#1e40af</span>; }
+
+<span class="hl-seletor">li:nth-child(odd)</span> { <span class="hl-prop">background</span>: <span class="hl-valor">#f8f8f8</span>; }
+
+<span class="hl-seletor">input[required]</span> { <span class="hl-prop">border-color</span>: <span class="hl-valor">red</span>; }</pre>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="especificidade">
+        <h2>5.5 Especificidade e cascata</h2>
+        <p>
+            Quando várias regras CSS se aplicam ao mesmo elemento, a <strong>especificidade</strong>
+            determina qual prevalece. Regra geral — do mais específico para o menos:
+        </p>
+        <ol>
+            <li>CSS inline (<code>style="..."</code>) — especificidade máxima</li>
+            <li>Seletores de <strong>ID</strong> (<code>#id</code>)</li>
+            <li>Seletores de <strong>classe</strong>, atributo e pseudo-classe (<code>.classe</code>)</li>
+            <li>Seletores de <strong>elemento</strong> e pseudo-elemento (<code>p</code>)</li>
+        </ol>
+        <p>Se a especificidade for igual, vence a regra que vem <strong>por último</strong> no código.</p>
+
+        <pre class="codigo"><span class="hl-seletor">p</span>         { <span class="hl-prop">color</span>: <span class="hl-valor">black</span>; }    <span class="hl-coment">/* especificidade: 1 */</span>
+<span class="hl-seletor">.intro</span>    { <span class="hl-prop">color</span>: <span class="hl-valor">blue</span>;  }    <span class="hl-coment">/* especificidade: 10 */</span>
+<span class="hl-seletor">#destaque</span> { <span class="hl-prop">color</span>: <span class="hl-valor">red</span>;   }    <span class="hl-coment">/* especificidade: 100 */</span>
+
+<span class="hl-coment">/* Este parágrafo fica vermelho: */</span>
+<span class="hl-coment">&lt;p id="destaque" class="intro"&gt;Texto&lt;/p&gt;</span></pre>
+
+        <div class="caixa-dica">
+            <strong>Boas práticas</strong>
+            Evita usar <code>!important</code> (que sobrescreve tudo) — é um sinal de que
+            a arquitetura CSS está mal estruturada. Prefere seletores de classe e mantém
+            a especificidade baixa e consistente.
+        </div>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="cores">
+        <h2>5.6 Cores em CSS</h2>
+
+        <table>
+            <thead>
+                <tr><th>Formato</th><th>Exemplo</th><th>Notas</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Nome</td><td><code>red</code>, <code>blue</code>, <code>coral</code></td><td>140 cores nomeadas. Limitado.</td></tr>
+                <tr><td>Hexadecimal</td><td><code>#2563eb</code> ou <code>#fff</code></td><td>O mais comum. 6 dígitos (ou 3 abreviados).</td></tr>
+                <tr><td>RGB</td><td><code>rgb(37, 99, 235)</code></td><td>Vermelho, Verde, Azul — valores 0–255.</td></tr>
+                <tr><td>RGBA</td><td><code>rgba(37, 99, 235, 0.5)</code></td><td>RGB com transparência (0=transparente, 1=opaco).</td></tr>
+                <tr><td>HSL</td><td><code>hsl(220, 90%, 53%)</code></td><td>Matiz, Saturação, Luminosidade. Intuitivo.</td></tr>
+                <tr><td>HSLA</td><td><code>hsla(220, 90%, 53%, 0.8)</code></td><td>HSL com transparência.</td></tr>
+            </tbody>
+        </table>
+
+        <pre class="codigo"><span class="hl-seletor">body</span> {
+  <span class="hl-prop">background-color</span>: <span class="hl-valor">#f8fafc</span>;
+  <span class="hl-prop">color</span>: <span class="hl-valor">#1e293b</span>;
+}
+
+<span class="hl-seletor">h1</span> {
+  <span class="hl-prop">color</span>: <span class="hl-valor">rgb(37, 99, 235)</span>;
+}
+
+<span class="hl-seletor">.overlay</span> {
+  <span class="hl-prop">background-color</span>: <span class="hl-valor">rgba(0, 0, 0, 0.5)</span>;  <span class="hl-coment">/* preto a 50% opacidade */</span>
+}</pre>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="tipografia">
+        <h2>5.7 Tipografia</h2>
+
+        <pre class="codigo"><span class="hl-seletor">body</span> {
+  <span class="hl-coment">/* Família tipográfica (lista de fallbacks) */</span>
+  <span class="hl-prop">font-family</span>: <span class="hl-valor">'Segoe UI', Arial, sans-serif</span>;
+
+  <span class="hl-coment">/* Tamanho */</span>
+  <span class="hl-prop">font-size</span>: <span class="hl-valor">16px</span>;
+
+  <span class="hl-coment">/* Espessura: 100–900, normal=400, bold=700 */</span>
+  <span class="hl-prop">font-weight</span>: <span class="hl-valor">400</span>;
+
+  <span class="hl-coment">/* Estilo: normal, italic, oblique */</span>
+  <span class="hl-prop">font-style</span>: <span class="hl-valor">normal</span>;
+
+  <span class="hl-coment">/* Altura da linha (sem unidade = relativo ao font-size) */</span>
+  <span class="hl-prop">line-height</span>: <span class="hl-valor">1.6</span>;
+}
+
+<span class="hl-seletor">h1</span> {
+  <span class="hl-prop">font-size</span>: <span class="hl-valor">2.5rem</span>;
+  <span class="hl-prop">font-weight</span>: <span class="hl-valor">700</span>;
+  <span class="hl-prop">letter-spacing</span>: <span class="hl-valor">-0.02em</span>;  <span class="hl-coment">/* espaçamento entre letras */</span>
+}
+
+<span class="hl-seletor">p</span> {
+  <span class="hl-prop">text-align</span>: <span class="hl-valor">left</span>;        <span class="hl-coment">/* left | center | right | justify */</span>
+  <span class="hl-prop">text-decoration</span>: <span class="hl-valor">none</span>;  <span class="hl-coment">/* none | underline | line-through */</span>
+  <span class="hl-prop">text-transform</span>: <span class="hl-valor">none</span>;   <span class="hl-coment">/* none | uppercase | lowercase | capitalize */</span>
+}</pre>
+
+        <h3>Google Fonts</h3>
+        <p>Para usar fontes externas, adiciona no <code>&lt;head&gt;</code> antes do teu CSS:</p>
+        <pre class="codigo"><span class="hl-tag">&lt;link</span> <span class="hl-attr">rel</span>=<span class="hl-val">"preconnect"</span> <span class="hl-attr">href</span>=<span class="hl-val">"https://fonts.googleapis.com"</span><span class="hl-tag">&gt;</span>
+<span class="hl-tag">&lt;link</span> <span class="hl-attr">href</span>=<span class="hl-val">"https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"</span>
+      <span class="hl-attr">rel</span>=<span class="hl-val">"stylesheet"</span><span class="hl-tag">&gt;</span></pre>
+        <pre class="codigo"><span class="hl-seletor">body</span> {
+  <span class="hl-prop">font-family</span>: <span class="hl-valor">'Inter', sans-serif</span>;
+}</pre>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="unidades">
+        <h2>5.8 Unidades de medida</h2>
+
+        <table>
+            <thead>
+                <tr><th>Unidade</th><th>Tipo</th><th>Descrição</th><th>Uso típico</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><code>px</code></td><td>Absoluta</td><td>Píxel CSS</td><td>Bordas, sombras, valores fixos pequenos</td></tr>
+                <tr><td><code>rem</code></td><td>Relativa</td><td>Relativo ao font-size do &lt;html&gt; (normalmente 16px)</td><td>Tamanhos de fonte, espaçamentos — recomendado</td></tr>
+                <tr><td><code>em</code></td><td>Relativa</td><td>Relativo ao font-size do elemento pai</td><td>Padding/margin proporcional ao texto</td></tr>
+                <tr><td><code>%</code></td><td>Relativa</td><td>Percentagem do elemento pai</td><td>Larguras flexíveis</td></tr>
+                <tr><td><code>vw</code></td><td>Viewport</td><td>1% da largura da janela</td><td>Elementos de largura total</td></tr>
+                <tr><td><code>vh</code></td><td>Viewport</td><td>1% da altura da janela</td><td>Secções de ecrã completo</td></tr>
+            </tbody>
+        </table>
+
+        <pre class="codigo"><span class="hl-seletor">html</span> { <span class="hl-prop">font-size</span>: <span class="hl-valor">16px</span>; }  <span class="hl-coment">/* base */</span>
+
+<span class="hl-seletor">h1</span> { <span class="hl-prop">font-size</span>: <span class="hl-valor">2rem</span>; }     <span class="hl-coment">/* 2 × 16px = 32px */</span>
+<span class="hl-seletor">h2</span> { <span class="hl-prop">font-size</span>: <span class="hl-valor">1.5rem</span>; }   <span class="hl-coment">/* 1.5 × 16px = 24px */</span>
+
+<span class="hl-seletor">.hero</span> {
+  <span class="hl-prop">width</span>: <span class="hl-valor">100vw</span>;
+  <span class="hl-prop">min-height</span>: <span class="hl-valor">100vh</span>;
+}</pre>
+    </div>
+
+    <div class="nav-capitulos">
+        <a href="../04-imagens-caminhos/teoria.html" class="btn-nav">← Cap. 04</a>
+        <a href="exercicio/enunciado.html" class="btn-nav btn-exercicio">Ficha de Exercícios →</a>
+        <a href="../06-css-box-model/teoria.html" class="btn-nav">Próximo: Box Model →</a>
+    </div>
+
+</main>
+
+<footer class="manual-footer">
+    <p>Manual HTML5 + CSS3 · Instituto Politécnico de Viseu · 2024/2025</p>
+</footer>
+
+</body>
+</html>

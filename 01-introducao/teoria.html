@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cap. 01 — Introdução ao HTML5</title>
+    <link rel="stylesheet" href="../css/manual.css">
+</head>
+<body>
+
+<header class="manual-header">
+    <p class="breadcrumb"><a href="../index.html">Índice</a> › Capítulo 01</p>
+    <h1>Introdução ao HTML5</h1>
+    <p>O que é, para que serve e como funciona</p>
+</header>
+
+<nav class="manual-nav">
+    <a href="../index.html">Índice</a>
+    <a href="teoria.html" class="ativo">01 · Introdução</a>
+    <a href="../02-semantica/teoria.html">02 · Semântica</a>
+    <a href="../03-texto-ligacoes/teoria.html">03 · Texto</a>
+    <a href="../04-imagens-caminhos/teoria.html">04 · Imagens</a>
+    <a href="../05-css-fundamentos/teoria.html">05 · CSS</a>
+    <a href="../06-css-box-model/teoria.html">06 · Box Model</a>
+    <a href="../07-css-flexbox/teoria.html">07 · Flexbox</a>
+    <a href="../08-css-grid/teoria.html">08 · Grid</a>
+    <a href="../09-formularios/teoria.html">09 · Formulários</a>
+</nav>
+
+<main class="conteudo">
+
+    <div class="indice-lateral">
+        <h3>Neste capítulo</h3>
+        <ol>
+            <li><a href="#oque-e">O que é HTML?</a></li>
+            <li><a href="#historia">Breve história</a></li>
+            <li><a href="#como-funciona">Como funciona um browser</a></li>
+            <li><a href="#estrutura">Estrutura base de um ficheiro</a></li>
+            <li><a href="#elementos">Primeiros elementos</a></li>
+            <li><a href="#comentarios">Comentários</a></li>
+            <li><a href="#atributos">Atributos</a></li>
+        </ol>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="oque-e">
+        <h2>1.1 O que é HTML?</h2>
+        <p>
+            <strong>HTML</strong> significa <em>HyperText Markup Language</em> (Linguagem de Marcação
+            de Hipertexto). Não é uma linguagem de programação — é uma linguagem de <strong>marcação</strong>,
+            o que significa que descreve a <em>estrutura</em> e o <em>conteúdo</em> de uma página web
+            através de etiquetas (chamadas <em>tags</em>).
+        </p>
+        <p>
+            Pensa no HTML como o <strong>esqueleto</strong> de uma página web: define o que existe
+            (um título, um parágrafo, uma imagem, um link) mas não define como isso fica visualmente — esse
+            é o papel do CSS.
+        </p>
+
+        <h3>As três tecnologias da web</h3>
+        <table>
+            <thead>
+                <tr><th>Tecnologia</th><th>Papel</th><th>Analogia</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>HTML</strong></td>
+                    <td>Estrutura e conteúdo</td>
+                    <td>O esqueleto / paredes de um edifício</td>
+                </tr>
+                <tr>
+                    <td><strong>CSS</strong></td>
+                    <td>Apresentação visual</td>
+                    <td>A pintura, decoração e design</td>
+                </tr>
+                <tr>
+                    <td><strong>JavaScript</strong></td>
+                    <td>Comportamento e interatividade</td>
+                    <td>A eletricidade, elevadores, automatismos</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="caixa-nota">
+            <strong>Nota</strong>
+            Neste manual focamo-nos em HTML5 e CSS3. JavaScript será abordado noutro módulo.
+        </div>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="historia">
+        <h2>1.2 Breve história do HTML</h2>
+        <ul>
+            <li><strong>1991</strong> — Tim Berners-Lee cria o HTML 1.0 no CERN para partilhar documentos científicos.</li>
+            <li><strong>1995</strong> — HTML 2.0: primeira versão normalizada.</li>
+            <li><strong>1997</strong> — HTML 3.2 e HTML 4.0: tabelas, frames, formulários.</li>
+            <li><strong>1999</strong> — HTML 4.01: versão estável usada por muito tempo.</li>
+            <li><strong>2008–2014</strong> — HTML5 em desenvolvimento pelo WHATWG e W3C.</li>
+            <li><strong>2014</strong> — HTML5 torna-se recomendação oficial do W3C.</li>
+            <li><strong>Hoje</strong> — HTML "Living Standard": o WHATWG mantém uma especificação viva em contínua evolução.</li>
+        </ul>
+
+        <div class="caixa-dica">
+            <strong>Novidades do HTML5</strong>
+            Elementos semânticos (<code>header</code>, <code>nav</code>, <code>article</code>…),
+            vídeo e áudio nativos, formulários melhorados, canvas, geolocalização, armazenamento local.
+        </div>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="como-funciona">
+        <h2>1.3 Como funciona um browser</h2>
+        <p>
+            Quando abres um ficheiro HTML no browser, acontece o seguinte:
+        </p>
+        <ol>
+            <li>O browser lê o ficheiro <strong>de cima para baixo</strong>, linha a linha.</li>
+            <li>Interpreta as <em>tags</em> HTML e constrói uma árvore de objetos (o <strong>DOM</strong> — Document Object Model).</li>
+            <li>Aplica os estilos CSS e calcula o layout visual.</li>
+            <li>Desenha o resultado no ecrã (processo chamado <em>rendering</em>).</li>
+        </ol>
+        <div class="caixa-nota">
+            <strong>Ferramentas de programador</strong>
+            Prima <kbd>F12</kbd> em qualquer browser para abrires as DevTools.
+            Na aba <em>Elements</em> (Chrome) ou <em>Inspector</em> (Firefox) podes inspecionar
+            a árvore HTML de qualquer página web.
+        </div>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="estrutura">
+        <h2>1.4 Estrutura base de um ficheiro HTML</h2>
+        <p>
+            Todo o ficheiro HTML começa com uma estrutura mínima obrigatória.
+            Cria um ficheiro chamado <code>index.html</code> e escreve o seguinte:
+        </p>
+
+        <div class="codigo-titulo">index.html</div>
+        <pre class="codigo"><span class="hl-coment">&lt;!-- Declaração do tipo de documento --&gt;</span>
+<span class="hl-tag">&lt;!DOCTYPE html&gt;</span>
+
+<span class="hl-tag">&lt;html</span> <span class="hl-attr">lang</span>=<span class="hl-val">"pt"</span><span class="hl-tag">&gt;</span>
+
+  <span class="hl-tag">&lt;head&gt;</span>
+    <span class="hl-coment">&lt;!-- Metadados: não aparecem na página --&gt;</span>
+    <span class="hl-tag">&lt;meta</span> <span class="hl-attr">charset</span>=<span class="hl-val">"UTF-8"</span><span class="hl-tag">&gt;</span>
+    <span class="hl-tag">&lt;meta</span> <span class="hl-attr">name</span>=<span class="hl-val">"viewport"</span> <span class="hl-attr">content</span>=<span class="hl-val">"width=device-width, initial-scale=1.0"</span><span class="hl-tag">&gt;</span>
+    <span class="hl-tag">&lt;title&gt;</span>O título que aparece no separador<span class="hl-tag">&lt;/title&gt;</span>
+  <span class="hl-tag">&lt;/head&gt;</span>
+
+  <span class="hl-tag">&lt;body&gt;</span>
+    <span class="hl-coment">&lt;!-- Conteúdo visível da página --&gt;</span>
+    <span class="hl-tag">&lt;h1&gt;</span>Olá, mundo!<span class="hl-tag">&lt;/h1&gt;</span>
+    <span class="hl-tag">&lt;p&gt;</span>Esta é a minha primeira página web.<span class="hl-tag">&lt;/p&gt;</span>
+  <span class="hl-tag">&lt;/body&gt;</span>
+
+<span class="hl-tag">&lt;/html&gt;</span></pre>
+
+        <h3>O que significa cada parte?</h3>
+        <table>
+            <thead>
+                <tr><th>Linha</th><th>Significado</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>&lt;!DOCTYPE html&gt;</code></td>
+                    <td>Informa o browser que o documento é HTML5. <strong>Obrigatório na 1.ª linha.</strong></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;html lang="pt"&gt;</code></td>
+                    <td>Elemento raiz. O atributo <code>lang</code> declara o idioma (importante para acessibilidade e SEO).</td>
+                </tr>
+                <tr>
+                    <td><code>&lt;head&gt;</code></td>
+                    <td>Contém metadados: codificação, título, links para CSS, etc. <strong>Nada aqui é visível na página.</strong></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;meta charset="UTF-8"&gt;</code></td>
+                    <td>Define a codificação de caracteres. UTF-8 suporta acentos, caracteres especiais e emojis.</td>
+                </tr>
+                <tr>
+                    <td><code>&lt;meta name="viewport"&gt;</code></td>
+                    <td>Essencial para páginas responsivas em dispositivos móveis.</td>
+                </tr>
+                <tr>
+                    <td><code>&lt;title&gt;</code></td>
+                    <td>Texto que aparece no separador do browser e nos resultados de pesquisa.</td>
+                </tr>
+                <tr>
+                    <td><code>&lt;body&gt;</code></td>
+                    <td>Tudo o que está aqui é visível na página: textos, imagens, links, etc.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="caixa-aviso">
+            <strong>Atenção</strong>
+            O <code>&lt;!DOCTYPE html&gt;</code> não é uma tag HTML — é uma instrução para o browser.
+            Sem ela o browser entra em "quirks mode" e comporta-se de forma imprevisível.
+        </div>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="elementos">
+        <h2>1.5 Primeiros elementos</h2>
+
+        <h3>Anatomia de um elemento HTML</h3>
+        <p>Um elemento HTML é composto por:</p>
+        <pre class="codigo"><span class="hl-tag">&lt;p</span> <span class="hl-attr">class</span>=<span class="hl-val">"intro"</span><span class="hl-tag">&gt;</span>Isto é um parágrafo.<span class="hl-tag">&lt;/p&gt;</span>
+<span class="hl-coment">
+  └─ tag de abertura    conteúdo    tag de fecho
+       └─ atributo (nome="valor")</span></pre>
+
+        <p>Alguns elementos são <strong>vazios</strong> (não têm conteúdo nem tag de fecho):</p>
+        <pre class="codigo"><span class="hl-tag">&lt;br&gt;</span>   <span class="hl-coment">&lt;!-- quebra de linha --&gt;</span>
+<span class="hl-tag">&lt;hr&gt;</span>   <span class="hl-coment">&lt;!-- linha horizontal --&gt;</span>
+<span class="hl-tag">&lt;img</span> <span class="hl-attr">src</span>=<span class="hl-val">"foto.jpg"</span> <span class="hl-attr">alt</span>=<span class="hl-val">"Descrição"</span><span class="hl-tag">&gt;</span>   <span class="hl-coment">&lt;!-- imagem --&gt;</span>
+<span class="hl-tag">&lt;meta</span> <span class="hl-attr">charset</span>=<span class="hl-val">"UTF-8"</span><span class="hl-tag">&gt;</span>   <span class="hl-coment">&lt;!-- metadado --&gt;</span></pre>
+
+        <h3>Títulos (h1 a h6)</h3>
+        <p>
+            Existem seis níveis de títulos. O <code>&lt;h1&gt;</code> é o mais importante
+            (geralmente o título principal da página) e deve existir <strong>apenas um</strong> por página.
+        </p>
+        <pre class="codigo"><span class="hl-tag">&lt;h1&gt;</span>Título principal (único por página)<span class="hl-tag">&lt;/h1&gt;</span>
+<span class="hl-tag">&lt;h2&gt;</span>Secção principal<span class="hl-tag">&lt;/h2&gt;</span>
+<span class="hl-tag">&lt;h3&gt;</span>Subsecção<span class="hl-tag">&lt;/h3&gt;</span>
+<span class="hl-tag">&lt;h4&gt;</span>Sub-subsecção<span class="hl-tag">&lt;/h4&gt;</span>
+<span class="hl-tag">&lt;h5&gt;</span>Raramente usado<span class="hl-tag">&lt;/h5&gt;</span>
+<span class="hl-tag">&lt;h6&gt;</span>Ainda mais raramente usado<span class="hl-tag">&lt;/h6&gt;</span></pre>
+
+        <div class="caixa-aviso">
+            <strong>Não uses títulos apenas para tornar o texto maior!</strong>
+            Os títulos têm significado semântico e são usados por leitores de ecrã (acessibilidade)
+            e motores de busca (SEO). Usa <code>h1→h2→h3</code> em hierarquia, sem saltar níveis.
+        </div>
+
+        <h3>Parágrafos</h3>
+        <pre class="codigo"><span class="hl-tag">&lt;p&gt;</span>Isto é um parágrafo de texto. O browser adiciona
+automaticamente espaçamento antes e depois.<span class="hl-tag">&lt;/p&gt;</span>
+
+<span class="hl-tag">&lt;p&gt;</span>Este é outro parágrafo separado.<span class="hl-tag">&lt;/p&gt;</span></pre>
+
+        <div class="caixa-dica">
+            <strong>Dica</strong>
+            No VS Code, escreve <code>!</code> e prime <kbd>Tab</kbd> para gerar automaticamente
+            a estrutura base de um ficheiro HTML5.
+        </div>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="comentarios">
+        <h2>1.6 Comentários em HTML</h2>
+        <p>
+            Comentários são texto que o browser ignora completamente.
+            Servem para deixar notas no código ou desativar temporariamente partes do HTML.
+        </p>
+        <pre class="codigo"><span class="hl-coment">&lt;!-- Isto é um comentário de uma linha --&gt;</span>
+
+<span class="hl-coment">&lt;!--
+    Isto é um comentário
+    de múltiplas linhas
+--&gt;</span>
+
+<span class="hl-tag">&lt;p&gt;</span>Este parágrafo é visível.<span class="hl-tag">&lt;/p&gt;</span>
+
+<span class="hl-coment">&lt;!-- &lt;p&gt;Este parágrafo está desativado.&lt;/p&gt; --&gt;</span></pre>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="atributos">
+        <h2>1.7 Atributos</h2>
+        <p>
+            Os atributos fornecem informação adicional sobre um elemento.
+            Colocam-se <strong>sempre na tag de abertura</strong> no formato <code>nome="valor"</code>.
+        </p>
+        <pre class="codigo"><span class="hl-coment">&lt;!-- Atributo src define a fonte da imagem --&gt;</span>
+<span class="hl-tag">&lt;img</span> <span class="hl-attr">src</span>=<span class="hl-val">"foto.jpg"</span> <span class="hl-attr">alt</span>=<span class="hl-val">"Foto da turma"</span><span class="hl-tag">&gt;</span>
+
+<span class="hl-coment">&lt;!-- Atributo href define o destino do link --&gt;</span>
+<span class="hl-tag">&lt;a</span> <span class="hl-attr">href</span>=<span class="hl-val">"pagina2.html"</span><span class="hl-tag">&gt;</span>Ir para a página 2<span class="hl-tag">&lt;/a&gt;</span>
+
+<span class="hl-coment">&lt;!-- Atributos id e class identificam elementos --&gt;</span>
+<span class="hl-tag">&lt;p</span> <span class="hl-attr">id</span>=<span class="hl-val">"intro"</span> <span class="hl-attr">class</span>=<span class="hl-val">"destaque"</span><span class="hl-tag">&gt;</span>Parágrafo de introdução<span class="hl-tag">&lt;/p&gt;</span></pre>
+
+        <table>
+            <thead>
+                <tr><th>Atributo</th><th>Uso</th><th>Exemplo</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>id</code></td>
+                    <td>Identificador único na página</td>
+                    <td><code>id="cabecalho"</code></td>
+                </tr>
+                <tr>
+                    <td><code>class</code></td>
+                    <td>Classe reutilizável (CSS/JS)</td>
+                    <td><code>class="destaque"</code></td>
+                </tr>
+                <tr>
+                    <td><code>lang</code></td>
+                    <td>Idioma do elemento</td>
+                    <td><code>lang="en"</code></td>
+                </tr>
+                <tr>
+                    <td><code>title</code></td>
+                    <td>Tooltip ao passar o rato</td>
+                    <td><code>title="Clica aqui"</code></td>
+                </tr>
+                <tr>
+                    <td><code>style</code></td>
+                    <td>CSS inline (evitar)</td>
+                    <td><code>style="color:red"</code></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="caixa-aviso">
+            <strong>id vs. class</strong>
+            Um <code>id</code> deve ser <strong>único</strong> na página — só um elemento pode ter aquele id.
+            Uma <code>class</code> pode ser usada em múltiplos elementos. Usa sempre <code>id</code> para
+            identificar um elemento específico e <code>class</code> para grupos de elementos com o mesmo estilo.
+        </div>
+    </div>
+
+    <!-- Navegação entre capítulos -->
+    <div class="nav-capitulos">
+        <a href="../index.html" class="btn-nav">← Índice</a>
+        <a href="exercicio/enunciado.html" class="btn-nav btn-exercicio">Ficha de Exercícios →</a>
+        <a href="../02-semantica/teoria.html" class="btn-nav">Próximo capítulo →</a>
+    </div>
+
+</main>
+
+<footer class="manual-footer">
+    <p>Manual HTML5 + CSS3 · Instituto Politécnico de Viseu · 2024/2025</p>
+</footer>
+
+</body>
+</html>

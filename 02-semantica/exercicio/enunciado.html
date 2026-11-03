@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha 02 — Estrutura Semântica</title>
+    <link rel="stylesheet" href="../../css/manual.css">
+</head>
+<body>
+
+<header class="manual-header">
+    <p class="breadcrumb"><a href="../../index.html">Índice</a> › <a href="../teoria.html">Cap. 02</a> › Exercício</p>
+    <h1>Ficha 02 — Página de Notícias</h1>
+    <p>Estrutura Semântica HTML5</p>
+</header>
+
+<main class="conteudo">
+
+    <div class="secao exercicio-header">
+        <h2>Objetivos</h2>
+        <ul class="objetivo-lista">
+            <li>Usar os elementos semânticos do HTML5 (header, nav, main, article, aside, footer)</li>
+            <li>Distinguir corretamente article de section</li>
+            <li>Usar div e span apenas quando necessário</li>
+            <li>Atribuir id e class com critério</li>
+            <li>Respeitar a hierarquia bloco/inline</li>
+        </ul>
+    </div>
+
+    <div class="secao">
+        <h2>Enunciado</h2>
+        <p>
+            Cria uma página HTML chamada <code>noticias.html</code> que simule
+            a página principal de um jornal online chamado <strong>"IPV News"</strong>.
+        </p>
+
+        <h3>Estrutura obrigatória</h3>
+        <table>
+            <thead>
+                <tr><th>Zona</th><th>Elemento</th><th>Conteúdo</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Cabeçalho</td>
+                    <td><code>&lt;header&gt;</code></td>
+                    <td>Nome do jornal (h1), slogan em parágrafo, data atual com <code>&lt;time&gt;</code></td>
+                </tr>
+                <tr>
+                    <td>Navegação</td>
+                    <td><code>&lt;nav&gt;</code></td>
+                    <td>Links: Início, Tecnologia, Desporto, Cultura, Contacto (links com <code>#</code>)</td>
+                </tr>
+                <tr>
+                    <td>Conteúdo</td>
+                    <td><code>&lt;main&gt;</code></td>
+                    <td>Contém os artigos e o aside</td>
+                </tr>
+                <tr>
+                    <td>Artigo 1</td>
+                    <td><code>&lt;article&gt;</code></td>
+                    <td>Notícia de destaque: h2, time, parágrafo longo, um parágrafo com <code>&lt;mark&gt;</code></td>
+                </tr>
+                <tr>
+                    <td>Artigo 2</td>
+                    <td><code>&lt;article&gt;</code></td>
+                    <td>Segunda notícia: h2, time, parágrafo</td>
+                </tr>
+                <tr>
+                    <td>Artigo 3</td>
+                    <td><code>&lt;article&gt;</code></td>
+                    <td>Terceira notícia: h2, time, parágrafo</td>
+                </tr>
+                <tr>
+                    <td>Lateral</td>
+                    <td><code>&lt;aside&gt;</code></td>
+                    <td>h2 "Mais lidas", lista com 4 links de artigos fictícios</td>
+                </tr>
+                <tr>
+                    <td>Rodapé</td>
+                    <td><code>&lt;footer&gt;</code></td>
+                    <td>© 2024 IPV News · Todos os direitos reservados</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Requisitos adicionais</h3>
+        <ul>
+            <li>Cada <code>&lt;article&gt;</code> deve ter um atributo <code>id</code> único.</li>
+            <li>O <code>&lt;nav&gt;</code> deve usar uma lista <code>&lt;ul&gt;</code> com os links.</li>
+            <li>A data nos artigos deve usar <code>&lt;time datetime="AAAA-MM-DD"&gt;</code>.</li>
+            <li>Um dos artigos deve ter uma citação com <code>&lt;blockquote&gt;</code>.</li>
+            <li>Usa o símbolo © com a entidade HTML <code>&amp;copy;</code>.</li>
+        </ul>
+    </div>
+
+    <div class="caixa-nota">
+        <strong>Sem CSS por agora</strong>
+        Nesta ficha não adicionas CSS. O objetivo é a estrutura HTML correta.
+        A página vai parecer "simples" visualmente — isso é normal.
+    </div>
+
+    <div class="nav-capitulos">
+        <a href="../teoria.html" class="btn-nav">← Teoria</a>
+        <a href="esqueleto.html" class="btn-nav btn-exercicio">Abrir Esqueleto →</a>
+        <a href="solucao.html" class="btn-nav btn-solucao">Ver Solução →</a>
+    </div>
+
+</main>
+
+<footer class="manual-footer">
+    <p>Manual HTML5 + CSS3 · Instituto Politécnico de Viseu · 2024/2025</p>
+</footer>
+
+</body>
+</html>

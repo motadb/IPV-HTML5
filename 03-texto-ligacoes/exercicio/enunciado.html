@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha 03 — Texto e Ligações</title>
+    <link rel="stylesheet" href="../../css/manual.css">
+</head>
+<body>
+
+<header class="manual-header">
+    <p class="breadcrumb"><a href="../../index.html">Índice</a> › <a href="../teoria.html">Cap. 03</a> › Exercício</p>
+    <h1>Ficha 03 — Mini-site de 3 páginas</h1>
+    <p>Texto, listas e hiperligações</p>
+</header>
+
+<main class="conteudo">
+
+    <div class="secao exercicio-header">
+        <h2>Objetivos</h2>
+        <ul class="objetivo-lista">
+            <li>Criar múltiplas páginas HTML ligadas entre si com caminhos relativos</li>
+            <li>Usar corretamente os elementos de formatação de texto</li>
+            <li>Criar listas ordenadas, não ordenadas e de definições</li>
+            <li>Usar âncoras internas para navegação na página</li>
+            <li>Criar links de email e download</li>
+        </ul>
+    </div>
+
+    <div class="secao">
+        <h2>Enunciado</h2>
+        <p>
+            Cria um <strong>mini-site sobre uma tecnologia à tua escolha</strong>
+            (ex: Python, JavaScript, CSS, Inteligência Artificial, Jogos, etc.).
+            O site deve ter <strong>3 páginas</strong> ligadas entre si.
+        </p>
+
+        <h3>Estrutura de ficheiros</h3>
+        <pre class="codigo">mini-site/
+├── index.html      (página inicial)
+├── aprender.html   (como aprender)
+└── recursos.html   (recursos úteis)</pre>
+
+        <h3>Página 1 — index.html</h3>
+        <ul>
+            <li>Título h1 com o nome da tecnologia escolhida.</li>
+            <li>Um índice no topo com âncoras para as secções da página (<code>&lt;a href="#secao1"&gt;</code>).</li>
+            <li>Secção "O que é?" com id <code>o-que-e</code>: parágrafo com <code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code> e uma abreviatura com <code>&lt;abbr&gt;</code>.</li>
+            <li>Secção "História" com id <code>historia</code>: lista ordenada com 4 marcos históricos.</li>
+            <li>Secção "Vantagens" com id <code>vantagens</code>: lista não ordenada com 4 itens.</li>
+            <li>Uma citação de alguém famoso na área com <code>&lt;blockquote&gt;</code>.</li>
+            <li>Link "Voltar ao topo" (<code>&lt;a href="#"&gt;</code>).</li>
+        </ul>
+
+        <h3>Página 2 — aprender.html</h3>
+        <ul>
+            <li>Navegação com links para as outras duas páginas (usando caminhos relativos).</li>
+            <li>Título h1 "Como aprender [tecnologia]".</li>
+            <li>Lista de definições (<code>&lt;dl&gt;</code>) com 3 conceitos-chave e as suas definições.</li>
+            <li>Lista ordenada com 5 passos para começar.</li>
+            <li>Link de email para "pedir ajuda" (<code>mailto:</code>).</li>
+        </ul>
+
+        <h3>Página 3 — recursos.html</h3>
+        <ul>
+            <li>Navegação com links para as outras duas páginas.</li>
+            <li>Título h1 "Recursos".</li>
+            <li>Lista não ordenada com 4 recursos (links externos com <code>target="_blank" rel="noopener"</code>).</li>
+            <li>Um link de download para um ficheiro PDF fictício (<code>download</code>).</li>
+            <li>Um link de telefone (<code>tel:</code>).</li>
+        </ul>
+    </div>
+
+    <div class="caixa-aviso">
+        <strong>Caminhos relativos</strong>
+        Todas as páginas devem estar na mesma pasta. Os links entre elas usam apenas o nome do ficheiro:
+        <code>&lt;a href="aprender.html"&gt;</code> — sem caminhos absolutos!
+    </div>
+
+    <div class="nav-capitulos">
+        <a href="../teoria.html" class="btn-nav">← Teoria</a>
+        <a href="esqueleto/index.html" class="btn-nav btn-exercicio">Abrir Esqueleto →</a>
+        <a href="solucao/index.html" class="btn-nav btn-solucao">Ver Solução →</a>
+    </div>
+
+</main>
+
+<footer class="manual-footer">
+    <p>Manual HTML5 + CSS3 · Instituto Politécnico de Viseu · 2024/2025</p>
+</footer>
+
+</body>
+</html>

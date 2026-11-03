@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha 01 — Introdução ao HTML5</title>
+    <link rel="stylesheet" href="../../css/manual.css">
+</head>
+<body>
+
+<header class="manual-header">
+    <p class="breadcrumb"><a href="../../index.html">Índice</a> › <a href="../teoria.html">Cap. 01</a> › Exercício</p>
+    <h1>Ficha 01 — A minha primeira página</h1>
+    <p>Introdução ao HTML5</p>
+</header>
+
+<main class="conteudo">
+
+    <div class="secao exercicio-header">
+        <h2>Objetivos</h2>
+        <ul class="objetivo-lista">
+            <li>Criar um ficheiro HTML5 válido com estrutura base completa</li>
+            <li>Usar corretamente DOCTYPE, head, body e meta charset</li>
+            <li>Usar títulos h1–h3 em hierarquia semântica correta</li>
+            <li>Escrever parágrafos, usar strong, em e comentários</li>
+            <li>Definir o idioma da página com o atributo lang</li>
+        </ul>
+    </div>
+
+    <div class="secao">
+        <h2>Enunciado</h2>
+        <p>
+            Cria uma página HTML que funcione como o teu <strong>perfil pessoal</strong>.
+            A página deve conter as seguintes secções:
+        </p>
+
+        <h3>1. Cabeçalho da página</h3>
+        <ul>
+            <li>Um título principal (<code>&lt;h1&gt;</code>) com o teu nome completo.</li>
+            <li>Um subtítulo (<code>&lt;h2&gt;</code>) com o teu curso e ano.</li>
+        </ul>
+
+        <h3>2. Secção "Sobre mim"</h3>
+        <ul>
+            <li>Um título (<code>&lt;h2&gt;</code>) com o texto "Sobre mim".</li>
+            <li>Dois ou três parágrafos a descreveres-te. Pelo menos um deve ter uma palavra em <code>&lt;strong&gt;</code> e outra em <code>&lt;em&gt;</code>.</li>
+        </ul>
+
+        <h3>3. Secção "Competências"</h3>
+        <ul>
+            <li>Um título (<code>&lt;h2&gt;</code>) "Competências técnicas".</li>
+            <li>Um título (<code>&lt;h3&gt;</code>) "Linguagens que estou a aprender".</li>
+            <li>Um parágrafo com pelo menos três linguagens mencionadas.</li>
+        </ul>
+
+        <h3>4. Secção "Curiosidade"</h3>
+        <ul>
+            <li>Uma curiosidade sobre ti, num parágrafo com <code>&lt;small&gt;</code> para uma nota secundária.</li>
+        </ul>
+
+        <h3>5. Comentários</h3>
+        <ul>
+            <li>Adiciona pelo menos 2 comentários HTML úteis no código.</li>
+        </ul>
+    </div>
+
+    <div class="secao">
+        <h2>Requisitos técnicos</h2>
+        <ul>
+            <li>Ficheiro chamado <code>perfil.html</code></li>
+            <li>DOCTYPE correto na primeira linha</li>
+            <li><code>lang="pt"</code> no elemento html</li>
+            <li>meta charset UTF-8</li>
+            <li>meta viewport</li>
+            <li>Título no separador: "Perfil — [o teu nome]"</li>
+            <li>Estrutura correta de h1 → h2 → h3 (sem saltar níveis)</li>
+        </ul>
+    </div>
+
+    <div class="secao">
+        <h2>Resultado esperado</h2>
+        <p>Ao abrir no browser deves ver algo parecido com:</p>
+        <div class="preview-box">
+            <div class="preview-titulo">Resultado visual (estilos do browser por padrão)</div>
+            <div style="font-family: Times New Roman, serif; padding: 0.5rem;">
+                <h1 style="font-size: 2em; margin: 0.67em 0;">Ana Pereira</h1>
+                <h2 style="font-size: 1.5em; margin: 0.83em 0;">Engenharia Informática, 1.º Ano</h2>
+                <hr>
+                <h2 style="font-size: 1.5em; margin: 0.83em 0;">Sobre mim</h2>
+                <p>Sou estudante de <strong>Engenharia Informática</strong> no IPV.
+                   Tenho <em>grande entusiasmo</em> pela tecnologia...</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="caixa-dica">
+        <strong>Dica</strong>
+        No VS Code, escreve <code>!</code> e prime <kbd>Tab</kbd> para gerar a estrutura base.
+        Depois apenas personalizas o conteúdo!
+    </div>
+
+    <div class="nav-capitulos">
+        <a href="../teoria.html" class="btn-nav">← Teoria</a>
+        <a href="esqueleto.html" class="btn-nav btn-exercicio">Abrir Esqueleto →</a>
+        <a href="solucao.html" class="btn-nav btn-solucao">Ver Solução →</a>
+    </div>
+
+</main>
+
+<footer class="manual-footer">
+    <p>Manual HTML5 + CSS3 · Instituto Politécnico de Viseu · 2024/2025</p>
+</footer>
+
+</body>
+</html>

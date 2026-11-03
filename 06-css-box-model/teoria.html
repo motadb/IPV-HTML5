@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cap. 06 — CSS Box Model</title>
+    <link rel="stylesheet" href="../css/manual.css">
+</head>
+<body>
+
+<header class="manual-header">
+    <p class="breadcrumb"><a href="../index.html">Índice</a> › Capítulo 06</p>
+    <h1>CSS — Box Model</h1>
+    <p>O modelo de caixa, espaçamentos e posicionamento</p>
+</header>
+
+<nav class="manual-nav">
+    <a href="../index.html">Índice</a>
+    <a href="../01-introducao/teoria.html">01</a>
+    <a href="../02-semantica/teoria.html">02</a>
+    <a href="../03-texto-ligacoes/teoria.html">03</a>
+    <a href="../04-imagens-caminhos/teoria.html">04</a>
+    <a href="../05-css-fundamentos/teoria.html">05</a>
+    <a href="teoria.html" class="ativo">06 · Box Model</a>
+    <a href="../07-css-flexbox/teoria.html">07 · Flexbox</a>
+    <a href="../08-css-grid/teoria.html">08 · Grid</a>
+    <a href="../09-formularios/teoria.html">09 · Formulários</a>
+</nav>
+
+<main class="conteudo">
+
+    <div class="indice-lateral">
+        <h3>Neste capítulo</h3>
+        <ol>
+            <li><a href="#box-model">O modelo de caixa</a></li>
+            <li><a href="#margin-padding">Margin e Padding</a></li>
+            <li><a href="#border">Border</a></li>
+            <li><a href="#box-sizing">box-sizing</a></li>
+            <li><a href="#display">Propriedade display</a></li>
+            <li><a href="#width-height">Width e Height</a></li>
+            <li><a href="#overflow">Overflow</a></li>
+            <li><a href="#position">Posicionamento</a></li>
+        </ol>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="box-model">
+        <h2>6.1 O modelo de caixa (Box Model)</h2>
+        <p>
+            Todo o elemento HTML é tratado pelo browser como uma <strong>caixa retangular</strong>
+            composta por quatro camadas, de dentro para fora:
+        </p>
+
+        <div class="preview-box">
+            <div class="preview-titulo">Diagrama do Box Model</div>
+            <pre style="font-family: monospace; font-size: 0.85rem; line-height: 1.4; color: #475569;">
+┌─────────────────────────────────────────────┐
+│                  MARGIN                      │  ← espaço fora da caixa
+│  ┌───────────────────────────────────────┐  │
+│  │               BORDER                  │  │  ← borda visível
+│  │  ┌─────────────────────────────────┐  │  │
+│  │  │             PADDING             │  │  │  ← espaço interior
+│  │  │  ┌───────────────────────────┐  │  │  │
+│  │  │  │         CONTENT           │  │  │  │  ← conteúdo real
+│  │  │  └───────────────────────────┘  │  │  │
+│  │  └─────────────────────────────────┘  │  │
+│  └───────────────────────────────────────┘  │
+└─────────────────────────────────────────────┘
+            </pre>
+        </div>
+
+        <ul>
+            <li><strong>Content</strong> — o conteúdo do elemento (texto, imagem, etc.)</li>
+            <li><strong>Padding</strong> — espaço interior entre o conteúdo e a borda</li>
+            <li><strong>Border</strong> — a borda visível do elemento</li>
+            <li><strong>Margin</strong> — espaço exterior entre este elemento e os outros</li>
+        </ul>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="margin-padding">
+        <h2>6.2 Margin e Padding</h2>
+        <p>
+            Ambos podem ser definidos para os quatro lados separadamente ou com atalhos:
+        </p>
+
+        <pre class="codigo"><span class="hl-coment">/* Atalhos */</span>
+
+<span class="hl-seletor">.elemento</span> {
+  <span class="hl-coment">/* 1 valor: todos os lados */</span>
+  <span class="hl-prop">margin</span>: <span class="hl-valor">1rem</span>;
+
+  <span class="hl-coment">/* 2 valores: cima/baixo  esquerda/direita */</span>
+  <span class="hl-prop">margin</span>: <span class="hl-valor">1rem 2rem</span>;
+
+  <span class="hl-coment">/* 3 valores: cima  esquerda/direita  baixo */</span>
+  <span class="hl-prop">margin</span>: <span class="hl-valor">1rem 2rem 0.5rem</span>;
+
+  <span class="hl-coment">/* 4 valores: cima  direita  baixo  esquerda (sentido horário) */</span>
+  <span class="hl-prop">margin</span>: <span class="hl-valor">1rem 2rem 0.5rem 0</span>;
+
+  <span class="hl-coment">/* Lados individuais */</span>
+  <span class="hl-prop">margin-top</span>: <span class="hl-valor">1rem</span>;
+  <span class="hl-prop">margin-right</span>: <span class="hl-valor">2rem</span>;
+  <span class="hl-prop">margin-bottom</span>: <span class="hl-valor">1rem</span>;
+  <span class="hl-prop">margin-left</span>: <span class="hl-valor">0</span>;
+}
+
+<span class="hl-coment">/* Centrar horizontalmente um bloco */</span>
+<span class="hl-seletor">.centrado</span> {
+  <span class="hl-prop">width</span>: <span class="hl-valor">800px</span>;
+  <span class="hl-prop">margin</span>: <span class="hl-valor">0 auto</span>;
+}</pre>
+
+        <div class="caixa-nota">
+            <strong>Colapso de margens (margin collapse)</strong>
+            Quando dois elementos de bloco estão um sobre o outro, as suas margens verticais
+            "colapsam" — em vez de somarem, prevalece a maior.
+            <code>margin-bottom: 2rem</code> + <code>margin-top: 1rem</code> = <strong>2rem</strong> (não 3rem).
+            Isso não acontece com padding.
+        </div>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="border">
+        <h2>6.3 Border</h2>
+        <pre class="codigo"><span class="hl-seletor">.cartao</span> {
+  <span class="hl-coment">/* Atalho: espessura estilo cor */</span>
+  <span class="hl-prop">border</span>: <span class="hl-valor">2px solid #e2e8f0</span>;
+
+  <span class="hl-coment">/* Lados individuais */</span>
+  <span class="hl-prop">border-top</span>: <span class="hl-valor">4px solid #2563eb</span>;
+  <span class="hl-prop">border-bottom</span>: <span class="hl-valor">1px dashed #ccc</span>;
+
+  <span class="hl-coment">/* Estilo: none | solid | dashed | dotted | double */</span>
+  <span class="hl-prop">border-style</span>: <span class="hl-valor">solid</span>;
+  <span class="hl-prop">border-width</span>: <span class="hl-valor">1px</span>;
+  <span class="hl-prop">border-color</span>: <span class="hl-valor">#ccc</span>;
+
+  <span class="hl-coment">/* Cantos arredondados */</span>
+  <span class="hl-prop">border-radius</span>: <span class="hl-valor">8px</span>;
+
+  <span class="hl-coment">/* Círculo (funciona em elemento quadrado) */</span>
+  <span class="hl-prop">border-radius</span>: <span class="hl-valor">50%</span>;
+
+  <span class="hl-coment">/* Sombra da caixa */</span>
+  <span class="hl-prop">box-shadow</span>: <span class="hl-valor">0 4px 6px rgba(0,0,0,0.1)</span>;
+}</pre>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="box-sizing">
+        <h2>6.4 box-sizing</h2>
+        <p>
+            Define o que é incluído no <code>width</code> e <code>height</code> de um elemento:
+        </p>
+        <ul>
+            <li>
+                <strong>content-box</strong> (padrão): width = só o conteúdo. O padding e a borda
+                <em>adicionam</em> ao tamanho total.
+            </li>
+            <li>
+                <strong>border-box</strong> (recomendado): width = conteúdo + padding + borda.
+                O tamanho total é exatamente o que defines.
+            </li>
+        </ul>
+
+        <pre class="codigo"><span class="hl-coment">/* Reset recomendado — inclui em todos os projetos */</span>
+<span class="hl-seletor">*, *::before, *::after</span> {
+  <span class="hl-prop">box-sizing</span>: <span class="hl-valor">border-box</span>;
+  <span class="hl-prop">margin</span>: <span class="hl-valor">0</span>;
+  <span class="hl-prop">padding</span>: <span class="hl-valor">0</span>;
+}
+
+<span class="hl-coment">/* Exemplo da diferença: */</span>
+<span class="hl-seletor">.caixa</span> {
+  <span class="hl-prop">width</span>: <span class="hl-valor">200px</span>;
+  <span class="hl-prop">padding</span>: <span class="hl-valor">20px</span>;
+  <span class="hl-prop">border</span>: <span class="hl-valor">2px solid #000</span>;
+}
+<span class="hl-coment">/* content-box: largura real = 200 + 20+20 + 2+2 = 244px */</span>
+<span class="hl-coment">/* border-box:  largura real = 200px (sempre)             */</span></pre>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="display">
+        <h2>6.5 A propriedade display</h2>
+        <p>Controla como o elemento participa no fluxo da página:</p>
+
+        <table>
+            <thead>
+                <tr><th>Valor</th><th>Comportamento</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>block</code></td>
+                    <td>Ocupa a largura toda. Começa em nova linha. Aceita width/height.</td>
+                </tr>
+                <tr>
+                    <td><code>inline</code></td>
+                    <td>Flui com o texto. Não aceita width/height. Não quebra linha.</td>
+                </tr>
+                <tr>
+                    <td><code>inline-block</code></td>
+                    <td>Flui com o texto mas aceita width/height e padding/margin verticais.</td>
+                </tr>
+                <tr>
+                    <td><code>none</code></td>
+                    <td>Remove completamente o elemento — como se não existisse (não ocupa espaço).</td>
+                </tr>
+                <tr>
+                    <td><code>flex</code></td>
+                    <td>Ativa o Flexbox no contentor. (Cap. 07)</td>
+                </tr>
+                <tr>
+                    <td><code>grid</code></td>
+                    <td>Ativa o Grid no contentor. (Cap. 08)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <pre class="codigo"><span class="hl-coment">/* Esconder/mostrar elementos */</span>
+<span class="hl-seletor">.menu-mobile</span> { <span class="hl-prop">display</span>: <span class="hl-valor">none</span>; }   <span class="hl-coment">/* esconde */</span>
+<span class="hl-seletor">.menu-mobile.ativo</span> { <span class="hl-prop">display</span>: <span class="hl-valor">block</span>; } <span class="hl-coment">/* mostra */</span>
+
+<span class="hl-coment">/* Botões lado a lado com inline-block */</span>
+<span class="hl-seletor">.btn</span> {
+  <span class="hl-prop">display</span>: <span class="hl-valor">inline-block</span>;
+  <span class="hl-prop">padding</span>: <span class="hl-valor">0.5rem 1rem</span>;
+  <span class="hl-prop">border-radius</span>: <span class="hl-valor">4px</span>;
+}</pre>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="width-height">
+        <h2>6.6 Width e Height</h2>
+        <pre class="codigo"><span class="hl-seletor">.contentor</span> {
+  <span class="hl-prop">width</span>: <span class="hl-valor">800px</span>;         <span class="hl-coment">/* largura fixa */</span>
+  <span class="hl-prop">max-width</span>: <span class="hl-valor">100%</span>;     <span class="hl-coment">/* nunca ultrapassa o pai */</span>
+  <span class="hl-prop">min-width</span>: <span class="hl-valor">300px</span>;    <span class="hl-coment">/* mínimo de 300px */</span>
+
+  <span class="hl-prop">height</span>: <span class="hl-valor">400px</span>;        <span class="hl-coment">/* altura fixa (evitar quando possível) */</span>
+  <span class="hl-prop">min-height</span>: <span class="hl-valor">200px</span>;  <span class="hl-coment">/* mínimo de altura */</span>
+}
+
+<span class="hl-coment">/* Layout centrado responsivo (padrão muito comum) */</span>
+<span class="hl-seletor">.pagina</span> {
+  <span class="hl-prop">max-width</span>: <span class="hl-valor">1200px</span>;
+  <span class="hl-prop">width</span>: <span class="hl-valor">100%</span>;
+  <span class="hl-prop">margin</span>: <span class="hl-valor">0 auto</span>;
+  <span class="hl-prop">padding</span>: <span class="hl-valor">0 1.5rem</span>;
+}</pre>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="overflow">
+        <h2>6.7 Overflow</h2>
+        <p>Define o que acontece quando o conteúdo ultrapassa o tamanho do elemento:</p>
+        <pre class="codigo"><span class="hl-seletor">.caixa</span> {
+  <span class="hl-prop">overflow</span>: <span class="hl-valor">visible</span>; <span class="hl-coment">/* padrão: conteúdo transborda */</span>
+  <span class="hl-prop">overflow</span>: <span class="hl-valor">hidden</span>;  <span class="hl-coment">/* corta o excesso */</span>
+  <span class="hl-prop">overflow</span>: <span class="hl-valor">scroll</span>;  <span class="hl-coment">/* barra de scroll sempre */</span>
+  <span class="hl-prop">overflow</span>: <span class="hl-valor">auto</span>;    <span class="hl-coment">/* barra de scroll só se necessário */</span>
+
+  <span class="hl-coment">/* Por eixo */</span>
+  <span class="hl-prop">overflow-x</span>: <span class="hl-valor">hidden</span>;
+  <span class="hl-prop">overflow-y</span>: <span class="hl-valor">auto</span>;
+}</pre>
+    </div>
+
+    <!-- ======================================== -->
+    <div class="secao" id="position">
+        <h2>6.8 Posicionamento</h2>
+
+        <table>
+            <thead>
+                <tr><th>Valor</th><th>Comportamento</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>static</code></td>
+                    <td>Padrão. Elemento no fluxo normal. <code>top/left/etc.</code> não têm efeito.</td>
+                </tr>
+                <tr>
+                    <td><code>relative</code></td>
+                    <td>Desloca o elemento em relação à sua posição normal. Não sai do fluxo.</td>
+                </tr>
+                <tr>
+                    <td><code>absolute</code></td>
+                    <td>Remove do fluxo. Posiciona em relação ao ancestral com <code>position</code> não-static.</td>
+                </tr>
+                <tr>
+                    <td><code>fixed</code></td>
+                    <td>Remove do fluxo. Posiciona em relação à janela. Não rola com a página.</td>
+                </tr>
+                <tr>
+                    <td><code>sticky</code></td>
+                    <td>Normal até chegar ao limite definido, depois fica fixo.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <pre class="codigo"><span class="hl-coment">/* Navbar fixa no topo */</span>
+<span class="hl-seletor">nav</span> {
+  <span class="hl-prop">position</span>: <span class="hl-valor">fixed</span>;
+  <span class="hl-prop">top</span>: <span class="hl-valor">0</span>;
+  <span class="hl-prop">left</span>: <span class="hl-valor">0</span>;
+  <span class="hl-prop">width</span>: <span class="hl-valor">100%</span>;
+  <span class="hl-prop">z-index</span>: <span class="hl-valor">100</span>;    <span class="hl-coment">/* por cima dos outros elementos */</span>
+}
+
+<span class="hl-coment">/* Centrar um elemento filho absolute */</span>
+<span class="hl-seletor">.pai</span> { <span class="hl-prop">position</span>: <span class="hl-valor">relative</span>; }
+<span class="hl-seletor">.filho</span> {
+  <span class="hl-prop">position</span>: <span class="hl-valor">absolute</span>;
+  <span class="hl-prop">top</span>: <span class="hl-valor">50%</span>;
+  <span class="hl-prop">left</span>: <span class="hl-valor">50%</span>;
+  <span class="hl-prop">transform</span>: <span class="hl-valor">translate(-50%, -50%)</span>;
+}
+
+<span class="hl-coment">/* Header sticky */</span>
+<span class="hl-seletor">header</span> {
+  <span class="hl-prop">position</span>: <span class="hl-valor">sticky</span>;
+  <span class="hl-prop">top</span>: <span class="hl-valor">0</span>;
+}</pre>
+    </div>
+
+    <div class="nav-capitulos">
+        <a href="../05-css-fundamentos/teoria.html" class="btn-nav">← Cap. 05</a>
+        <a href="exercicio/enunciado.html" class="btn-nav btn-exercicio">Ficha de Exercícios →</a>
+        <a href="../07-css-flexbox/teoria.html" class="btn-nav">Próximo: Flexbox →</a>
+    </div>
+
+</main>
+
+<footer class="manual-footer">
+    <p>Manual HTML5 + CSS3 · Instituto Politécnico de Viseu · 2024/2025</p>
+</footer>
+
+</body>
+</html>

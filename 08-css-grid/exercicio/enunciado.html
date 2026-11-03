@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha 08 — CSS Grid</title>
+    <link rel="stylesheet" href="../../css/manual.css">
+</head>
+<body>
+
+<header class="manual-header">
+    <p class="breadcrumb"><a href="../../index.html">Índice</a> › <a href="../teoria.html">Cap. 08</a> › Exercício</p>
+    <h1>Ficha 08 — Layout com CSS Grid</h1>
+    <p>grid-template-areas, fr, auto-fill</p>
+</header>
+
+<main class="conteudo">
+
+    <div class="secao exercicio-header">
+        <h2>Objetivos</h2>
+        <ul class="objetivo-lista">
+            <li>Criar um layout de página completo com grid-template-areas</li>
+            <li>Usar a unidade fr para distribuição de espaço</li>
+            <li>Posicionar items do grid com grid-column e grid-row</li>
+            <li>Criar uma galeria responsiva com auto-fill e minmax</li>
+            <li>Adaptar o layout para mobile com media query</li>
+        </ul>
+    </div>
+
+    <div class="secao">
+        <h2>Enunciado</h2>
+        <p>
+            Cria um site de notícias chamado <code>noticias-grid.html</code> com <code>css/grid.css</code>.
+        </p>
+
+        <h3>Layout da página (desktop)</h3>
+        <div class="preview-box">
+            <div class="preview-titulo">grid-template-areas</div>
+            <pre style="font-family: monospace; font-size: 0.82rem; line-height: 1.5; color: #475569;">
+┌──────────────────────────────────────────────────┐
+│             header (col 1-3)                     │
+├──────────────────────────────────────────────────┤
+│             nav (col 1-3)                        │
+├──────────────────────┬──────────────────────┬───┤
+│                      │                      │   │
+│   artigo-1 (1fr)     │   artigo-2 (1fr)    │ A │
+│                      │                      │ S │
+├──────────────────────┴──────────────────────┤ I │
+│                                             │ D │
+│         artigo-destaque (2fr, span 2)       │ E │
+│                                             │   │
+├──────────────────────────────────────────────┴───┤
+│             footer (col 1-3)                     │
+└──────────────────────────────────────────────────┘
+            </pre>
+        </div>
+
+        <h3>Requisitos</h3>
+        <ul>
+            <li>O grid da página usa <code>grid-template-areas</code> com as zonas: header, nav, artigo1, artigo2, destaque, aside, footer.</li>
+            <li>3 colunas: <code>1fr 1fr 250px</code> (as duas primeiras para conteúdo, a última para o aside).</li>
+            <li>O artigo de destaque ocupa as primeiras duas colunas: <code>grid-column: span 2</code>.</li>
+            <li>O aside ocupa todas as linhas de conteúdo: <code>grid-row: span 2</code>.</li>
+            <li>Dentro do aside, cria uma secção "Mais notícias" com uma mini-galeria usando <code>repeat(auto-fill, minmax(80px, 1fr))</code>.</li>
+            <li>Media query <code>@media (max-width: 768px)</code>: colapsa para layout de 1 coluna, redefine as areas.</li>
+        </ul>
+    </div>
+
+    <div class="nav-capitulos">
+        <a href="../teoria.html" class="btn-nav">← Teoria</a>
+        <a href="esqueleto/noticias-grid.html" class="btn-nav btn-exercicio">Abrir Esqueleto →</a>
+        <a href="solucao/noticias-grid.html" class="btn-nav btn-solucao">Ver Solução →</a>
+    </div>
+
+</main>
+
+<footer class="manual-footer">
+    <p>Manual HTML5 + CSS3 · Instituto Politécnico de Viseu · 2024/2025</p>
+</footer>
+
+</body>
+</html>

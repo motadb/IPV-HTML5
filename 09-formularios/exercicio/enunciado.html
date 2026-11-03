@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha 09 — Formulários</title>
+    <link rel="stylesheet" href="../../css/manual.css">
+</head>
+<body>
+
+<header class="manual-header">
+    <p class="breadcrumb"><a href="../../index.html">Índice</a> › <a href="../teoria.html">Cap. 09</a> › Exercício</p>
+    <h1>Ficha 09 — Formulário de Inscrição</h1>
+    <p>Todos os tipos de input, validação e acessibilidade</p>
+</header>
+
+<main class="conteudo">
+
+    <div class="secao exercicio-header">
+        <h2>Objetivos</h2>
+        <ul class="objetivo-lista">
+            <li>Criar um formulário completo com fieldsets agrupados</li>
+            <li>Usar pelo menos 8 tipos diferentes de input</li>
+            <li>Associar corretamente todos os labels com for/id</li>
+            <li>Aplicar atributos de validação HTML5 (required, pattern, min/max)</li>
+            <li>Estilizar o formulário com CSS para aspeto profissional</li>
+        </ul>
+    </div>
+
+    <div class="secao">
+        <h2>Enunciado</h2>
+        <p>
+            Cria um <strong>formulário de inscrição nas Jornadas de Informática 2024</strong>
+            do IPV. O ficheiro chama-se <code>inscricao.html</code> com CSS em <code>css/form.css</code>.
+        </p>
+
+        <h3>Secção 1 — Dados Pessoais (fieldset)</h3>
+        <table>
+            <thead>
+                <tr><th>Campo</th><th>Tipo</th><th>Validação</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Nome completo</td><td>text</td><td>required, minlength=3, autofocus</td></tr>
+                <tr><td>Email</td><td>email</td><td>required, autocomplete="email"</td></tr>
+                <tr><td>Telefone</td><td>tel</td><td>pattern="[0-9]{9}", placeholder="9 dígitos"</td></tr>
+                <tr><td>Data de nascimento</td><td>date</td><td>required, max="2006-12-31"</td></tr>
+                <tr><td>Número de estudante</td><td>text</td><td>pattern="[0-9]{6}", maxlength=6</td></tr>
+            </tbody>
+        </table>
+
+        <h3>Secção 2 — Inscrição no Evento (fieldset)</h3>
+        <table>
+            <thead>
+                <tr><th>Campo</th><th>Tipo</th><th>Notas</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Dia de participação</td><td>radio</td><td>Dia 15, Dia 16, Ambos os dias (required)</td></tr>
+                <tr><td>Workshops de interesse</td><td>checkbox</td><td>HTML/CSS, JavaScript, Python, IA, Git</td></tr>
+                <tr><td>Regime alimentar</td><td>select</td><td>Normal, Vegetariano, Vegan, Sem glúten</td></tr>
+                <tr><td>Tamanho da t-shirt</td><td>select</td><td>XS, S, M, L, XL, XXL</td></tr>
+            </tbody>
+        </table>
+
+        <h3>Secção 3 — Informação adicional (fieldset)</h3>
+        <table>
+            <thead>
+                <tr><th>Campo</th><th>Tipo</th><th>Notas</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Como soubeste do evento</td><td>select</td><td>Email, Redes sociais, Colega, Professor, Outro</td></tr>
+                <tr><td>Nível de satisfação</td><td>range</td><td>min=1, max=5, value=3</td></tr>
+                <tr><td>Comentários</td><td>textarea</td><td>rows=4, maxlength=300, opcional</td></tr>
+                <tr><td>Aceito os termos</td><td>checkbox</td><td>required</td></tr>
+                <tr><td>Subscrever newsletter</td><td>checkbox</td><td>opcional</td></tr>
+            </tbody>
+        </table>
+
+        <h3>Botões</h3>
+        <ul>
+            <li>Botão "Submeter inscrição" (type="submit")</li>
+            <li>Botão "Limpar formulário" (type="reset")</li>
+        </ul>
+
+        <h3>CSS do formulário</h3>
+        <ul>
+            <li>Cada grupo label + input deve ser um <code>&lt;div class="campo"&gt;</code> com <code>display: flex; flex-direction: column; gap: 0.25rem;</code></li>
+            <li>Os inputs têm: padding 0.5rem, border 1px solid #ccc, border-radius 4px, width 100%</li>
+            <li>Ao focar (<code>:focus</code>): outline none, border-color #2563eb, box-shadow azul claro</li>
+            <li>Labels: font-weight 600, font-size 0.9rem</li>
+            <li>Fieldsets: padding 1.5rem, border 1px solid #e2e8f0, border-radius 8px, margin-bottom 1.5rem</li>
+            <li>Legends: color #2563eb, font-weight 700</li>
+        </ul>
+    </div>
+
+    <div class="nav-capitulos">
+        <a href="../teoria.html" class="btn-nav">← Teoria</a>
+        <a href="esqueleto/inscricao.html" class="btn-nav btn-exercicio">Abrir Esqueleto →</a>
+        <a href="solucao/inscricao.html" class="btn-nav btn-solucao">Ver Solução →</a>
+    </div>
+
+</main>
+
+<footer class="manual-footer">
+    <p>Manual HTML5 + CSS3 · Instituto Politécnico de Viseu · 2024/2025</p>
+</footer>
+
+</body>
+</html>
