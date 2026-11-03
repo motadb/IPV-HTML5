@@ -101,7 +101,7 @@
         <pre class="codigo"><span class="hl-seletor">.container</span> {
   <span class="hl-prop">display</span>: <span class="hl-valor">flex</span>;
 
-  <span class="hl-coment">/* → em linha (padrão) */</span>
+  <span class="hl-coment">/* → em linha (por defeito) */</span>
   <span class="hl-prop">flex-direction</span>: <span class="hl-valor">row</span>;
 
   <span class="hl-coment">/* ↓ em coluna */</span>
@@ -130,7 +130,7 @@
         <pre class="codigo"><span class="hl-seletor">.container</span> {
   <span class="hl-prop">display</span>: <span class="hl-valor">flex</span>;
 
-  <span class="hl-coment">/* [A B C      ] items no início (padrão) */</span>
+  <span class="hl-coment">/* [A B C      ] items no início (por defeito) */</span>
   <span class="hl-prop">justify-content</span>: <span class="hl-valor">flex-start</span>;
 
   <span class="hl-coment">/* [   A B C   ] items no centro */</span>
@@ -157,7 +157,7 @@
   <span class="hl-prop">display</span>: <span class="hl-valor">flex</span>;
   <span class="hl-prop">height</span>: <span class="hl-valor">200px</span>;   <span class="hl-coment">/* precisa de altura para ver efeito */</span>
 
-  <span class="hl-coment">/* items esticados para preencher (padrão) */</span>
+  <span class="hl-coment">/* items esticados para preencher (por defeito) */</span>
   <span class="hl-prop">align-items</span>: <span class="hl-valor">stretch</span>;
 
   <span class="hl-coment">/* items no topo do eixo cruzado */</span>
@@ -184,7 +184,7 @@
     <!-- ======================================== -->
     <div class="secao" id="wrap">
         <h2>7.6 flex-wrap</h2>
-        <p>Por padrão, os flex items tentam caber todos numa linha. Com <code>flex-wrap</code>
+        <p>Por defeito, os flex items tentam caber todos numa linha. Com <code>flex-wrap</code>
         permites que quebrem para nova linha:</p>
         <pre class="codigo"><span class="hl-seletor">.galeria</span> {
   <span class="hl-prop">display</span>: <span class="hl-valor">flex</span>;
@@ -203,13 +203,13 @@
         <h2>7.7 Propriedades dos flex items</h2>
 
         <pre class="codigo"><span class="hl-seletor">.item</span> {
-  <span class="hl-coment">/* flex-grow: quanto cresce relativamente (padrão: 0) */</span>
+  <span class="hl-coment">/* flex-grow: quanto cresce relativamente (por defeito: 0) */</span>
   <span class="hl-prop">flex-grow</span>: <span class="hl-valor">1</span>;   <span class="hl-coment">/* preenche espaço disponível */</span>
 
-  <span class="hl-coment">/* flex-shrink: quanto encolhe se necessário (padrão: 1) */</span>
+  <span class="hl-coment">/* flex-shrink: quanto encolhe se necessário (por defeito: 1) */</span>
   <span class="hl-prop">flex-shrink</span>: <span class="hl-valor">0</span>;  <span class="hl-coment">/* não encolhe */</span>
 
-  <span class="hl-coment">/* flex-basis: tamanho inicial (padrão: auto) */</span>
+  <span class="hl-coment">/* flex-basis: tamanho inicial (por defeito: auto) */</span>
   <span class="hl-prop">flex-basis</span>: <span class="hl-valor">200px</span>;
 
   <span class="hl-coment">/* Atalho: flex: grow shrink basis */</span>
@@ -219,7 +219,7 @@
   <span class="hl-coment">/* Sobrepor o align-items do container */</span>
   <span class="hl-prop">align-self</span>: <span class="hl-valor">flex-end</span>;
 
-  <span class="hl-coment">/* Ordem de exibição (padrão: 0) */</span>
+  <span class="hl-coment">/* Ordem de exibição (por defeito: 0) */</span>
   <span class="hl-prop">order</span>: <span class="hl-valor">-1</span>;  <span class="hl-coment">/* aparece primeiro */</span>
 }</pre>
     </div>

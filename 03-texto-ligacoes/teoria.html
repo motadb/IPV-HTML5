@@ -47,7 +47,7 @@
 
         <table>
             <thead>
-                <tr><th>Elemento</th><th>Significado semântico</th><th>Aspeto padrão</th></tr>
+                <tr><th>Elemento</th><th>Significado semântico</th><th>Aspeto predefinido</th></tr>
             </thead>
             <tbody>
                 <tr><td><code>&lt;strong&gt;</code></td><td>Texto de grande importância</td><td><strong>negrito</strong></td></tr>
@@ -155,7 +155,7 @@
         <pre class="codigo"><span class="hl-coment">&lt;!-- Link para outra página do site --&gt;</span>
 <span class="hl-tag">&lt;a</span> <span class="hl-attr">href</span>=<span class="hl-val">"sobre.html"</span><span class="hl-tag">&gt;</span>Sobre Nós<span class="hl-tag">&lt;/a&gt;</span>
 
-<span class="hl-coment">&lt;!-- Abrir em nova aba --&gt;</span>
+<span class="hl-coment">&lt;!-- Abrir num novo separador --&gt;</span>
 <span class="hl-tag">&lt;a</span> <span class="hl-attr">href</span>=<span class="hl-val">"https://www.ipv.pt"</span> <span class="hl-attr">target</span>=<span class="hl-val">"_blank"</span> <span class="hl-attr">rel</span>=<span class="hl-val">"noopener"</span><span class="hl-tag">&gt;</span>IPV<span class="hl-tag">&lt;/a&gt;</span>
 
 <span class="hl-coment">&lt;!-- Link com título (tooltip) --&gt;</span>
@@ -167,8 +167,8 @@
             </thead>
             <tbody>
                 <tr><td><code>href</code></td><td>URL ou caminho</td><td>Destino do link</td></tr>
-                <tr><td><code>target</code></td><td><code>_blank</code></td><td>Abre em nova aba</td></tr>
-                <tr><td><code>target</code></td><td><code>_self</code> (padrão)</td><td>Abre na mesma aba</td></tr>
+                <tr><td><code>target</code></td><td><code>_blank</code></td><td>Abre num novo separador</td></tr>
+                <tr><td><code>target</code></td><td><code>_self</code> (por defeito)</td><td>Abre no mesmo separador</td></tr>
                 <tr><td><code>rel</code></td><td><code>noopener noreferrer</code></td><td>Segurança em links externos</td></tr>
                 <tr><td><code>download</code></td><td>nome do ficheiro</td><td>Força download em vez de abrir</td></tr>
             </tbody>
@@ -176,7 +176,7 @@
 
         <div class="caixa-aviso">
             <strong>Segurança com target="_blank"</strong>
-            Ao abrir um link externo em nova aba, usa sempre <code>rel="noopener noreferrer"</code>
+            Ao abrir um link externo num novo separador, usa sempre <code>rel="noopener noreferrer"</code>
             para prevenir que a página de destino aceda à janela original.
         </div>
     </div>
@@ -240,7 +240,7 @@
 <span class="hl-tag">&lt;img</span> <span class="hl-attr">src</span>=<span class="hl-val">"../imagens/logo.png"</span> <span class="hl-attr">alt</span>=<span class="hl-val">"Logótipo"</span><span class="hl-tag">&gt;</span>
 
 <span class="hl-coment">&lt;!-- Outro ficheiro na mesma pasta --&gt;</span>
-<span class="hl-tag">&lt;a</span> <span class="hl-attr">href</span>=<span class="hl-val">"portfolio.html"</span><span class="hl-tag">&gt;</span>Portfolio<span class="hl-tag">&lt;/a&gt;</span></pre>
+<span class="hl-tag">&lt;a</span> <span class="hl-attr">href</span>=<span class="hl-val">"portfolio.html"</span><span class="hl-tag">&gt;</span>Portefólio<span class="hl-tag">&lt;/a&gt;</span></pre>
 
         <div class="caixa-dica">
             <strong>Regra de memorização</strong>
