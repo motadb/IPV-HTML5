@@ -1,7 +1,8 @@
-# Manual de HTML5 + CSS3
+﻿# Manual de HTML5 + CSS3
 
 **Instituto Politécnico de Viseu**  
-CTESP · 1.º Ano · Ano letivo 2024/2025
+CTESP · 1.º Ano · Ano letivo 2026/2027  
+Autor: David Mota
 
 ---
 
